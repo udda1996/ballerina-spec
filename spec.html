@@ -159,6 +159,8 @@ mailing list.
 </li>
 <li>5.5.7 <a href="#section_5.5.7">JSON types</a>
 </li>
+<li>5.5.8 <a href="#section_5.5.8">Type reference</a>
+</li>
 </ul>
 </li>
 <li>5.6 <a href="#built-in_abstract_object_types">Built-in abstract object types</a><ul>
@@ -2198,20 +2200,16 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 <h3 id="section_5.5">5.5 Other type descriptors</h3>
 
 <pre class="grammar"><span class="ntdfn" id="other-type-descriptor">other-type-descriptor</span> :=
-   <a href="#type-reference"><span class="ntref">type-reference</span></a>
-   | <code>(</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>)</code>
-   | <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
+   <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
    | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
    | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
    | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
    | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
    | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
    | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
-<span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
+   | <a href="#type-reference"><span class="ntref">type-reference</span></a>
+   | <code>(</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>)</code>
 </pre>
-<p>
-A type-reference must refer to a type definition.
-</p>
 <p>
 It is important to understand that the type descriptors specified in this
 section do not add to the universe of values. They are just adding new ways to
@@ -2307,6 +2305,17 @@ format. It is a built-in name for a union defined as follows:
 </pre>
 <p>
 In addition, the <code>json</code> type is defined to have <a href="#lax_static_typing">lax static typing</a>.
+</p>
+
+</section>
+<section>
+<h4 id="section_5.5.8">5.5.8 Type reference</h4>
+<pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
+</pre>
+
+<p>
+A type descriptor can use a type-reference to refer to a type definition in the
+same module or another module.
 </p>
 
 </section>
