@@ -846,12 +846,14 @@ integer <em>n</em> where 0 &lt;= <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &lt;=
 <p>
 String values do not have storage identity and so are immutable.
 </p>
+<p>
+There is a <a href="#built-in_subtypes">built-in subtype</a>
+<code>string:Char</code> for single character strings.
+</p>
 </section>
 <section>
-<h4>[Preview] XML</h4>
+<h4>XML</h4>
 
-<pre class="grammar"><dfn>xml-type-descriptor</dfn> := <code>xml</code>
-</pre>
 <p>
 An XML value is a sequence representing parsed XML, such as occurs in the
 content of an XML element. The singleton values are of the following types:
@@ -867,12 +869,29 @@ The element, processing instruction and comment singletons correspond directly
 to information items in the XML Information Set. A text singleton corresponds to
 one or more character information items. When an XML value is constructed,
 consecutive text singletons are merged, so that an XML value never contains
-consecutive text singletons.
+consecutive text singletons. There are <a href="#built-in_subtypes">built-in
+subtypes</a> <code>xml:Element</code>, <code>xml:ProcessingInstruction</code>,
+<code>xml:Comment</code> and <code>xml:Text</code> corresponding to the above
+singletons; <code>xml:Text</code> also allows the empty XML sequence.
+</p>
+<pre class="grammar"
+>xml-type-descriptor := <code>xml</code> [type-parameter]
+type-parameter := <code>&lt;</code> type-descriptor <code>&gt;</code>
+</pre>
+<p>
+A shape belongs to type <code>xml</code> if its basic type is <code>xml</code>.
+A type parameter of an xml-type-descriptor must be a subtype of
+<code>xml</code>. A shape belongs to type <code>xml&lt;T&gt;</code> if all of
+its constituent items belong to <code>T</code>. So, for example,
+<code>xml&lt;xml:Element&gt;</code> is the type for xml sequences containing
+only elements. Note that <code>xml&lt;xml&lt;<var>T</var>&gt;&gt;</code> is the
+same as <code>xml&lt;<var>T</var>&gt;</code> and that
+<code>xml&lt;xml:Text&gt;</code> is the same as <code>xml:Text</code>.
 </p>
 <p>
 The attributes of an element are represented by a value of type
-<code>map&lt;string&gt;</code>. The content of an element is represented by an
-XML value.
+<code>map&lt;string&gt;</code>. The content of an element is represented by a
+value of type <code>xml</code>.
 </p>
 <p>
 The name of an XML element or attribute, which in the XML Information Set is
@@ -1161,7 +1180,6 @@ that the value for all fields must belong to.
 
 <pre
 class="grammar"><dfn>map-type-descriptor</dfn> := <code>map</code> <abbr>type-parameter</abbr>
-<dfn>type-parameter</dfn> := <code>&lt;</code> <abbr>type-descriptor</abbr> <code>></code>
 </pre>
 <p>
 A type <code>map&lt;T&gt;</code> contains a mapping shape <em>m</em> if every field
@@ -3453,7 +3471,7 @@ does not contain a member with key <var>k</var>, then the result is
 <p>
 Let T the static type of container-expression. If T is a subtype of string, then
 the static type of the member-access-expr is <a
-href="#built-in_subtypes">string:Char</a>, that is the subtype of strings
+href="#built-in_subtypes"><code>string:Char</code></a>, that is the subtype of strings
 containing strings of length 1. Otherwise, let K be the static type of
 key-expression and let M be the member type of K in T; if T contains nil, or T
 is a subtype of mapping and K is an optional key type for T, then the static
@@ -6865,7 +6883,9 @@ to align with ECMAScript. Although this is an incompatible change, the previous
 syntax was not implemented.</li>
 <li>Improved XML design, with new treatment of identity. Characters in XML
 content are merged into a single text item. Iteration over XML values exposes
-characters as text items.</li>
+characters as text items. The various kinds of xml item (e.g. element and text)
+are subtyppes of the <code>xml</code> type. The <code>xml</code> type can have a
+type parameter specifying the item types.</li>
 <li>Lang library modules can now provide built-in subtypes of existing basic
 types.</li>
 </ol>
