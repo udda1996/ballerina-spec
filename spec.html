@@ -4785,9 +4785,13 @@ A <code>select</code> clause is executed as follows:
 <h4 id="section_6.40.3">6.40.3 XML step expression</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-step-expr">xml-step-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <a href="#xml-step-start"><span class="ntref">xml-step-start</span></a> <a href="#xml-step-extend"><span class="ntref">xml-step-extend</span></a>*
 
-<span class="ntdfn" id="xml-step-start">xml-step-start</span> := <a href="#xml-element-children-step"><span class="ntref">xml-element-children-step</span></a> | <a href="#xml-all-children-step"><span class="ntref">xml-all-children-step</span></a>
-<span class="ntdfn" id="xml-element-children-step">xml-element-children-step</span> := <code>/&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
+<span class="ntdfn" id="xml-step-start">xml-step-start</span> :=
+   <a href="#xml-all-children-step"><span class="ntref">xml-all-children-step</span></a>
+   | <a href="#xml-element-children-step"><span class="ntref">xml-element-children-step</span></a>
+   | <a href="#xml-element-descendants-step"><span class="ntref">xml-element-descendants-step</span></a>
 <span class="ntdfn" id="xml-all-children-step">xml-all-children-step</span> := <code>/*</code>
+<span class="ntdfn" id="xml-element-children-step">xml-element-children-step</span> := <code>/&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
+<span class="ntdfn" id="xml-element-descendants-step">xml-element-descendants-step</span> := <code>/**/&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
 
 <span class="ntdfn" id="xml-step-extend">xml-step-extend</span> :=
    <code>.&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>

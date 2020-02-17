@@ -4471,9 +4471,13 @@ class="grammar"><dfn>xml-filter-expr</dfn> := <abbr>expression</abbr> <code>.&lt
 <pre
 class="grammar"><dfn>xml-step-expr</dfn> := <abbr>expression</abbr> <abbr>xml-step-start</abbr> <abbr>xml-step-extend</abbr>*
 
-<dfn>xml-step-start</dfn> := <abbr>xml-element-children-step</abbr> | <abbr>xml-all-children-step</abbr>
-<dfn>xml-element-children-step</dfn> := <code>/&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
+<dfn>xml-step-start</dfn> :=
+   <abbr>xml-all-children-step</abbr>
+   | <abbr>xml-element-children-step</abbr>
+   | <abbr>xml-element-descendants-step</abbr>
 <dfn>xml-all-children-step</dfn> := <code>/*</code>
+<dfn>xml-element-children-step</dfn> := <code>/&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
+<dfn>xml-element-descendants-step</dfn> := <code>/**/&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
 
 <dfn>xml-step-extend</dfn> :=
    <code>.&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
