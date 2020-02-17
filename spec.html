@@ -291,6 +291,15 @@ mailing list.
 </li>
 </ul>
 </li>
+<li>6.40 <a href="#section_6.40">XML navigation expression</a><ul>
+<li>6.40.1 <a href="#section_6.40.1">XML name pattern</a>
+</li>
+<li>6.40.2 <a href="#section_6.40.2">XML filter expression</a>
+</li>
+<li>6.40.3 <a href="#section_6.40.3">XML step expression</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>7. <a href="#actions_statements">Actions and statements</a><ul>
@@ -1239,8 +1248,8 @@ subtypes</a> <code>xml:Element</code>, <code>xml:ProcessingInstruction</code>,
 <code>xml:Comment</code> and <code>xml:Text</code> corresponding to the above
 singletons; <code>xml:Text</code> also allows the empty XML sequence.
 </p>
-<pre class="grammar">xml-type-descriptor := <code>xml</code> [type-parameter]
-type-parameter := <code>&lt;</code> type-descriptor <code>&gt;</code>
+<pre class="grammar"><span class="ntdfn" id="xml-type-descriptor">xml-type-descriptor</span> := <code>xml</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
+<span class="ntdfn" id="type-parameter">type-parameter</span> := <code>&lt;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>&gt;</code>
 </pre>
 <p>
 A shape belongs to type <code>xml</code> if its basic type is <code>xml</code>.
@@ -2901,6 +2910,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#checking-expr"><span class="ntref">checking-expr</span></a>
    | <a href="#trap-expr"><span class="ntref">trap-expr</span></a>
    | <a href="#query-expr"><span class="ntref">query-expr</span></a>
+   | <a href="#xml-navigate-expr"><span class="ntref">xml-navigate-expr</span></a>
    | <code>(</code> <a href="#expression"><span class="ntref">expression</span></a> <code>)</code>
 </pre>
 <p>
@@ -4660,7 +4670,7 @@ cannot be modified.
 
 <section>
 <h4 id="section_6.39.1">6.39.1 From clause</h4>
-<pre class="grammar"><span class="ntdfn" id="from-clause">from-clause</span> := <code>from</code> <a href="#typed-binding-expr"><span class="ntref">typed-binding-expr</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
+<pre class="grammar"><span class="ntdfn" id="from-clause">from-clause</span> := <code>from</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 A <code>from</code> clause is executed as follows:
@@ -4747,6 +4757,43 @@ A <code>select</code> clause is executed as follows:
 </ul>
 </li> 
 </ul>
+</section>
+</section>
+<section>
+<h3 id="section_6.40">6.40 XML navigation expression</h3>
+<pre class="grammar"><span class="ntdfn" id="xml-navigate-expr">xml-navigate-expr</span> :=
+   <a href="#xml-filter-expr"><span class="ntref">xml-filter-expr</span></a>
+   | <a href="#xml-step-expr"><span class="ntref">xml-step-expr</span></a>
+</pre>
+<section>
+<h4 id="section_6.40.1">6.40.1 XML name pattern</h4>
+<pre class="grammar"><span class="ntdfn" id="xml-name-pattern">xml-name-pattern</span> := <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a> [<code>|</code> <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a>]*
+
+<span class="ntdfn" id="xml-atomic-name-pattern">xml-atomic-name-pattern</span> :=
+  <code>*</code>
+  | <a href="#identifier"><span class="ntref">identifier</span></a>
+  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
+  | <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <code>*</code>
+</pre>
+</section>
+<section>
+<h4 id="section_6.40.2">6.40.2 XML filter expression</h4>
+<pre class="grammar"><span class="ntdfn" id="xml-filter-expr">xml-filter-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
+</pre>
+</section>
+<section>
+<h4 id="section_6.40.3">6.40.3 XML step expression</h4>
+<pre class="grammar"><span class="ntdfn" id="xml-step-expr">xml-step-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <a href="#xml-step-start"><span class="ntref">xml-step-start</span></a> <a href="#xml-step-extend"><span class="ntref">xml-step-extend</span></a>*
+
+<span class="ntdfn" id="xml-step-start">xml-step-start</span> := <a href="#xml-element-children-step"><span class="ntref">xml-element-children-step</span></a> | <a href="#xml-all-children-step"><span class="ntref">xml-all-children-step</span></a>
+<span class="ntdfn" id="xml-element-children-step">xml-element-children-step</span> := <code>/&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
+<span class="ntdfn" id="xml-all-children-step">xml-all-children-step</span> := <code>/*</code>
+
+<span class="ntdfn" id="xml-step-extend">xml-step-extend</span> :=
+   <code>.&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
+   | <code>[</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
+   | <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
+</pre>
 </section>
 </section>
 </section>

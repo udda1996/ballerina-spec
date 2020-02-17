@@ -874,9 +874,9 @@ subtypes</a> <code>xml:Element</code>, <code>xml:ProcessingInstruction</code>,
 <code>xml:Comment</code> and <code>xml:Text</code> corresponding to the above
 singletons; <code>xml:Text</code> also allows the empty XML sequence.
 </p>
-<pre class="grammar"
->xml-type-descriptor := <code>xml</code> [type-parameter]
-type-parameter := <code>&lt;</code> type-descriptor <code>&gt;</code>
+<pre
+class="grammar"><dfn>xml-type-descriptor</dfn> := <code>xml</code> [<abbr>type-parameter</abbr>]
+<dfn>type-parameter</dfn> := <code>&lt;</code> <abbr>type-descriptor</abbr> <code>&gt;</code>
 </pre>
 <p>
 A shape belongs to type <code>xml</code> if its basic type is <code>xml</code>.
@@ -2574,6 +2574,7 @@ class="grammar"><dfn>expression</dfn> :=
    | <abbr>checking-expr</abbr>
    | <abbr>trap-expr</abbr>
    | <abbr>query-expr</abbr>
+   | <abbr>xml-navigate-expr</abbr>
    | <code>(</code> <abbr>expression</abbr> <code>)</code>
 </pre>
 <p>
@@ -4354,7 +4355,7 @@ cannot be modified.
 
 <section>
 <h4>From clause</h4>
-<pre class="grammar"><dfn>from-clause</dfn> := <code>from</code> <abbr>typed-binding-expr</abbr> <code>in</code> <abbr>expression</abbr>
+<pre class="grammar"><dfn>from-clause</dfn> := <code>from</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr>
 </pre>
 <p>
 A <code>from</code> clause is executed as follows:
@@ -4438,6 +4439,47 @@ A <code>select</code> clause is executed as follows:
 </ul>
 </li> 
 </ul>
+</section>
+</section>
+<section>
+<h3>XML navigation expression</h3>
+<pre
+class="grammar"><dfn>xml-navigate-expr</dfn> :=
+   <abbr>xml-filter-expr</abbr>
+   | <abbr>xml-step-expr</abbr>
+</pre>
+<section>
+<h4>XML name pattern</h4>
+<pre
+class="grammar"><dfn>xml-name-pattern</dfn> := <abbr>xml-atomic-name-pattern</abbr> [<code>|</code> <abbr>xml-atomic-name-pattern</abbr>]*
+
+<dfn>xml-atomic-name-pattern</dfn> :=
+  <code>*</code>
+  | <abbr>identifier</abbr>
+  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
+  | <abbr>xml-namespace-prefix</abbr> <code>:</code> <code>*</code>
+</pre>
+</section>
+<section>
+<h4>XML filter expression</h4>
+<pre
+class="grammar"><dfn>xml-filter-expr</dfn> := <abbr>expression</abbr> <code>.&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
+</pre>
+</section>
+<section>
+<h4>XML step expression</h4>
+<pre
+class="grammar"><dfn>xml-step-expr</dfn> := <abbr>expression</abbr> <abbr>xml-step-start</abbr> <abbr>xml-step-extend</abbr>*
+
+<dfn>xml-step-start</dfn> := <abbr>xml-element-children-step</abbr> | <abbr>xml-all-children-step</abbr>
+<dfn>xml-element-children-step</dfn> := <code>/&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
+<dfn>xml-all-children-step</dfn> := <code>/*</code>
+
+<dfn>xml-step-extend</dfn> :=
+   <code>.&lt;</code> <abbr>xml-name-pattern</abbr> <code>&gt;</code>
+   | <code>[</code> <abbr>expression</abbr> <code>]</code>
+   | <code>.</code> <abbr>method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
+</pre>
 </section>
 </section>
 </section>
