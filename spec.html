@@ -1215,7 +1215,7 @@ and 0xFFFF.
 <p>
 In a <code>StringNumericEscape</code>, <code>CodePoint</code> must valid Unicode
 code point; more precisely, it must be a hexadecimal numeral denoting an
-integer <em>n</em> where 0 &lt;= <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n &lt;=
+integer <em>n</em> where 0 ≤ <em>n</em> &lt; 0xD800 or 0xDFFF &lt; n ≤
 0x10FFFF.
 </p>
 <p>
@@ -1854,8 +1854,8 @@ same as the type-descriptor of the rest-param.
 </p>
 <p>
 An argument list consisting of values v<sub>1</sub>,..., v<sub>n</sub> conforms
-to a param-list that has type P, if and only if for each i with 1 &lt;= i &lt;=
-n, vi belongs to T<sub>i</sub>, where T<sub>i</sub> is defined to be the type
+to a param-list that has type P, if and only if for each i with 1 ≤ i ≤
+n, v<sub>i</sub> belongs to T<sub>i</sub>, where T<sub>i</sub> is defined to be the type
 that contains a shape s if and only if P contains a list shape whose i-th member
 is s.
 </p>
@@ -2980,7 +2980,7 @@ associativity.
 <br>
 <code>x &gt;&gt; y</code>
 <br>
-<code>&gt;&gt;&gt;</code>
+<code>x &gt;&gt;&gt; y</code>
    </td>
    <td>left</td>
   </tr>
@@ -3779,15 +3779,15 @@ A member-access-expr is evaluated as follows:
 <li>the key-expression is evaluated to get a value <var>k</var>;</li>
 <li>depending on the basic type of <var>c</var>
 <ul>
-<li>if it is string, and <var>k</var> is &lt; 0 or &gt;= the length of
+<li>if it is string, and <var>k</var> is &lt; 0 or ≥ the length of
 <var>c</var>, then the evaluation completes abruptly with a panic; otherwise,
 the result is a string of length 1 containing the character with index
 <var>k</var> in <var>c</var>;</li>
 <li>if it is xml, and <var>k</var> is &lt; 0, then the evaluation completes
-abruptly with a panic; if <var>k</var> is &gt;= the length of <var>c</var>, then
+abruptly with a panic; if <var>k</var> is ≥ the length of <var>c</var>, then
 the result is an empty xml sequence; otherwise, the result is a singleton xml
 value containing the item with index <var>k</var> in <var>c</var>;</li>
-<li>if it is list, and <var>k</var> is &lt; 0 or &gt;= the length of
+<li>if it is list, and <var>k</var> is &lt; 0 or ≥ the length of
 <var>c</var>, then the evaluation completes abruptly with a panic; otherwise,
 the result is the member of <var>c</var> with index <var>k</var>;</li>
 <li>if it is mapping, then if <var>c</var> is <code>()</code> or <var>c</var>
@@ -5884,7 +5884,7 @@ List values maintain the invariant that there is a unique integer n, the length
 of the list, such that a member k of the list is defined if and only if k is a
 non-negative integer less than n. When a store is performed on an lvalue
 referring to a member k of a list value and the length of the list is n and k is
-&gt; n, then each member with index i for each &lt;= i &lt; k is filled in, by
+&gt; n, then each member with index i for each ≤ i &lt; k is filled in, by
 using the FillMember abstract operation. The FillMember abstract operation may
 fail; in particular it will fail if the list is a fixed-length array. If the
 FillMember operation fails, then the attempt to store will panic.
