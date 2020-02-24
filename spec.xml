@@ -5802,7 +5802,6 @@ class="grammar"><dfn>call-stmt</dfn> := <abbr>call-expr</abbr> <code>;</code>
    <abbr>function-call-expr</abbr>
    | <abbr>method-call-expr</abbr>
    | <abbr>checking-keyword</abbr> <abbr>call-expr</abbr>
-   | <code>trap</code> <abbr>call-expr</abbr>
 </pre>
 <p>
 A call-stmt is executed by evaluating call-expr as an expression and discarding
