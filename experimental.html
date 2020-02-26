@@ -47,16 +47,14 @@ Attribution-NoDerivatives 4.0 International</a> license
 </li></ul>
 </li>
 <li>4. <a href="#actions_statements">Actions and statements</a><ul>
-<li>4.1 <a href="#section_4.1">Lock statement</a>
+<li>4.1 <a href="#section_4.1">Forever statement</a>
 </li>
-<li>4.2 <a href="#section_4.2">Forever statement</a>
+<li>4.2 <a href="#transactions">Transaction statement</a><ul>
+<li>4.2.1 <a href="#section_4.2.1">Initiated transactions</a>
 </li>
-<li>4.3 <a href="#transactions">Transaction statement</a><ul>
-<li>4.3.1 <a href="#section_4.3.1">Initiated transactions</a>
+<li>4.2.2 <a href="#section_4.2.2">Participated transactions</a>
 </li>
-<li>4.3.2 <a href="#section_4.3.2">Participated transactions</a>
-</li>
-<li>4.3.3 <a href="#section_4.3.3">Transaction propagation</a>
+<li>4.2.3 <a href="#section_4.2.3">Transaction propagation</a>
 </li>
 </ul>
 </li>
@@ -148,28 +146,13 @@ tables.
 
 <pre class="grammar">statement := 
    <em>...</em>
-   | lock-stmt
    | forever-stmt
    | transaction-stmt
    | transaction-control-stmt
 </pre>
 
 <section>
-<h3 id="section_4.1">4.1 Lock statement</h3>
-
-<pre class="grammar">lock-stmt := <code>lock</code> block-stmt
-</pre>
-<p>
-A lock statement is used to execute a series of assignment statements in a
-serialized manner. For each variable that is used as an L-value within the block
-statement, this statement attempts to first acquire a lock and the entire
-statement executes only after acquiring all the locks. If a lock acquisition
-fails after some have already been acquired then all acquired locks are released
-and the process starts again.
-</p>
-</section>
-<section>
-<h3 id="section_4.2">4.2 Forever statement</h3>
+<h3 id="section_4.1">4.1 Forever statement</h3>
 
 <pre class="grammar">forever-stmt :=
    <code>forever</code> <code>{</code> 
@@ -215,7 +198,7 @@ it will never complete.
 </p>
 </section>
 <section>
-<h3 id="transactions">4.3 Transaction statement</h3>
+<h3 id="transactions">4.2 Transaction statement</h3>
 
 <pre class="grammar">transaction-stmt := <code>transaction</code> trans-conf? block-stmt trans-retry?
 transaction-control-stmt := retry-stmt | abort-stmt
@@ -234,7 +217,7 @@ transaction. A transaction can be established by this statement or it may
 inherit one from the current worker.
 </p>
 <section>
-<h4 id="section_4.3.1">4.3.1 Initiated transactions</h4>
+<h4 id="section_4.2.1">4.2.1 Initiated transactions</h4>
 <p>
 If no transaction context is present in the worker then the transaction
 statement starts a new transaction (i.e., becomes the initiator) and executes
@@ -261,7 +244,7 @@ executed and the transaction block statement will execute again in its entirety.
 </p>
 </section>
 <section>
-<h4 id="section_4.3.2">4.3.2 Participated transactions</h4>
+<h4 id="section_4.2.2">4.2.2 Participated transactions</h4>
 <p>
 If a transaction context is present in the executing worker context, then the
 transaction statement joins that transaction and becomes a participant of that
@@ -291,7 +274,7 @@ When in a participating transaction, a retry statement is a no-op.
 </p>
 </section>
 <section>
-<h4 id="section_4.3.3">4.3.3 Transaction propagation</h4>
+<h4 id="section_4.2.3">4.2.3 Transaction propagation</h4>
 <p>
 The transaction context in a worker is always visible to invoked functions. Thus
 any function invoked within a transaction, which has a transaction statement
