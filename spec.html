@@ -236,67 +236,69 @@ mailing list.
 </li>
 <li>6.15 <a href="#section_6.15">Optional field access expression</a>
 </li>
-<li>6.16 <a href="#section_6.16">Annotation access expression</a>
+<li>6.16 <a href="#section_6.16">XML attribute access expression</a>
 </li>
-<li>6.17 <a href="#section_6.17">Member access expression</a>
+<li>6.17 <a href="#section_6.17">Annotation access expression</a>
 </li>
-<li>6.18 <a href="#function_call">Function call expression</a>
+<li>6.18 <a href="#section_6.18">Member access expression</a>
 </li>
-<li>6.19 <a href="#section_6.19">Method call expression</a>
+<li>6.19 <a href="#function_call">Function call expression</a>
 </li>
-<li>6.20 <a href="#section_6.20">Error constructor</a>
+<li>6.20 <a href="#section_6.20">Method call expression</a>
 </li>
-<li>6.21 <a href="#section_6.21">Anonymous function expression</a>
+<li>6.21 <a href="#section_6.21">Error constructor</a>
 </li>
-<li>6.22 <a href="#section_6.22">Let expression</a>
+<li>6.22 <a href="#section_6.22">Anonymous function expression</a>
 </li>
-<li>6.23 <a href="#section_6.23">Type cast expression</a>
+<li>6.23 <a href="#section_6.23">Let expression</a>
 </li>
-<li>6.24 <a href="#section_6.24">Typeof expression</a>
+<li>6.24 <a href="#section_6.24">Type cast expression</a>
 </li>
-<li>6.25 <a href="#section_6.25">Unary expression</a>
+<li>6.25 <a href="#section_6.25">Typeof expression</a>
 </li>
-<li>6.26 <a href="#section_6.26">Multiplicative expression</a>
+<li>6.26 <a href="#section_6.26">Unary expression</a>
 </li>
-<li>6.27 <a href="#section_6.27">Additive expression</a>
+<li>6.27 <a href="#section_6.27">Multiplicative expression</a>
 </li>
-<li>6.28 <a href="#section_6.28">Shift expression</a>
+<li>6.28 <a href="#section_6.28">Additive expression</a>
 </li>
-<li>6.29 <a href="#section_6.29">Range expression</a>
+<li>6.29 <a href="#section_6.29">Shift expression</a>
 </li>
-<li>6.30 <a href="#section_6.30">Numerical comparison expression</a>
+<li>6.30 <a href="#section_6.30">Range expression</a>
 </li>
-<li>6.31 <a href="#section_6.31">Type test expression</a>
+<li>6.31 <a href="#section_6.31">Numerical comparison expression</a>
 </li>
-<li>6.32 <a href="#section_6.32">Equality expression</a>
+<li>6.32 <a href="#section_6.32">Type test expression</a>
 </li>
-<li>6.33 <a href="#section_6.33">Binary bitwise expression</a>
+<li>6.33 <a href="#section_6.33">Equality expression</a>
 </li>
-<li>6.34 <a href="#section_6.34">Logical expression</a>
+<li>6.34 <a href="#section_6.34">Binary bitwise expression</a>
 </li>
-<li>6.35 <a href="#section_6.35">Conditional expression</a>
+<li>6.35 <a href="#section_6.35">Logical expression</a>
 </li>
-<li>6.36 <a href="#section_6.36">Checking expression</a>
+<li>6.36 <a href="#section_6.36">Conditional expression</a>
 </li>
-<li>6.37 <a href="#section_6.37">Trap expression</a>
+<li>6.37 <a href="#section_6.37">Checking expression</a>
 </li>
-<li>6.38 <a href="#section_6.38">Query expression</a><ul>
-<li>6.38.1 <a href="#section_6.38.1">From clause</a>
+<li>6.38 <a href="#section_6.38">Trap expression</a>
 </li>
-<li>6.38.2 <a href="#section_6.38.2">Where clause</a>
+<li>6.39 <a href="#section_6.39">Query expression</a><ul>
+<li>6.39.1 <a href="#section_6.39.1">From clause</a>
 </li>
-<li>6.38.3 <a href="#section_6.38.3">Let clause</a>
+<li>6.39.2 <a href="#section_6.39.2">Where clause</a>
 </li>
-<li>6.38.4 <a href="#section_6.38.4">Select clause</a>
+<li>6.39.3 <a href="#section_6.39.3">Let clause</a>
+</li>
+<li>6.39.4 <a href="#section_6.39.4">Select clause</a>
 </li>
 </ul>
 </li>
-<li>6.39 <a href="#section_6.39">XML navigation expression</a><ul>
-<li>6.39.1 <a href="#section_6.39.1">XML name pattern</a>
+<li>6.40 <a href="#section_6.40">XML navigation expression</a><ul>
+<li>6.40.1 <a href="#section_6.40.1">XML name pattern</a>
 </li>
-<li>6.39.2 <a href="#section_6.39.2">XML filter expression</a>
+<li>6.40.2 <a href="#section_6.40.2">XML filter expression</a>
 </li>
-<li>6.39.3 <a href="#section_6.39.3">XML step expression</a>
+<li>6.40.3 <a href="#section_6.40.3">XML step expression</a>
 </li>
 </ul>
 </li>
@@ -1280,10 +1282,10 @@ has no value, then the string consists of just the value of the [local name]
 property; otherwise, the string is of the form:
 </p>
 <pre>
-   {<var>namespace-name</var>}<var>local-name</var>
+   {<var>namespace-uri</var>}<var>local-name</var>
 </pre>
 <p>
-where <code><var>namespace-name</var></code> and
+where <code><var>namespace-uri</var></code> and
 <code><var>local-name</var></code> are the values of the [namespace name] and
 [local name] properties respectively. The attributes of an XML element include
 attributes that appear as members of the [namespace attributes] property of an
@@ -2909,9 +2911,9 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#variable-reference-expr"><span class="ntref">variable-reference-expr</span></a>
    | <a href="#field-access-expr"><span class="ntref">field-access-expr</span></a>
    | <a href="#optional-field-access-expr"><span class="ntref">optional-field-access-expr</span></a>
+   | <a href="#xml-attribute-access-expr"><span class="ntref">xml-attribute-access-expr</span></a>
    | <a href="#annot-access-expr"><span class="ntref">annot-access-expr</span></a>
    | <a href="#member-access-expr"><span class="ntref">member-access-expr</span></a>
-   | <a href="#xml-attributes-expr"><span class="ntref">xml-attributes-expr</span></a>
    | <a href="#function-call-expr"><span class="ntref">function-call-expr</span></a>
    | <a href="#method-call-expr"><span class="ntref">method-call-expr</span></a>
    | <a href="#error-constructor-expr"><span class="ntref">error-constructor-expr</span></a>
@@ -3748,8 +3750,61 @@ field-name.</li>
 </ol>
 
 </section>
+
 <section>
-<h3 id="section_6.16">6.16 Annotation access expression</h3>
+<h3 id="section_6.16">6.16 XML attribute access expression</h3>
+
+<pre class="grammar"><span class="ntdfn" id="xml-attribute-access-expr">xml-attribute-access-expr</span> := <a href="#xml-required-attribute-access-expr"><span class="ntref">xml-required-attribute-access-expr</span></a> | <a href="#xml-optional-attribute-access-expr"><span class="ntref">xml-optional-attribute-access-expr</span></a>
+<span class="ntdfn" id="xml-required-attribute-access-expr">xml-required-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
+<span class="ntdfn" id="xml-optional-attribute-access-expr">xml-optional-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>?.</code> <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
+<span class="ntdfn" id="xml-qualified-name">xml-qualified-name</span> := <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a> 
+</pre>
+
+<p>
+An XML attribute access expression provides convenient access to a
+namespace-qualified attribute.
+</p>
+<p>
+It is a compile-time requirement that the static type of the expression is a
+subtype of xml.
+</p>
+<p>
+The xml-namespace-prefix must be declared using an xmlns-decl-stmt. The
+xml-qualified-name is expanded at compile-time into a string of the form
+</p>
+<pre>
+   {<var>namespace-uri</var>}<var>local-name</var>
+</pre>
+<p>
+where the namespace-uri comes from xml-namespace-uri specified in the
+xmlns-decl-stmt, and the local-name comes from the identifier following the
+colon.
+</p>
+<p>
+An xml-optional-attribute-access-expr is evaluated as follows. The expression is
+evaluated resulting in an xml value <var>v</var>. If <var>v</var> is an empty
+xml value, the result is <code>()</code>. Otherwise, if <var>v</var> is not a
+singleton element, the result is an error. Otherwise, let <var>m</var> be that
+element's attribute map. Let <var>k</var> be the string that results from
+expanding the xml-qualified-name, as described in the previous paragraph. If
+<var>m</var> has a member <var>s</var> with key <code>k</code>, the the result
+is <var>s</var>. Otherwise, the result is <code>()</code>.
+</p>
+<p>
+An xml-required-attribute-access-expr is evaluated the same as an
+xml-optional-attribute-expr, except that for cases where the result of the
+xml-optional-attribute-expr would be <code>()</code>, the result of the
+xml-required-attribute-access-expr is an error.
+</p>
+<p>
+The static type of an xml-required-attribute-access-expr is
+<code>string|error</code> The static type of an
+xml-optional-attribute-access-expr is <code>string|error|()</code>.
+</p>
+
+</section>
+<section>
+<h3 id="section_6.17">6.17 Annotation access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="annot-access-expr">annot-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.@</code> <a href="#annot-tag-reference"><span class="ntref">annot-tag-reference</span></a>
 </pre>
@@ -3771,7 +3826,7 @@ of the annotation tag.
 </p>
 </section>
 <section>
-<h3 id="section_6.17">6.17 Member access expression</h3>
+<h3 id="section_6.18">6.18 Member access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="member-access-expr">member-access-expr</span> := <a href="#container-expression"><span class="ntref">container-expression</span></a> <code>[</code> <a href="#key-expression"><span class="ntref">key-expression</span></a> <code>]</code>
 <span class="ntdfn" id="container-expression">container-expression</span> := <a href="#expression"><span class="ntref">expression</span></a>
@@ -3832,7 +3887,7 @@ member-access-expr is M?, otherwise the static type is M.
 
 </section>
 <section>
-<h3 id="function_call">6.18 Function call expression</h3>
+<h3 id="function_call">6.19 Function call expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="function-call-expr">function-call-expr</span> := <a href="#function-reference"><span class="ntref">function-reference</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 <span class="ntdfn" id="function-reference">function-reference</span> := <a href="#variable-reference"><span class="ntref">variable-reference</span></a>
@@ -3899,7 +3954,7 @@ the value of the expression in a variable.
 
 </section>
 <section>
-<h3 id="section_6.19">6.19 Method call expression</h3>
+<h3 id="section_6.20">6.20 Method call expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="method-call-expr">method-call-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
@@ -3943,7 +3998,7 @@ the constraints that would apply if it has been written explicitly as a
 </p>
 </section>
 <section>
-<h3 id="section_6.20">6.20 Error constructor</h3>
+<h3 id="section_6.21">6.21 Error constructor</h3>
 
 <pre class="grammar"><span class="ntdfn" id="error-constructor-expr">error-constructor-expr</span> := <a href="#direct-error-constructor-expr"><span class="ntref">direct-error-constructor-expr</span></a> | <a href="#indirect-error-constructor-expr"><span class="ntref">indirect-error-constructor-expr</span></a>
 <span class="ntdfn" id="direct-error-constructor-expr">direct-error-constructor-expr</span> := <code>error</code> <code>(</code> <a href="#direct-error-arg-list"><span class="ntref">direct-error-arg-list</span></a> <code>)</code>
@@ -3997,7 +4052,7 @@ the point where the error constructor was evaluated.
 
 </section>
 <section>
-<h3 id="section_6.21">6.21 Anonymous function expression</h3>
+<h3 id="section_6.22">6.22 Anonymous function expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="anonymous-function-expr">anonymous-function-expr</span> := <a href="#explicit-anonymous-function-expr"><span class="ntref">explicit-anonymous-function-expr</span></a> | <a href="#infer-anonymous-function-expr"><span class="ntref">infer-anonymous-function-expr</span></a>
 <span class="ntdfn" id="explicit-anonymous-function-expr">explicit-anonymous-function-expr</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a> (<a href="#block-function-body"><span class="ntref">block-function-body</span></a>|<a href="#expr-function-body"><span class="ntref">expr-function-body</span></a>)
@@ -4041,7 +4096,7 @@ the contextually expected type for <code>expression</code> in
 </section>
 
 <section>
-<h3 id="section_6.22">6.22 Let expression</h3>
+<h3 id="section_6.23">6.23 Let expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="let-expr">let-expr</span> := <code>let</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a> [<code>,</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a>]* <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="let-var-decl">let-var-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4077,7 +4132,7 @@ are implicitly final.
 </section>
 
 <section>
-<h3 id="section_6.23">6.23 Type cast expression</h3>
+<h3 id="section_6.24">6.24 Type cast expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="type-cast-expr">type-cast-expr</span> := <code>&lt;</code> <a href="#type-cast-param"><span class="ntref">type-cast-param</span></a> <code>&gt;</code> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="type-cast-param">type-cast-param</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> | <a href="#annots"><span class="ntref">annots</span></a>
@@ -4118,7 +4173,7 @@ The <code>type-descriptor</code> provides the contextually expected type for
 </p>
 </section>
 <section>
-<h3 id="section_6.24">6.24 Typeof expression</h3>
+<h3 id="section_6.25">6.25 Typeof expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="typeof-expr">typeof-expr</span> := <code>typeof</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -4149,7 +4204,7 @@ static type of <code>expression</code>.
 </p>
 </section>
 <section>
-<h3 id="section_6.25">6.25 Unary expression</h3>
+<h3 id="section_6.26">6.26 Unary expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="unary-expr">unary-expr</span> :=
    <code>+</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4193,7 +4248,7 @@ its operand is false and false if its operand is true.
 </p>
 </section>
 <section>
-<h3 id="section_6.26">6.26 Multiplicative expression</h3>
+<h3 id="section_6.27">6.27 Multiplicative expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="multiplicative-expr">multiplicative-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>*</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4272,7 +4327,7 @@ same basic type as v.
 </p>
 </section>
 <section>
-<h3 id="section_6.27">6.27 Additive expression</h3>
+<h3 id="section_6.28">6.28 Additive expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="additive-expr">additive-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>+</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4343,7 +4398,7 @@ with the same basic type as v.
 
 </section>
 <section>
-<h3 id="section_6.28">6.28 Shift expression</h3>
+<h3 id="section_6.29">6.29 Shift expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="shift-expr">shift-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>&lt;&lt;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4375,7 +4430,7 @@ result is int.
 </p>
 </section>
 <section>
-<h3 id="section_6.29">6.29 Range expression</h3>
+<h3 id="section_6.30">6.30 Range expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="range-expr">range-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>...</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4407,7 +4462,7 @@ elsewhere.
 </p>
 </section>
 <section>
-<h3 id="section_6.30">6.30 Numerical comparison expression</h3>
+<h3 id="section_6.31">6.31 Numerical comparison expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="numerical-comparison-expr">numerical-comparison-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>&lt;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4431,7 +4486,7 @@ Floating point comparisons follow IEEE, 754-2008, so
 </ul>
 </section>
 <section>
-<h3 id="section_6.31">6.31 Type test expression</h3>
+<h3 id="section_6.32">6.32 Type test expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="is-expr">is-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>is</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
@@ -4446,7 +4501,7 @@ is true; otherwise the result of the is-expr is false.
 </p>
 </section>
 <section>
-<h3 id="section_6.32">6.32 Equality expression</h3>
+<h3 id="section_6.33">6.33 Equality expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="equality-expr">equality-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>==</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4510,7 +4565,7 @@ precision of the value. For example, <code>1.0 == 1.00</code> is true but
 
 </section>
 <section>
-<h3 id="section_6.33">6.33 Binary bitwise expression</h3>
+<h3 id="section_6.34">6.34 Binary bitwise expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="binary-bitwise-expr">binary-bitwise-expr</span> :=
    <a href="#bitwise-and-expr"><span class="ntref">bitwise-and-expr</span></a>
@@ -4536,7 +4591,7 @@ then the result has type byte; otherwise, the result has type int.</li>
 </section>
 
 <section>
-<h3 id="section_6.34">6.34 Logical expression</h3>
+<h3 id="section_6.35">6.35 Logical expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="logical-expr">logical-expr</span> := <a href="#logical-and-expr"><span class="ntref">logical-and-expr</span></a> | <a href="#logical-or-expr"><span class="ntref">logical-or-expr</span></a>
 <span class="ntdfn" id="logical-and-expr">logical-and-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>&amp;&amp;</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4572,7 +4627,7 @@ the right-hand expression.</li>
 </section>
 
 <section>
-<h3 id="section_6.35">6.35 Conditional expression</h3>
+<h3 id="section_6.36">6.36 Conditional expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="conditional-expr">conditional-expr</span> :=
    <a href="#expression"><span class="ntref">expression</span></a> <code>?</code> <a href="#expression"><span class="ntref">expression</span></a> <code>:</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -4588,7 +4643,7 @@ L <code>?:</code> R is evaluated as follows:
 </ol>
 </section>
 <section>
-<h3 id="section_6.36">6.36 Checking expression</h3>
+<h3 id="section_6.37">6.37 Checking expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="checking-expr">checking-expr</span> := <a href="#checking-keyword"><span class="ntref">checking-keyword</span></a> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="checking-keyword">checking-keyword</span> := <code>check</code> | <code>checkpanic</code>
@@ -4608,7 +4663,7 @@ the static type of check e is T.
 </p>
 </section>
 <section>
-<h3 id="section_6.37">6.37 Trap expression</h3>
+<h3 id="section_6.38">6.38 Trap expression</h3>
 <p>
 The trap expression stops a panic and gives access to the error value associated
 with the panic.
@@ -4632,7 +4687,7 @@ T|error.</li>
 </section>
 
 <section>
-<h3 id="section_6.38">6.38 Query expression</h3>
+<h3 id="section_6.39">6.39 Query expression</h3>
 <p>
 A query expression provides a language-integrated query feature using SQL-like
 syntax. In this version of Ballerina, the functionality is similar to a list
@@ -4690,7 +4745,7 @@ cannot be modified.
 -->
 
 <section>
-<h4 id="section_6.38.1">6.38.1 From clause</h4>
+<h4 id="section_6.39.1">6.39.1 From clause</h4>
 <pre class="grammar"><span class="ntdfn" id="from-clause">from-clause</span> := <code>from</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -4718,7 +4773,7 @@ resulting from binding typed-binding-pattern to <var>v</var>.</li>
 </section>
 
 <section>
-<h4 id="section_6.38.2">6.38.2 Where clause</h4>
+<h4 id="section_6.39.2">6.39.2 Where clause</h4>
 <pre class="grammar"><span class="ntdfn" id="where-clause">where-clause</span> := <code>where</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -4736,7 +4791,7 @@ value <var>b</var>;</li>
 </section>
 
 <section>
-<h4 id="section_6.38.3">6.38.3 Let clause</h4>
+<h4 id="section_6.39.3">6.39.3 Let clause</h4>
 <pre class="grammar"><span class="ntdfn" id="let-clause">let-clause</span> := <code>let</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a> [<code>,</code> <a href="#let-var-decl"><span class="ntref">let-var-decl</span></a>]* 
 </pre>
 <p>
@@ -4761,7 +4816,7 @@ E<sub>2</sub></code>.
 </section>
 
 <section>
-<h4 id="section_6.38.4">6.38.4 Select clause</h4>
+<h4 id="section_6.39.4">6.39.4 Select clause</h4>
 <pre class="grammar">
 <span class="ntdfn" id="select-clause">select-clause</span> := <code>select</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
@@ -4781,7 +4836,7 @@ A <code>select</code> clause is executed as follows:
 </section>
 </section>
 <section>
-<h3 id="section_6.39">6.39 XML navigation expression</h3>
+<h3 id="section_6.40">6.40 XML navigation expression</h3>
 <p>
 XML navigation expressions allow for convenient navigation of XML element structure,
 in a similar way to XPath.
@@ -4790,7 +4845,7 @@ in a similar way to XPath.
 <pre class="grammar"><span class="ntdfn" id="xml-navigate-expr">xml-navigate-expr</span> := <a href="#xml-filter-expr"><span class="ntref">xml-filter-expr</span></a> | <a href="#xml-step-expr"><span class="ntref">xml-step-expr</span></a>
 </pre>
 <section>
-<h4 id="section_6.39.1">6.39.1 XML name pattern</h4>
+<h4 id="section_6.40.1">6.40.1 XML name pattern</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-name-pattern">xml-name-pattern</span> := <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a> [<code>|</code> <a href="#xml-atomic-name-pattern"><span class="ntref">xml-atomic-name-pattern</span></a>]*
 
 <span class="ntdfn" id="xml-atomic-name-pattern">xml-atomic-name-pattern</span> :=
@@ -4814,7 +4869,7 @@ name in that default namespace.
 </p>
 </section>
 <section>
-<h4 id="section_6.39.2">6.39.2 XML filter expression</h4>
+<h4 id="section_6.40.2">6.40.2 XML filter expression</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-filter-expr">xml-filter-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.&lt;</code> <a href="#xml-name-pattern"><span class="ntref">xml-name-pattern</span></a> <code>&gt;</code>
 </pre>
 <p>
@@ -4823,7 +4878,7 @@ name matching a specified name pattern.
 </p>
 </section>
 <section>
-<h4 id="section_6.39.3">6.39.3 XML step expression</h4>
+<h4 id="section_6.40.3">6.40.3 XML step expression</h4>
 <pre class="grammar"><span class="ntdfn" id="xml-step-expr">xml-step-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <a href="#xml-step-start"><span class="ntref">xml-step-start</span></a> <a href="#xml-step-extend"><span class="ntref">xml-step-extend</span></a>*
 
 <span class="ntdfn" id="xml-step-start">xml-step-start</span> :=
