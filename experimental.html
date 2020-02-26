@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <title>Ballerina 1.0 Experimental Features</title>
+  <title>Ballerina 1.2 Experimental Features</title>
   <meta charset="utf-8">
   <style type="text/css">
     body { font-family: sans-serif; line-height: 1.38;  }
@@ -15,7 +15,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina 1.0 Experimental Features</h1>
+<h1>Ballerina 1.2 Experimental Features</h1>
 <p>
 Primary contributors:
 </p>
@@ -28,7 +28,7 @@ Primary contributors:
 </li>
 </ul>
 <p>
-Copyright © 2018, 2019 <a href="https://wso2.com/">WSO2</a>
+Copyright © 2018, 2019, 2020 <a href="https://wso2.com/">WSO2</a>
 </p>
 <p>
 Licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/">Creative Commons
@@ -39,70 +39,30 @@ Attribution-NoDerivatives 4.0 International</a> license
 <ul>
 <li>1. <a href="#introduction">Introduction</a>
 </li>
-<li>2. <a href="#value_types">Values, types and variables</a><ul><li>2.1 <a href="#section_2.1">Behavioral values</a><ul><li>2.1.1 <a href="#section_2.1.1">Streams</a>
-</li></ul>
-</li></ul>
-</li>
-<li>3. <a href="#expressions">Expressions</a><ul><li>3.1 <a href="#section_3.1">Table query expressions</a>
+<li>3. <a href="#expressions">Expressions</a><ul><li>2.1 <a href="#section_2.1">Table query expressions</a>
 </li></ul>
 </li>
 <li>4. <a href="#actions_statements">Actions and statements</a><ul>
-<li>4.1 <a href="#section_4.1">Forever statement</a>
+<li>3.1 <a href="#section_3.1">Forever statement</a>
 </li>
-<li>4.2 <a href="#transactions">Transaction statement</a><ul>
-<li>4.2.1 <a href="#section_4.2.1">Initiated transactions</a>
+<li>3.2 <a href="#transactions">Transaction statement</a><ul>
+<li>3.2.1 <a href="#section_3.2.1">Initiated transactions</a>
 </li>
-<li>4.2.2 <a href="#section_4.2.2">Participated transactions</a>
+<li>3.2.2 <a href="#section_3.2.2">Participated transactions</a>
 </li>
-<li>4.2.3 <a href="#section_4.2.3">Transaction propagation</a>
-</li>
-</ul>
+<li>3.2.3 <a href="#section_3.2.3">Transaction propagation</a>
 </li>
 </ul>
 </li>
-<li>5. <a href="#lang_library">Lang library</a>
+</ul>
 </li>
 </ul></section>
 
 <section>
 <h2 id="introduction">1. Introduction</h2>
 <p>This document describes features implemented experimentally in
-Ballerina 1.0.</p>
+Ballerina 1.2.</p>
 
-</section>
-
-<section>
-<h2 id="value_types">2. Values, types and variables</h2>
-
-<section>
-<h3 id="section_2.1">2.1 Behavioral values</h3>
-
-<pre class="grammar">behavioral-type-descriptor :=
-   <em>...</em>
-   | stream-type-descriptor
-</pre>
-
-<section>
-<h4 id="section_2.1.1">2.1.1 Streams</h4>
-
-<pre class="grammar">stream-type-descriptor := <code>stream</code> [type-parameter]
-</pre>
-<p>
-A value of type <code>stream&lt;T&gt;</code> is a distributor for values of type
-<code>T</code>: when a value v of type T is put into the stream, a function will
-be called for each subscriber to the stream with v as an argument. T must be a
-pure type.
-</p>
-<p>
-A value belongs to a type <code>stream</code> (without the type-parameter)
-if it has basic type stream.
-</p>
-<p>
-A new stream can be constructed using a <code>new</code> expression.
-</p>
-
-</section>
-</section>
 </section>
 
 <section>
@@ -114,7 +74,7 @@ A new stream can be constructed using a <code>new</code> expression.
 </pre>
 
 <section>
-<h3 id="section_3.1">3.1 Table query expressions</h3>
+<h3 id="section_2.1">2.1 Table query expressions</h3>
 
 <pre class="grammar">table-query-expr := 
    <code>from</code> query-source [query-join-type query-join-source] 
@@ -152,7 +112,7 @@ tables.
 </pre>
 
 <section>
-<h3 id="section_4.1">4.1 Forever statement</h3>
+<h3 id="section_3.1">3.1 Forever statement</h3>
 
 <pre class="grammar">forever-stmt :=
    <code>forever</code> <code>{</code> 
@@ -198,7 +158,7 @@ it will never complete.
 </p>
 </section>
 <section>
-<h3 id="transactions">4.2 Transaction statement</h3>
+<h3 id="transactions">3.2 Transaction statement</h3>
 
 <pre class="grammar">transaction-stmt := <code>transaction</code> trans-conf? block-stmt trans-retry?
 transaction-control-stmt := retry-stmt | abort-stmt
@@ -217,7 +177,7 @@ transaction. A transaction can be established by this statement or it may
 inherit one from the current worker.
 </p>
 <section>
-<h4 id="section_4.2.1">4.2.1 Initiated transactions</h4>
+<h4 id="section_3.2.1">3.2.1 Initiated transactions</h4>
 <p>
 If no transaction context is present in the worker then the transaction
 statement starts a new transaction (i.e., becomes the initiator) and executes
@@ -244,7 +204,7 @@ executed and the transaction block statement will execute again in its entirety.
 </p>
 </section>
 <section>
-<h4 id="section_4.2.2">4.2.2 Participated transactions</h4>
+<h4 id="section_3.2.2">3.2.2 Participated transactions</h4>
 <p>
 If a transaction context is present in the executing worker context, then the
 transaction statement joins that transaction and becomes a participant of that
@@ -274,7 +234,7 @@ When in a participating transaction, a retry statement is a no-op.
 </p>
 </section>
 <section>
-<h4 id="section_4.2.3">4.2.3 Transaction propagation</h4>
+<h4 id="section_3.2.3">3.2.3 Transaction propagation</h4>
 <p>
 The transaction context in a worker is always visible to invoked functions. Thus
 any function invoked within a transaction, which has a transaction statement
@@ -287,13 +247,6 @@ Microtransaction Protocol [XXX].
 </p>
 </section>
 </section>
-</section>
-
-<section>
-<h2 id="lang_library">5. Lang library</h2>
-
-<p>The stream basic type has a lang library module <code><a href="./lib/stream.bal" type="text/plain">lang.stream</a></code>.</p>
-
 </section>
 
 </body>

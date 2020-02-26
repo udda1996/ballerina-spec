@@ -142,6 +142,8 @@ mailing list.
 </li>
 <li>5.4.6 <a href="#section_5.4.6">Handles</a>
 </li>
+<li>5.4.7 <a href="#section_5.4.7">[Preview] Streams</a>
+</li>
 </ul>
 </li>
 <li>5.5 <a href="#section_5.5">Other type descriptors</a><ul>
@@ -889,7 +891,7 @@ terms of names of fields (required keys) and value for each field</td>
 reason for the error, and a mapping giving additional details about the error</td>
   </tr>
   <tr>
-   <td rowspan="6">basic, behavioral</td>
+   <td rowspan="7">basic, behavioral</td>
    <td>function</td>
    <td>a function with 0 or more specified parameter types and a single return
 type</td>
@@ -913,6 +915,10 @@ type</td>
   <tr>
    <td>handle</td>
    <td>reference to externally managed storage</td>
+  </tr>
+  <tr>
+   <td>stream</td>
+   <td>a sequence of values that can be generated lazily</td>
   </tr>
   <tr>
    <td rowspan="8">other</td>
@@ -1805,7 +1811,10 @@ Error is the only structured basic type that is not iterable.
    | <a href="#service-type-descriptor"><span class="ntref">service-type-descriptor</span></a>
    | <a href="#typedesc-type-descriptor"><span class="ntref">typedesc-type-descriptor</span></a>
    | <a href="#handle-type-descriptor"><span class="ntref">handle-type-descriptor</span></a>
+   | <a href="#stream-type-descriptor"><span class="ntref">stream-type-descriptor</span></a>
 </pre>
+
+
 <section>
 <h4 id="functions">5.4.1 Functions</h4>
 
@@ -2230,6 +2239,24 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </p>
 
 </section>
+
+<section>
+<h4 id="section_5.4.7">5.4.7 [Preview] Streams</h4>
+
+<pre class="grammar"><span class="ntdfn" id="stream-type-descriptor">stream-type-descriptor</span> := <code>stream</code> [<a href="#stream-type-parameters"><span class="ntref">stream-type-parameters</span></a>]
+<span class="ntdfn" id="stream-type-parameters">stream-type-parameters</span> := <code>&lt;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<code>,</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>]<code>&gt;</code>
+</pre>
+<p>
+A value belongs to a type <code>stream</code> (without the type-parameter)
+if it has basic type stream.
+</p>
+<p>
+A new stream can be constructed using a <code>new</code> expression.
+</p>
+
+</section>
+
+
 </section>
 <section>
 <h3 id="section_5.5">5.5 Other type descriptors</h3>
@@ -7205,6 +7232,9 @@ for basic type object</li>
 <code><a href="./lib/string.bal" type="text/plain">lang.string</a></code>
 for basic type string</li>
 <li>
+<code><a href="./lib/stream.bal" type="text/plain">lang.stream</a></code>
+for basic type stream</li>
+<li>
 <code><a href="./lib/table.bal" type="text/plain">lang.table</a></code> for
 basic type table</li>
 <li>
@@ -7386,6 +7416,7 @@ been removed.</li>
 <li>Lang library modules can now provide built-in subtypes of existing basic
 types.</li>
 <li>There is a lang.boolean lang lib module.</li>
+<li>The stream basic type has been added.</li>
 </ol>
 </section>
 <section>
