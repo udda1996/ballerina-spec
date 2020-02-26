@@ -1217,7 +1217,7 @@ class="grammar"><dfn>record-type-descriptor</dfn> :=
 <dfn>field-descriptor</dfn> :=
    <abbr>individual-field-descriptor</abbr> | <abbr>record-type-reference</abbr>
 <dfn>individual-field-descriptor</dfn> :=
-   <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | <abbr>default-value</abbr>] <code>;</code>
+   <abbr>metadata</abbr> <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<code>?</code> | <abbr>default-value</abbr>] <code>;</code>
 <dfn>field-name</dfn> := <abbr>identifier</abbr>
 <dfn>default-value</dfn> := <code>=</code> <abbr>expression</abbr>
 <dfn>record-type-reference</dfn> := <code>*</code> <abbr>type-reference</abbr> <code>;</code>
@@ -1609,7 +1609,7 @@ methods; other objects types must not.
 
 <pre
 class="grammar"><dfn>object-field-descriptor</dfn> :=
-   <abbr>object-visibility-qual</abbr> <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<abbr>default-value</abbr>]<code>;</code>
+   <abbr>metadata</abbr> <abbr>object-visibility-qual</abbr> <abbr>type-descriptor</abbr> <abbr>field-name</abbr> [<abbr>default-value</abbr>]<code>;</code>
 </pre>
 <p>
 An <code>object-field-descriptor</code> specifies a field of the object. The

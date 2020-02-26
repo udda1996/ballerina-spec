@@ -1586,7 +1586,7 @@ separately for the value of each field.
 <span class="ntdfn" id="field-descriptor">field-descriptor</span> :=
    <a href="#individual-field-descriptor"><span class="ntref">individual-field-descriptor</span></a> | <a href="#record-type-reference"><span class="ntref">record-type-reference</span></a>
 <span class="ntdfn" id="individual-field-descriptor">individual-field-descriptor</span> :=
-   <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>?</code> | <a href="#default-value"><span class="ntref">default-value</span></a>] <code>;</code>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<code>?</code> | <a href="#default-value"><span class="ntref">default-value</span></a>] <code>;</code>
 <span class="ntdfn" id="field-name">field-name</span> := <a href="#identifier"><span class="ntref">identifier</span></a>
 <span class="ntdfn" id="default-value">default-value</span> := <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="record-type-reference">record-type-reference</span> := <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> <code>;</code>
@@ -1970,7 +1970,7 @@ methods; other objects types must not.
 <h5 id="section_5.4.2.1">5.4.2.1 Fields</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
-   <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<a href="#default-value"><span class="ntref">default-value</span></a>]<code>;</code>
+   <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<a href="#default-value"><span class="ntref">default-value</span></a>]<code>;</code>
 </pre>
 <p>
 An <code>object-field-descriptor</code> specifies a field of the object. The
