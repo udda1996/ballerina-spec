@@ -4557,11 +4557,17 @@ class="grammar"><dfn>xml-filter-expr</dfn> := <abbr>expression</abbr> <code>.&lt
 </pre>
 <p>
 An xml-filter-expr selects constituents of a sequence that are elements with a
-name matching a specified name pattern.
+name matching a specified name pattern. The static type of the expression must
+be a subtype of xml. The static type of the xml-filter-expr is
+<code>xml&lt;xml:Element&gt;</code>.
 </p>
 </section>
 <section>
 <h4>XML step expression</h4>
+<p>
+An xml-step-expr provides access to the children or descendants of an element,
+similar to a location path in XPath.
+</p>
 <pre
 class="grammar"><dfn>xml-step-expr</dfn> := <abbr>expression</abbr> <abbr>xml-step-start</abbr> <abbr>xml-step-extend</abbr>*
 
@@ -4578,6 +4584,9 @@ class="grammar"><dfn>xml-step-expr</dfn> := <abbr>expression</abbr> <abbr>xml-st
    | <code>[</code> <abbr>expression</abbr> <code>]</code>
    | <code>.</code> <abbr>method-name</abbr> <code>(</code> <abbr>arg-list</abbr> <code>)</code>
 </pre>
+<p>
+The static type of the expression must be a subtype of xml.
+</p>
 <p>
 An xml-step-expr that starts with an xml-all-children-step
 </p>

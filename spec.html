@@ -4874,11 +4874,17 @@ name in that default namespace.
 </pre>
 <p>
 An xml-filter-expr selects constituents of a sequence that are elements with a
-name matching a specified name pattern.
+name matching a specified name pattern. The static type of the expression must
+be a subtype of xml. The static type of the xml-filter-expr is
+<code>xml&lt;xml:Element&gt;</code>.
 </p>
 </section>
 <section>
 <h4 id="section_6.40.3">6.40.3 XML step expression</h4>
+<p>
+An xml-step-expr provides access to the children or descendants of an element,
+similar to a location path in XPath.
+</p>
 <pre class="grammar"><span class="ntdfn" id="xml-step-expr">xml-step-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <a href="#xml-step-start"><span class="ntref">xml-step-start</span></a> <a href="#xml-step-extend"><span class="ntref">xml-step-extend</span></a>*
 
 <span class="ntdfn" id="xml-step-start">xml-step-start</span> :=
@@ -4894,6 +4900,9 @@ name matching a specified name pattern.
    | <code>[</code> <a href="#expression"><span class="ntref">expression</span></a> <code>]</code>
    | <code>.</code> <a href="#method-name"><span class="ntref">method-name</span></a> <code>(</code> <a href="#arg-list"><span class="ntref">arg-list</span></a> <code>)</code>
 </pre>
+<p>
+The static type of the expression must be a subtype of xml.
+</p>
 <p>
 An xml-step-expr that starts with an xml-all-children-step
 </p>
