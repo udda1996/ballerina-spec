@@ -155,11 +155,13 @@ mailing list.
 </li>
 <li>5.5.5 <a href="#anydata">Anydata type</a>
 </li>
-<li>5.5.6 <a href="#section_5.5.6">Byte type</a>
+<li>5.5.6 <a href="#section_5.5.6">Never type</a>
 </li>
-<li>5.5.7 <a href="#section_5.5.7">JSON types</a>
+<li>5.5.7 <a href="#section_5.5.7">Byte type</a>
 </li>
-<li>5.5.8 <a href="#section_5.5.8">Type reference</a>
+<li>5.5.8 <a href="#section_5.5.8">JSON types</a>
+</li>
+<li>5.5.9 <a href="#section_5.5.9">Type reference</a>
 </li>
 </ul>
 </li>
@@ -913,7 +915,7 @@ type</td>
    <td>reference to externally managed storage</td>
   </tr>
   <tr>
-   <td rowspan="7">other</td>
+   <td rowspan="8">other</td>
    <td>singleton</td>
    <td>a single value described by a literal</td>
   </tr>
@@ -932,6 +934,10 @@ type</td>
   <tr>
    <td>anydata</td>
    <td>not an error and does not contain behavioral members at any depth</td>
+  </tr>
+  <tr>
+   <td>never</td>
+   <td>no value</td>
   </tr>
   <tr>
    <td>byte</td>
@@ -2234,6 +2240,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
    | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
    | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
    | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
+   | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
    | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
    | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
    | <a href="#type-reference"><span class="ntref">type-reference</span></a>
@@ -2312,7 +2319,23 @@ the type <code>anydata|error</code> is the supertype of all pure types. The type
 </pre>
 </section>
 <section>
-<h4 id="section_5.5.6">5.5.6 Byte type</h4>
+<h4 id="section_5.5.6">5.5.6 Never type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
+</pre>
+<p>
+The type descriptor <code>any</code> describes the type that does not contain
+any shapes. No value ever belongs to the <code>never</code>.
+</p>
+<p>
+This can be useful to describe for the return type of a function, if the
+function never returns. It can also be useful as a type parameter. For example,
+<code>xml&lt;never&gt;</code> describes the an xml type that has no
+constituents, i.e. the empty xml value.
+</p>
+</section>
+<section>
+<h4 id="section_5.5.7">5.5.7 Byte type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
 </pre>
@@ -2322,7 +2345,7 @@ The byte type is a built-in name for a union of the int values in the range 0 to
 </p>
 </section>
 <section>
-<h4 id="section_5.5.7">5.5.7 JSON types</h4>
+<h4 id="section_5.5.8">5.5.8 JSON types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
 </pre>
@@ -2338,7 +2361,7 @@ In addition, the <code>json</code> type is defined to have <a href="#lax_static_
 
 </section>
 <section>
-<h4 id="section_5.5.8">5.5.8 Type reference</h4>
+<h4 id="section_5.5.9">5.5.9 Type reference</h4>
 <pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
 </pre>
 
@@ -7302,6 +7325,7 @@ types.</li>
 expression x[i].</li>
 </ul>
 </li>
+<li>The <code>never</code> type has been added.</li>
 <li>Lang library modules can now provide built-in subtypes of existing basic
 types.</li>
 </ol>
