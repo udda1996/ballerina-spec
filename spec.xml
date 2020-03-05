@@ -3578,7 +3578,7 @@ xml-optional-attribute-access-expr is <code>string|error|()</code>.
 class="grammar"><dfn>annot-access-expr</dfn> := <abbr>expression</abbr> <code>.@</code> <abbr>annot-tag-reference</abbr>
 </pre>
 <p>
-The annot-tag-reference must refer to an annotation tag0 declared with an
+The annot-tag-reference must refer to an annotation tag declared with an
 annotation declaration. The static type of expression must be a subtype of
 <code>typedesc</code>.
 </p>
