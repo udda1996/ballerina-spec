@@ -325,7 +325,7 @@ mailing list.
 </ul>
 </li>
 <li>7.8 <a href="#section_7.8">Worker message passing</a><ul>
-<li>7.8.1 <a href="#section_7.8.1">Send action and send statement</a>
+<li>7.8.1 <a href="#section_7.8.1">Send action</a>
 </li>
 <li>7.8.2 <a href="#section_7.8.2">Receive action</a><ul>
 <li>7.8.2.1 <a href="#section_7.8.2.1">Single receive action</a>
@@ -5477,7 +5477,7 @@ queue for that worker; messages are removed in the order in which they were
 added to the queue.
 </p>
 <section>
-<h4 id="section_7.8.1">7.8.1 Send action and send statement</h4>
+<h4 id="section_7.8.1">7.8.1 Send action</h4>
 
 <pre class="grammar"><span class="ntdfn" id="send-action">send-action</span> := <a href="#sync-send-action"><span class="ntref">sync-send-action</span></a> | <a href="#async-send-action"><span class="ntref">async-send-action</span></a>
 <span class="ntdfn" id="sync-send-action">sync-send-action</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>-&gt;&gt;</code> <a href="#peer-worker"><span class="ntref">peer-worker</span></a>
