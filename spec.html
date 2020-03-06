@@ -342,46 +342,48 @@ mailing list.
 </li>
 <li>7.9 <a href="#section_7.9">Remote interaction</a>
 </li>
-<li>7.10 <a href="#section_7.10">Local variable declaration statements</a>
+<li>7.10 <a href="#section_7.10">Query action</a>
 </li>
-<li>7.11 <a href="#section_7.11">Implicit variable type narrowing</a>
+<li>7.11 <a href="#section_7.11">Local variable declaration statements</a>
 </li>
-<li>7.12 <a href="#section_7.12">Local type definition statement</a>
+<li>7.12 <a href="#section_7.12">Implicit variable type narrowing</a>
 </li>
-<li>7.13 <a href="#section_7.13">[Preview] XML namespace declaration statement</a>
+<li>7.13 <a href="#section_7.13">Local type definition statement</a>
 </li>
-<li>7.14 <a href="#section_7.14">Assignment</a><ul>
-<li>7.14.1 <a href="#section_7.14.1">Lvalues</a>
+<li>7.14 <a href="#section_7.14">[Preview] XML namespace declaration statement</a>
 </li>
-<li>7.14.2 <a href="#section_7.14.2">Assignment statement</a>
+<li>7.15 <a href="#section_7.15">Assignment</a><ul>
+<li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
 </li>
-<li>7.14.3 <a href="#section_7.14.3">Compound assignment statement</a>
+<li>7.15.2 <a href="#section_7.15.2">Assignment statement</a>
 </li>
-<li>7.14.4 <a href="#section_7.14.4">Destructuring assignment statement</a>
+<li>7.15.3 <a href="#section_7.15.3">Compound assignment statement</a>
+</li>
+<li>7.15.4 <a href="#section_7.15.4">Destructuring assignment statement</a>
 </li>
 </ul>
 </li>
-<li>7.15 <a href="#section_7.15">Action statement</a>
+<li>7.16 <a href="#section_7.16">Action statement</a>
 </li>
-<li>7.16 <a href="#section_7.16">Call statement</a>
+<li>7.17 <a href="#section_7.17">Call statement</a>
 </li>
-<li>7.17 <a href="#section_7.17">Conditional statement</a>
+<li>7.18 <a href="#section_7.18">Conditional statement</a>
 </li>
-<li>7.18 <a href="#section_7.18">Match statement</a>
+<li>7.19 <a href="#section_7.19">Match statement</a>
 </li>
-<li>7.19 <a href="#section_7.19">Foreach statement</a>
+<li>7.20 <a href="#section_7.20">Foreach statement</a>
 </li>
-<li>7.20 <a href="#section_7.20">While statement</a>
+<li>7.21 <a href="#section_7.21">While statement</a>
 </li>
-<li>7.21 <a href="#section_7.21">Continue statement</a>
+<li>7.22 <a href="#section_7.22">Continue statement</a>
 </li>
-<li>7.22 <a href="#section_7.22">Break statement</a>
+<li>7.23 <a href="#section_7.23">Break statement</a>
 </li>
-<li>7.23 <a href="#section_7.23">Panic statement</a>
+<li>7.24 <a href="#section_7.24">Panic statement</a>
 </li>
-<li>7.24 <a href="#section_7.24">Return statement</a>
+<li>7.25 <a href="#section_7.25">Return statement</a>
 </li>
-<li>7.25 <a href="#section_7.25">Lock statement</a>
+<li>7.26 <a href="#section_7.26">Lock statement</a>
 </li>
 </ul>
 </li>
@@ -4834,12 +4836,10 @@ from the static type of the expression in the initial <code>from</code> clause;
 it is a compile-time error if this static type is not a subtype of one of the
 basic types that a query expression can construct.
 </p>
-<!-- only relevant with query actions
 <p>
-Variables bound by the clauses of a query expression are implicitly final, and
+Variables bound by the clauses of a query-pipeline are implicitly final, and
 cannot be modified.
 </p>
--->
 
 <section>
 <h4 id="section_6.39.1">6.39.1 From clause</h4>
@@ -5062,6 +5062,7 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
    | <a href="#receive-action"><span class="ntref">receive-action</span></a> 
    | <a href="#flush-action"><span class="ntref">flush-action</span></a>
    | <a href="#remote-method-call-action"><span class="ntref">remote-method-call-action</span></a>
+   | <a href="#query-action"><span class="ntref">query-action</span></a>
    | <a href="#checking-action"><span class="ntref">checking-action</span></a>
    | <a href="#trap-action"><span class="ntref">trap-action</span></a>
    | <code>(</code> <a href="#action"><span class="ntref">action</span></a> <code>)</code>
@@ -5758,7 +5759,26 @@ that it is used only for a method with the <code>remote</code> modifier.
 </section>
 
 <section>
-<h3 id="section_7.10">7.10 Local variable declaration statements</h3>
+<h3 id="section_7.10">7.10 Query action</h3>
+<pre class="grammar"><span class="ntdfn" id="query-action">query-action</span> := <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#do-clause"><span class="ntref">do-clause</span></a>
+<span class="ntdfn" id="do-clause">do-clause</span> := <code>do</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
+</pre>
+<p>
+The clauses in the query-pipeline of query-action are executed in the same way
+as the clauses in the query-pipeline of a query-expr.
+</p>
+<p>
+The query-action is executed as follows. For each input frame <var>f</var>
+emitted by the query-pipeline, execute the block-stmt with <var>f</var> in
+scope. If a clause in the query-pipeline terminates early with error
+<var>e</var>, the result of the query-action is <var>e</var>. Otherwise, the
+result of the query-action is nil.
+</p>
+
+</section>
+
+<section>
+<h3 id="section_7.11">7.11 Local variable declaration statements</h3>
 
 <pre class="grammar"><span class="ntdfn" id="local-var-decl-stmt">local-var-decl-stmt</span> :=
    <a href="#local-init-var-decl-stmt"><span class="ntref">local-init-var-decl-stmt</span></a>
@@ -5805,7 +5825,7 @@ variable must not be assigned more than once.
 </p>
 </section>
 <section>
-<h3 id="section_7.11">7.11 Implicit variable type narrowing</h3>
+<h3 id="section_7.12">7.12 Implicit variable type narrowing</h3>
 <p>
 Usually the type of a reference to a variable is determined by the variable's
 declaration, either explicitly specified by a type descriptor or inferred from
@@ -5913,7 +5933,7 @@ possibility of x being assigned to</li>
 </ul>
 </section>
 <section>
-<h3 id="section_7.12">7.12 Local type definition statement</h3>
+<h3 id="section_7.13">7.13 Local type definition statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="local-type-defn-stmt">local-type-defn-stmt</span> :=
    [<a href="#annots"><span class="ntref">annots</span></a>] <code>type</code> <a href="#identifier"><span class="ntref">identifier</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>;</code>
@@ -5925,7 +5945,7 @@ is executed.
 </p>
 </section>
 <section>
-<h3 id="section_7.13">7.13 [Preview] XML namespace declaration statement</h3>
+<h3 id="section_7.14">7.14 [Preview] XML namespace declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xmlns-decl-stmt">xmlns-decl-stmt</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 <span class="ntdfn" id="xmlns-decl">xmlns-decl</span> := <code>xmlns</code> <a href="#xml-namespace-uri"><span class="ntref">xml-namespace-uri</span></a> [ <code>as</code> <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> ] <code>;</code>
@@ -5954,7 +5974,7 @@ string.
 </p>
 </section>
 <section>
-<h3 id="section_7.14">7.14 Assignment</h3>
+<h3 id="section_7.15">7.15 Assignment</h3>
 
 <p>
 There are three kinds of assignment statement:
@@ -5971,7 +5991,7 @@ last one builds on the concept of a binding pattern.
 </p>
 
 <section>
-<h4 id="section_7.14.1">7.14.1 Lvalues</h4>
+<h4 id="section_7.15.1">7.15.1 Lvalues</h4>
 
 <p>
 An lvalue is what the left hand side of an assignment evaluates to. An lvalue
@@ -6168,7 +6188,7 @@ key type for T.
 
 </section>
 <section>
-<h4 id="section_7.14.2">7.14.2 Assignment statement</h4>
+<h4 id="section_7.15.2">7.15.2 Assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="assignment-stmt">assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 </pre>
@@ -6189,7 +6209,7 @@ It is executed at as follows:
 
 </section>
 <section>
-<h4 id="section_7.14.3">7.14.3 Compound assignment statement</h4>
+<h4 id="section_7.15.3">7.15.3 Compound assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="compound-assignment-stmt">compound-assignment-stmt</span> := <a href="#lvexpr"><span class="ntref">lvexpr</span></a> <a href="#CompoundAssignmentOperator"><span class="ntref">CompoundAssignmentOperator</span></a> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
 <span class="ntdfn" id="CompoundAssignmentOperator">CompoundAssignmentOperator</span> := <a href="#BinaryOperator"><span class="ntref">BinaryOperator</span></a> <code>=</code>
@@ -6225,7 +6245,7 @@ and <var>v2</var>, resulting in a value <var>v3</var>
 
 </section>
 <section>
-<h4 id="section_7.14.4">7.14.4 Destructuring assignment statement</h4>
+<h4 id="section_7.15.4">7.15.4 Destructuring assignment statement</h4>
 
 <pre class="grammar"><span class="ntdfn" id="destructuring-assignment-stmt">destructuring-assignment-stmt</span> :=
    <a href="#binding-pattern-not-variable-reference"><span class="ntref">binding-pattern-not-variable-reference</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>;</code>
@@ -6248,7 +6268,7 @@ of this type.
 </section>
 </section>
 <section>
-<h3 id="section_7.15">7.15 Action statement</h3>
+<h3 id="section_7.16">7.16 Action statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="action-stmt">action-stmt</span> := <a href="#action"><span class="ntref">action</span></a> <code>;</code>
 </pre>
@@ -6259,7 +6279,7 @@ the static type of an action in an action-stmt is not nil.
 </p>
 </section>
 <section>
-<h3 id="section_7.16">7.16 Call statement</h3>
+<h3 id="section_7.17">7.17 Call statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="call-stmt">call-stmt</span> := <a href="#call-expr"><span class="ntref">call-expr</span></a> <code>;</code>
 <span class="ntdfn" id="call-expr">call-expr</span> :=
@@ -6274,7 +6294,7 @@ static type of the call-expr in an call-stmt is not nil.
 </p>
 </section>
 <section>
-<h3 id="section_7.17">7.17 Conditional statement</h3>
+<h3 id="section_7.18">7.18 Conditional statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="if-else-stmt">if-else-stmt</span> :=
    <code>if</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a> 
@@ -6292,7 +6312,7 @@ is present, the corresponding block statement is executed.
 </p>
 </section>
 <section>
-<h3 id="section_7.18">7.18 Match statement</h3>
+<h3 id="section_7.19">7.19 Match statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="match-stmt">match-stmt</span> := <code>match</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <code>{</code> <a href="#match-clause"><span class="ntref">match-clause</span></a>+ <code>}</code>
 <span class="ntdfn" id="match-clause">match-clause</span> :=
@@ -6429,7 +6449,7 @@ referenced error type.
 
 </section>
 <section>
-<h3 id="section_7.19">7.19 Foreach statement</h3>
+<h3 id="section_7.20">7.20 Foreach statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="foreach-stmt">foreach-stmt</span> :=
    <code>foreach</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
@@ -6482,7 +6502,7 @@ typed-binding-pattern uses var, then the type will be inferred from the type of
 </p>
 </section>
 <section>
-<h3 id="section_7.20">7.20 While statement</h3>
+<h3 id="section_7.21">7.21 While statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="while-stmt">while-stmt</span> := <code>while</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
 </pre>
@@ -6512,7 +6532,7 @@ The static type of <code>expression</code> must be a subtype of boolean.
 </p>
 </section>
 <section>
-<h3 id="section_7.21">7.21 Continue statement</h3>
+<h3 id="section_7.22">7.22 Continue statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="continue-stmt">continue-stmt</span> := <code>continue</code> <code>;</code>
 </pre>
@@ -6524,7 +6544,7 @@ outermost block-stmt in the while-stmt or foreach-stmt.
 </p>
 </section>
 <section>
-<h3 id="section_7.22">7.22 Break statement</h3>
+<h3 id="section_7.23">7.23 Break statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="break-stmt">break-stmt</span> := <code>break</code> <code>;</code>
 </pre>
@@ -6535,7 +6555,7 @@ enclosing while-stmt or foreach-stmt to terminate.
 </p>
 </section>
 <section>
-<h3 id="section_7.23">7.23 Panic statement</h3>
+<h3 id="section_7.24">7.24 Panic statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="panic-stmt">panic-stmt</span> := <code>panic</code> <a href="#expression"><span class="ntref">expression</span></a> <code>;</code>
 </pre>
@@ -6548,7 +6568,7 @@ The static type of <code>expression</code> must be a subtype of error.
 </p>
 </section>
 <section>
-<h3 id="section_7.24">7.24 Return statement</h3>
+<h3 id="section_7.25">7.25 Return statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="return-stmt">return-stmt</span> := <code>return</code> [ <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> ] <code>;</code>
 </pre>
@@ -6560,7 +6580,7 @@ action-or-expr is omitted, then the termination value is nil.
 </section>
 
 <section>
-<h3 id="section_7.25">7.25 Lock statement</h3>
+<h3 id="section_7.26">7.26 Lock statement</h3>
 <pre class="grammar"><span class="ntdfn" id="lock-stmt">lock-stmt</span> := <code>lock</code> <a href="#block-stmt"><span class="ntref">block-stmt</span></a>
 </pre>
 
@@ -7491,8 +7511,8 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 <section>
 <h3 id="section_B.1">B.1 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
-<li>Query expressions have been added. This is the first stage of
-language-integrated query.</li>
+<li>Query expressions and query actions have been added. This is the first stage
+of language-integrated query.</li>
 <li>When a list constructor or mapping constructor is used without a
 contextually expected type, we now infer a tuple or record type rather than an
 array or map type.</li>
