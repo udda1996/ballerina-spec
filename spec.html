@@ -226,7 +226,7 @@ mailing list.
 </li>
 <li>6.10 <a href="#section_6.10">String template expression</a>
 </li>
-<li>6.11 <a href="#section_6.11">[Preview] XML expression</a>
+<li>6.11 <a href="#section_6.11">[Preview] XML template expression</a>
 </li>
 <li>6.12 <a href="#section_6.12">New expression</a>
 </li>
@@ -3079,7 +3079,7 @@ same identifier in the same symbol space also with block-scope.
    | <a href="#table-constructor-expr"><span class="ntref">table-constructor-expr</span></a>
    | <a href="#service-constructor-expr"><span class="ntref">service-constructor-expr</span></a>
    | <a href="#string-template-expr"><span class="ntref">string-template-expr</span></a>
-   | <a href="#xml-expr"><span class="ntref">xml-expr</span></a>
+   | <a href="#xml-template-expr"><span class="ntref">xml-template-expr</span></a>
    | <a href="#new-expr"><span class="ntref">new-expr</span></a>
    | <a href="#variable-reference-expr"><span class="ntref">variable-reference-expr</span></a>
    | <a href="#field-access-expr"><span class="ntref">field-access-expr</span></a>
@@ -3415,7 +3415,7 @@ different types of number; there are no implicit conversions.
    | <a href="#mapping-constructor-expr"><span class="ntref">mapping-constructor-expr</span></a>
    | <a href="#table-constructor-expr"><span class="ntref">table-constructor-expr</span></a>
    | <a href="#string-template-expr"><span class="ntref">string-template-expr</span></a>
-   | <a href="#xml-expr"><span class="ntref">xml-expr</span></a>
+   | <a href="#xml-template-expr"><span class="ntref">xml-template-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
    | <a href="#type-cast-expr"><span class="ntref">type-cast-expr</span></a>
    | <a href="#unary-expr"><span class="ntref">unary-expr</span></a>
@@ -3755,12 +3755,12 @@ interpolation <code>${"`"}</code>.
 </p>
 </section>
 <section>
-<h3 id="section_6.11">6.11 [Preview] XML expression</h3>
+<h3 id="section_6.11">6.11 [Preview] XML template expression</h3>
 
-<pre class="grammar"><span class="ntdfn" id="xml-expr">xml-expr</span> := <code>xml</code> <a href="#BacktickString"><span class="ntref">BacktickString</span></a>
+<pre class="grammar"><span class="ntdfn" id="xml-template-expr">xml-template-expr</span> := <code>xml</code> <a href="#BacktickString"><span class="ntref">BacktickString</span></a>
 </pre>
 <p>
-An XML expression creates an XML value as follows:
+An XML template expression creates an XML value as follows:
 </p>
 <ol>
 <li>The backtick string is parsed to produce a string of literal characters with
@@ -3782,7 +3782,7 @@ inserted.</li>
 <li>The static type of an expression occurring in an attribute value must be a
 simple type and must not be nil. The static type type of an expression occurring
 in content can either be xml or a non-nil simple type.</li>
-<li>When the xml-expr is evaluated, the interpolated expressions are evaluated
+<li>When the xml-template-expr is evaluated, the interpolated expressions are evaluated
 in the order in which they occur in the <code>BacktickString</code>, and
 converted to strings if necessary. A new copy is made of the XML value and the
 result of the expression evaluations are inserted into the corresponding
@@ -6073,7 +6073,7 @@ is executed.
 <p>
 An <code>xmlns-decl</code> is used to declare a XML namespace. If there is
 an <code>xml-namespace-prefix</code>, then the in-scope namespaces that are used
-to perform namespace processing on an <code>xml-expr</code> will include a
+to perform namespace processing on an <code>xml-template-expr</code> will include a
 binding of that prefix to the specified <code>xml-namespace-uri</code>;
 otherwise the in-scope namespaces will include a default namespace with the
 specified <code>xml-namespace-uri</code>.
