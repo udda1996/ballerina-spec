@@ -352,7 +352,7 @@ mailing list.
 </li>
 <li>7.13 <a href="#section_7.13">Local type definition statement</a>
 </li>
-<li>7.14 <a href="#section_7.14">XML namespace declaration statement</a>
+<li>7.14 <a href="#XML_namespace_declaration_statement">XML namespace declaration statement</a>
 </li>
 <li>7.15 <a href="#section_7.15">Assignment</a><ul>
 <li>7.15.1 <a href="#section_7.15.1">Lvalues</a>
@@ -6063,7 +6063,7 @@ is executed.
 </p>
 </section>
 <section>
-<h3 id="section_7.14">7.14 XML namespace declaration statement</h3>
+<h3 id="XML_namespace_declaration_statement">7.14 XML namespace declaration statement</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xmlns-decl-stmt">xmlns-decl-stmt</span> := <a href="#xmlns-decl"><span class="ntref">xmlns-decl</span></a>
 <span class="ntdfn" id="xmlns-decl">xmlns-decl</span> := <code>xmlns</code> <a href="#xml-namespace-uri"><span class="ntref">xml-namespace-uri</span></a> [ <code>as</code> <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> ] <code>;</code>
@@ -6794,6 +6794,11 @@ same symbol space as a <code>xmlns-namespace-prefix</code> declared by an
 symbol space used by other declarations.
 </p>
 <p>
+A module prefix of <code>xml</code> is predeclared as referring to the
+<code>lang.xml</code> lang library module, but this can be overridden by an
+import-decl.
+</p>
+<p>
 It is an error for a module to directly or indirectly import itself. In other
 words, the directed graph of module imports must be acyclic.
 </p>
@@ -7083,7 +7088,12 @@ be a subtype of the type specified by the type-descriptor.
 
 <p>
 A <code>module-xmlns-decl</code> declares an XML namespace prefix with module
-scope.
+scope. It applies only to the source part in which it occurs, as with an
+import-decl.
+</p>
+<p>
+The semantics of xmlns-decl are described in the <a href="#XML_namespace_declaration_statement">XML namespace declaration
+statement</a> section.
 </p>
 
 </section>

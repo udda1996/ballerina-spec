@@ -5764,7 +5764,7 @@ is executed.
 </p>
 </section>
 <section>
-<h3>XML namespace declaration statement</h3>
+<h3 id="XML_namespace_declaration_statement">XML namespace declaration statement</h3>
 
 <pre
 class="grammar"><dfn>xmlns-decl-stmt</dfn> := <abbr>xmlns-decl</abbr>
@@ -6513,6 +6513,11 @@ same symbol space as a <code>xmlns-namespace-prefix</code> declared by an
 symbol space used by other declarations.
 </p>
 <p>
+A module prefix of <code>xml</code> is predeclared as referring to the
+<code>lang.xml</code> lang library module, but this can be overridden by an
+import-decl.
+</p>
+<p>
 It is an error for a module to directly or indirectly import itself. In other
 words, the directed graph of module imports must be acyclic.
 </p>
@@ -6808,7 +6813,13 @@ class="grammar"><dfn>module-xmlns-decl</dfn> := <abbr>xmlns-decl</abbr>
 
 <p>
 A <code>module-xmlns-decl</code> declares an XML namespace prefix with module
-scope.
+scope. It applies only to the source part in which it occurs, as with an
+import-decl.
+</p>
+<p>
+The semantics of xmlns-decl are described in the <a
+href="#XML_namespace_declaration_statement">XML namespace declaration
+statement</a> section.
 </p>
 
 </section>
