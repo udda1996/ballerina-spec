@@ -3858,12 +3858,25 @@ implicit-new-expr consisting of just <code>new</code> is equivalent to
 <h3 id="section_6.13">6.13 Variable reference expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="variable-reference-expr">variable-reference-expr</span> := <a href="#variable-reference"><span class="ntref">variable-reference</span></a>
-<span class="ntdfn" id="variable-reference">variable-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
+<span class="ntdfn" id="variable-reference">variable-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a> | <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
+<span class="ntdfn" id="xml-qualified-name">xml-qualified-name</span> := <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
 </pre>
 <p>
 A variable-reference can refer to a variable, a parameter, a constant (defined
 with a module constant declaration), a function or a type (defined with a type
 definition).
+</p>
+<p>
+When the variable reference has a prefix and the prefix has been declared using
+an xmlns-decl rather than an import-decl, then the result of evaluating the
+variable-reference-expr is a string of the form:
+</p>
+<pre>
+   {<var>namespace-uri</var>}<var>local-name</var>
+</pre>
+<p>
+where the namespace-uri comes from xml-namespace-uri specified in the
+xmlns-decl, and the local-name comes from the identifier following the colon.
 </p>
 <p>
 If the variable-reference references a type defined with a type definition, then
@@ -3982,11 +3995,9 @@ field-name.</li>
 <h3 id="section_6.16">6.16 XML attribute access expression</h3>
 
 <pre class="grammar"><span class="ntdfn" id="xml-attribute-access-expr">xml-attribute-access-expr</span> := <a href="#xml-required-attribute-access-expr"><span class="ntref">xml-required-attribute-access-expr</span></a> | <a href="#xml-optional-attribute-access-expr"><span class="ntref">xml-optional-attribute-access-expr</span></a>
-<span class="ntdfn" id="xml-required-attribute-access-expr">xml-required-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
-<span class="ntdfn" id="xml-optional-attribute-access-expr">xml-optional-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>?.</code> <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a>
-<span class="ntdfn" id="xml-qualified-name">xml-qualified-name</span> :=
-   <a href="#xml-namespace-prefix"><span class="ntref">xml-namespace-prefix</span></a> <code>:</code> <a href="#identifier"><span class="ntref">identifier</span></a>
-   | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
+<span class="ntdfn" id="xml-required-attribute-access-expr">xml-required-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>.</code> <a href="#xml-attribute-name"><span class="ntref">xml-attribute-name</span></a>
+<span class="ntdfn" id="xml-optional-attribute-access-expr">xml-optional-attribute-access-expr</span> := <a href="#expression"><span class="ntref">expression</span></a> <code>?.</code> <a href="#xml-attribute-name"><span class="ntref">xml-attribute-name</span></a>
+<span class="ntdfn" id="xml-attribute-name">xml-attribute-name</span> := <a href="#xml-qualified-name"><span class="ntref">xml-qualified-name</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
 </pre>
 
 <p>
@@ -3998,21 +4009,25 @@ It is a compile-time requirement that the static type of the expression is a
 subtype of xml.
 </p>
 <p>
-Normally, the prefix of the xml-qualified-name is an xml-namespace-prefix
-declared using an xmlns-decl. In this case, the xml-qualified-name is
-expanded at compile-time into a string of the form
+Normally, an xml-attribute-name is specified as an xml-qualified-name, in which
+the prefix is an xml-namespace-prefix declared using an xmlns-decl. In this
+case, the xml-qualified-name is expanded at compile-time into a string of the
+form
 </p>
 <pre>
    {<var>namespace-uri</var>}<var>local-name</var>
 </pre>
 <p>
 where the namespace-uri comes from xml-namespace-uri specified in the
-xmlns-decl, and the local-name comes from the identifier following the
-colon. It is also allowed for the prefix of the xml-qualified-name to be
-declared as a module-prefix, in which case the qualified-identifier must refer
-to a module-const-decl of type string, and the expansion of the
-xml-qualified-name is the value of the referenced constant; this allows for e.g.
-<code>xml:lang</code> to work.
+xmlns-decl, and the local-name comes from the identifier following the colon.
+</p>
+<p>
+It is also allowed for the xml-attribute-name to be specified as a
+qualified-identifier, in which the prefix is a module-prefix declared using an
+import-decl. In this case the qualified-identifier must refer to a
+module-const-decl of type string, and the expansion of the xml-qualified-name is
+the value of the referenced constant. This allows e.g. <code>xml:lang</code> to
+work.
 </p>
 <p>
 An xml-optional-attribute-access-expr is evaluated as follows. The expression is
