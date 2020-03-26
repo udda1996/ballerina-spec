@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Ballerina Language Specification, 2020R1</title>
+  <title>Ballerina Language Specification, 2020R2-pre1</title>
   <meta charset="utf-8">
   <style type="text/css">
     body { font-family: sans-serif; line-height: 1.38;  }
@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src="style/ballerina-language-specification.js"></script>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2020R1</h1>
+<h1>Ballerina Language Specification, 2020R2-pre1</h1>
 <p>
 Primary contributors:
 </p>
@@ -431,17 +431,19 @@ mailing list.
 <li>A. <a href="#references">References</a>
 </li>
 <li>B. <a href="#changes">Changes since previous versions</a><ul>
-<li>B.1 <a href="#section_B.1">Summary of changes from 2019R3 to 2020R1</a>
+<li>B.1 <a href="#section_B.1">Summary of changes from 2020R1 to 2020R2</a>
 </li>
-<li>B.2 <a href="#section_B.2">Summary of changes from 2019R2 to 2019R3</a>
+<li>B.2 <a href="#section_B.2">Summary of changes from 2019R3 to 2020R1</a>
 </li>
-<li>B.3 <a href="#section_B.3">Summary of changes from 2019R1 to 2019R2</a>
+<li>B.3 <a href="#section_B.3">Summary of changes from 2019R2 to 2019R3</a>
 </li>
-<li>B.4 <a href="#section_B.4">Summary of changes from 0.990 to 2019R1</a>
+<li>B.4 <a href="#section_B.4">Summary of changes from 2019R1 to 2019R2</a>
 </li>
-<li>B.5 <a href="#section_B.5">Summary of changes from 0.980 to 0.990</a>
+<li>B.5 <a href="#section_B.5">Summary of changes from 0.990 to 2019R1</a>
 </li>
-<li>B.6 <a href="#section_B.6">Summary of changes from 0.970 to 0.980</a>
+<li>B.6 <a href="#section_B.6">Summary of changes from 0.980 to 0.990</a>
+</li>
+<li>B.7 <a href="#section_B.7">Summary of changes from 0.970 to 0.980</a>
 </li>
 </ul>
 </li>
@@ -7822,7 +7824,14 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 <section class="appendix">
 <h2 id="changes">B. Changes since previous versions</h2>
 <section>
-<h3 id="section_B.1">B.1 Summary of changes from 2019R3 to 2020R1</h3>
+<h3 id="section_B.1">B.1 Summary of changes from 2020R1 to 2020R2</h3>
+<ol>
+<li>The XML item-specific subtypes can be used as constructors, both in
+expressions and in binding patterns.</li>
+</ol>
+</section>
+<section>
+<h3 id="section_B.2">B.2 Summary of changes from 2019R3 to 2020R1</h3>
 <ol>
 <li>Query expressions and query actions have been added. This is the first stage
 of language-integrated query.</li>
@@ -7832,8 +7841,6 @@ of language-integrated query.</li>
 <ul>
 <li>The various kinds of xml item (e.g. element and text) are subtypes of the
 <code>xml</code> type.</li>
-<li>The item-specific subtypes can be used as constructors, both in expressions
-and in binding patterns.</li>
 <li>The <code>xml</code> type can have a type parameter specifying the item
 types.</li>
 <li>Iteration over xml values exposes characters as text items rather than strings</li>
@@ -7860,7 +7867,7 @@ types.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.2">B.2 Summary of changes from 2019R2 to 2019R3</h3>
+<h3 id="section_B.3">B.3 Summary of changes from 2019R2 to 2019R3</h3>
 <ol>
 <li>An import declaration can use <code>as _</code> to include a module in the
 program without using its symbols.</li>
@@ -7872,7 +7879,7 @@ not a named worker.</li>
 </section>
 
 <section>
-<h3 id="section_B.3">B.3 Summary of changes from 2019R1 to 2019R2</h3>
+<h3 id="section_B.4">B.4 Summary of changes from 2019R1 to 2019R2</h3>
 <ol>
 <li>The concept of a built-in method has been replaced by the concept of a lang
 library. A method call on a value of non-object type is now treated as a
@@ -7918,7 +7925,7 @@ replace the old delimited identifier syntax <code>^"<var>s</var>"</code>.</li>
 
 </section>
 <section>
-<h3 id="section_B.4">B.4 Summary of changes from 0.990 to 2019R1</h3>
+<h3 id="section_B.5">B.5 Summary of changes from 0.990 to 2019R1</h3>
 <p>
 The specification has switched to a new versioning scheme. The <var>n</var>-th
 version of the specification released in year 20<var>xy</var> will be labelled
@@ -7987,7 +7994,7 @@ now required to be specified before named arguments.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.5">B.5 Summary of changes from 0.980 to 0.990</h3>
+<h3 id="section_B.6">B.6 Summary of changes from 0.980 to 0.990</h3>
 <p>
 <strong>Structural types and values</strong>
 </p>
@@ -8081,7 +8088,7 @@ definition.</li>
 </ol>
 </section>
 <section>
-<h3 id="section_B.6">B.6 Summary of changes from 0.970 to 0.980</h3>
+<h3 id="section_B.7">B.7 Summary of changes from 0.970 to 0.980</h3>
 <ol>
 <li>The decimal type has been added.</li>
 <li>There are no longer any implicit numeric conversions.</li>
