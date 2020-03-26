@@ -334,6 +334,12 @@ productions for non-terminals whose names start with a lower-case letter.
 </section>
 <section>
 <h2 id="values_types">5. Values, types and variables</h2>
+
+<section>
+<h3>Overview</h3>
+
+<section>
+<h4>Type system fundamentals</h4>
 <p>
 Ballerina programs operate on a rich universe of values. This universe of values
 is partitioned into a number of <em>basic types</em>; every value belongs to
@@ -417,6 +423,9 @@ that the variable will only ever contain a value that belongs to the type.
 Ballerina also provides mechanisms that take a value that looks like a type and
 use it to create a value that belongs to a type.
 </p>
+</section>
+<section>
+<h4>Type descriptors</h4>
 <pre
 class="grammar"><dfn>type-descriptor</dfn> :=
    <abbr>simple-type-descriptor</abbr>
@@ -535,7 +544,7 @@ type</td>
    <td>a sequence of values that can be generated lazily</td>
   </tr>
   <tr>
-   <td rowspan="8">other</td>
+   <td rowspan="9">other</td>
    <td>singleton</td>
    <td>a single value described by a literal</td>
   </tr>
@@ -568,6 +577,10 @@ type</td>
    <td>the union of (), int, float, decimal, string, and maps and arrays whose
 values are, recursively, json</td>
   </tr>
+  <tr>
+   <td>readonly</td>
+   <td>the union of all inherently immutable basic types</td>
+  </tr>
 </table>
 <p>
 In addition to describing a type, a type descriptor may also include information
@@ -576,6 +589,9 @@ described by a type descriptor is known at compile time, this additional
 information may need to be resolved at runtime. The typedesc basic type
 represents a type descriptor that has been resolved.
 </p>
+</section>
+<section>
+<h4>Iterability</h4>
 <p>
 Values of some basic types are <em>iterable</em>. An iterable value supports an
 iteration operation, which treats the iterable value as consisting of a sequence
@@ -637,6 +653,8 @@ The following tables summarizes the iterable basic types.
 <td><code>C</code></td>
 </tr>
 </table>
+</section>
+</section>
 
 <section>
 <h3>Simple values</h3>
@@ -2022,7 +2040,8 @@ class="grammar"><dfn>handle-type-descriptor</dfn> := <code>handle</code>
 A handle value is a reference to storage managed externally to a Ballerina
 program. Handle values are useful only in conjunction with functions that have
 external function bodies; in particular, a new handle value can be created only
-by a function with an external function body.
+by a function with an external function body. Handle values are inherently
+immutable.
 </p>
 <p>
 A value belongs to a type <code>handle</code> if it has a basic type of handle.
@@ -2098,6 +2117,7 @@ class="grammar"><dfn>other-type-descriptor</dfn> :=
    | <abbr>never-type-descriptor</abbr>
    | <abbr>byte-type-descriptor</abbr>
    | <abbr>json-type-descriptor</abbr>
+   | <abbr>readonly-type-descriptor</abbr>
    | <abbr>type-reference</abbr>
    | <code>(</code> <abbr>type-descriptor</abbr> <code>)</code>
 </pre>
@@ -2227,6 +2247,35 @@ href="#lax_static_typing">lax static typing</a>.
 </p>
 
 </section>
+<section>
+<h4>Readonly type</h4>
+<pre
+class="grammar"><dfn>readonly-type-descriptor</dfn> := <code>readonly</code>
+</pre>
+<p>
+The <code>readonly</code> type is a predefined name for the union of all basic types
+that are inherently immutable. These are:
+</p>
+<ul>
+<li>all simple types
+<ul>
+<li>nil</li>
+<li>boolean</li>
+<li>int</li>
+<li>float</li>
+<li>decimal</li>
+</ul>
+</li>
+<li>string</li>
+<li>error</li>
+<li>function</li>
+<li>service</li>
+<li>typedesc</li>
+<li>handle</li>
+</ul>
+
+</section>
+
 <section>
 <h4>Type reference</h4>
 <pre
@@ -7535,6 +7584,7 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 <section>
 <h3>Summary of changes from 2020R1 to 2020R2</h3>
 <ol>
+<li>The <code>readonly</code> type has been added.</li>
 <li>The XML item-specific subtypes can be used as constructors, both in
 expressions and in binding patterns.</li>
 </ol>

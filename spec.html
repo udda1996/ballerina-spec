@@ -68,134 +68,145 @@ mailing list.
 <li>4. <a href="#lexical_structure">Lexical structure</a>
 </li>
 <li>5. <a href="#values_types">Values, types and variables</a><ul>
-<li>5.1 <a href="#section_5.1">Simple values</a><ul>
-<li>5.1.1 <a href="#section_5.1.1">Nil</a>
+<li>5.1 <a href="#section_5.1">Overview</a><ul>
+<li>5.1.1 <a href="#section_5.1.1">Type system fundamentals</a>
 </li>
-<li>5.1.2 <a href="#section_5.1.2">Boolean</a>
+<li>5.1.2 <a href="#section_5.1.2">Type descriptors</a>
 </li>
-<li>5.1.3 <a href="#section_5.1.3">Int</a>
+<li>5.1.3 <a href="#section_5.1.3">Iterability</a>
 </li>
-<li>5.1.4 <a href="#section_5.1.4">Floating point types</a><ul>
-<li>5.1.4.1 <a href="#section_5.1.4.1">Float</a>
+</ul>
 </li>
-<li>5.1.4.2 <a href="#section_5.1.4.2">Decimal</a>
+<li>5.2 <a href="#section_5.2">Simple values</a><ul>
+<li>5.2.1 <a href="#section_5.2.1">Nil</a>
+</li>
+<li>5.2.2 <a href="#section_5.2.2">Boolean</a>
+</li>
+<li>5.2.3 <a href="#section_5.2.3">Int</a>
+</li>
+<li>5.2.4 <a href="#section_5.2.4">Floating point types</a><ul>
+<li>5.2.4.1 <a href="#section_5.2.4.1">Float</a>
+</li>
+<li>5.2.4.2 <a href="#section_5.2.4.2">Decimal</a>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>5.2 <a href="#section_5.2">Sequence values</a><ul>
-<li>5.2.1 <a href="#section_5.2.1">Strings</a>
+<li>5.3 <a href="#section_5.3">Sequence values</a><ul>
+<li>5.3.1 <a href="#section_5.3.1">Strings</a>
 </li>
-<li>5.2.2 <a href="#XML">XML</a><ul><li>5.2.2.1 <a href="#section_5.2.2.1">XML namespaces</a>
+<li>5.3.2 <a href="#XML">XML</a><ul><li>5.3.2.1 <a href="#section_5.3.2.1">XML namespaces</a>
 </li></ul>
 </li>
 </ul>
 </li>
-<li>5.3 <a href="#section_5.3">Structured values</a><ul>
-<li>5.3.1 <a href="#section_5.3.1">Lists</a><ul>
-<li>5.3.1.1 <a href="#section_5.3.1.1">Array types</a>
+<li>5.4 <a href="#section_5.4">Structured values</a><ul>
+<li>5.4.1 <a href="#section_5.4.1">Lists</a><ul>
+<li>5.4.1.1 <a href="#section_5.4.1.1">Array types</a>
 </li>
-<li>5.3.1.2 <a href="#section_5.3.1.2">Tuple types</a>
-</li>
-</ul>
-</li>
-<li>5.3.2 <a href="#section_5.3.2">Mappings</a><ul>
-<li>5.3.2.1 <a href="#section_5.3.2.1">Map types</a>
-</li>
-<li>5.3.2.2 <a href="#section_5.3.2.2">Record types</a>
+<li>5.4.1.2 <a href="#section_5.4.1.2">Tuple types</a>
 </li>
 </ul>
 </li>
-<li>5.3.3 <a href="#section_5.3.3">[Preview] Tables</a>
+<li>5.4.2 <a href="#section_5.4.2">Mappings</a><ul>
+<li>5.4.2.1 <a href="#section_5.4.2.1">Map types</a>
 </li>
-<li>5.3.4 <a href="#section_5.3.4">Error</a>
-</li>
-</ul>
-</li>
-<li>5.4 <a href="#section_5.4">Behavioral values</a><ul>
-<li>5.4.1 <a href="#functions">Functions</a>
-</li>
-<li>5.4.2 <a href="#section_5.4.2">Objects</a><ul>
-<li>5.4.2.1 <a href="#section_5.4.2.1">Fields</a>
-</li>
-<li>5.4.2.2 <a href="#section_5.4.2.2">Methods</a>
-</li>
-<li>5.4.2.3 <a href="#section_5.4.2.3">Visibility</a>
-</li>
-<li>5.4.2.4 <a href="#section_5.4.2.4">Typing</a>
-</li>
-<li>5.4.2.5 <a href="#section_5.4.2.5">Initialization</a>
-</li>
-<li>5.4.2.6 <a href="#section_5.4.2.6">Object type references</a>
+<li>5.4.2.2 <a href="#section_5.4.2.2">Record types</a>
 </li>
 </ul>
 </li>
-<li>5.4.3 <a href="#section_5.4.3">Futures</a>
+<li>5.4.3 <a href="#section_5.4.3">[Preview] Tables</a>
 </li>
-<li>5.4.4 <a href="#section_5.4.4">[Preview] Services</a>
-</li>
-<li>5.4.5 <a href="#section_5.4.5">Type descriptors</a>
-</li>
-<li>5.4.6 <a href="#section_5.4.6">Handles</a>
-</li>
-<li>5.4.7 <a href="#section_5.4.7">[Preview] Streams</a>
+<li>5.4.4 <a href="#section_5.4.4">Error</a>
 </li>
 </ul>
 </li>
-<li>5.5 <a href="#section_5.5">Other type descriptors</a><ul>
-<li>5.5.1 <a href="#section_5.5.1">Singleton types</a>
+<li>5.5 <a href="#section_5.5">Behavioral values</a><ul>
+<li>5.5.1 <a href="#functions">Functions</a>
 </li>
-<li>5.5.2 <a href="#section_5.5.2">Union types</a>
+<li>5.5.2 <a href="#section_5.5.2">Objects</a><ul>
+<li>5.5.2.1 <a href="#section_5.5.2.1">Fields</a>
 </li>
-<li>5.5.3 <a href="#section_5.5.3">Optional types</a>
+<li>5.5.2.2 <a href="#section_5.5.2.2">Methods</a>
 </li>
-<li>5.5.4 <a href="#section_5.5.4">Any type</a>
+<li>5.5.2.3 <a href="#section_5.5.2.3">Visibility</a>
 </li>
-<li>5.5.5 <a href="#anydata">Anydata type</a>
+<li>5.5.2.4 <a href="#section_5.5.2.4">Typing</a>
 </li>
-<li>5.5.6 <a href="#section_5.5.6">Never type</a>
+<li>5.5.2.5 <a href="#section_5.5.2.5">Initialization</a>
 </li>
-<li>5.5.7 <a href="#byte_type">Byte type</a>
-</li>
-<li>5.5.8 <a href="#section_5.5.8">JSON types</a>
-</li>
-<li>5.5.9 <a href="#section_5.5.9">Type reference</a>
+<li>5.5.2.6 <a href="#section_5.5.2.6">Object type references</a>
 </li>
 </ul>
 </li>
-<li>5.6 <a href="#built-in_abstract_object_types">Built-in abstract object types</a><ul>
-<li>5.6.1 <a href="#section_5.6.1">Iterator</a>
+<li>5.5.3 <a href="#section_5.5.3">Futures</a>
 </li>
-<li>5.6.2 <a href="#section_5.6.2">Iterable</a>
+<li>5.5.4 <a href="#section_5.5.4">[Preview] Services</a>
 </li>
-<li>5.6.3 <a href="#StreamImplementor">StreamImplementor</a>
+<li>5.5.5 <a href="#section_5.5.5">Type descriptors</a>
 </li>
-<li>5.6.4 <a href="#section_5.6.4">Listener</a>
+<li>5.5.6 <a href="#section_5.5.6">Handles</a>
 </li>
-</ul>
-</li>
-<li>5.7 <a href="#section_5.7">Abstract operations</a><ul>
-<li>5.7.1 <a href="#FillMember">FillMember</a>
-</li>
-<li>5.7.2 <a href="#Clone">Clone</a>
-</li>
-<li>5.7.3 <a href="#ImmutableClone">ImmutableClone</a>
-</li>
-<li>5.7.4 <a href="#section_5.7.4">SameShape</a>
-</li>
-<li>5.7.5 <a href="#section_5.7.5">NumericConvert</a>
+<li>5.5.7 <a href="#section_5.5.7">[Preview] Streams</a>
 </li>
 </ul>
 </li>
-<li>5.8 <a href="#functionally_constructible_types">Functionally constructible types</a>
+<li>5.6 <a href="#section_5.6">Other type descriptors</a><ul>
+<li>5.6.1 <a href="#section_5.6.1">Singleton types</a>
 </li>
-<li>5.9 <a href="#section_5.9">Binding patterns and variables</a><ul>
-<li>5.9.1 <a href="#section_5.9.1">Binding patterns</a>
+<li>5.6.2 <a href="#section_5.6.2">Union types</a>
 </li>
-<li>5.9.2 <a href="#section_5.9.2">Typed binding patterns</a>
+<li>5.6.3 <a href="#section_5.6.3">Optional types</a>
 </li>
-<li>5.9.3 <a href="#section_5.9.3">Variable and identifier scoping</a>
+<li>5.6.4 <a href="#section_5.6.4">Any type</a>
+</li>
+<li>5.6.5 <a href="#anydata">Anydata type</a>
+</li>
+<li>5.6.6 <a href="#section_5.6.6">Never type</a>
+</li>
+<li>5.6.7 <a href="#byte_type">Byte type</a>
+</li>
+<li>5.6.8 <a href="#section_5.6.8">JSON types</a>
+</li>
+<li>5.6.9 <a href="#section_5.6.9">Readonly type</a>
+</li>
+<li>5.6.10 <a href="#section_5.6.10">Type reference</a>
+</li>
+</ul>
+</li>
+<li>5.7 <a href="#built-in_abstract_object_types">Built-in abstract object types</a><ul>
+<li>5.7.1 <a href="#section_5.7.1">Iterator</a>
+</li>
+<li>5.7.2 <a href="#section_5.7.2">Iterable</a>
+</li>
+<li>5.7.3 <a href="#StreamImplementor">StreamImplementor</a>
+</li>
+<li>5.7.4 <a href="#section_5.7.4">Listener</a>
+</li>
+</ul>
+</li>
+<li>5.8 <a href="#section_5.8">Abstract operations</a><ul>
+<li>5.8.1 <a href="#FillMember">FillMember</a>
+</li>
+<li>5.8.2 <a href="#Clone">Clone</a>
+</li>
+<li>5.8.3 <a href="#ImmutableClone">ImmutableClone</a>
+</li>
+<li>5.8.4 <a href="#section_5.8.4">SameShape</a>
+</li>
+<li>5.8.5 <a href="#section_5.8.5">NumericConvert</a>
+</li>
+</ul>
+</li>
+<li>5.9 <a href="#functionally_constructible_types">Functionally constructible types</a>
+</li>
+<li>5.10 <a href="#section_5.10">Binding patterns and variables</a><ul>
+<li>5.10.1 <a href="#section_5.10.1">Binding patterns</a>
+</li>
+<li>5.10.2 <a href="#section_5.10.2">Typed binding patterns</a>
+</li>
+<li>5.10.3 <a href="#section_5.10.3">Variable and identifier scoping</a>
 </li>
 </ul>
 </li>
@@ -726,6 +737,12 @@ productions for non-terminals whose names start with a lower-case letter.
 </section>
 <section>
 <h2 id="values_types">5. Values, types and variables</h2>
+
+<section>
+<h3 id="section_5.1">5.1 Overview</h3>
+
+<section>
+<h4 id="section_5.1.1">5.1.1 Type system fundamentals</h4>
 <p>
 Ballerina programs operate on a rich universe of values. This universe of values
 is partitioned into a number of <em>basic types</em>; every value belongs to
@@ -809,6 +826,9 @@ that the variable will only ever contain a value that belongs to the type.
 Ballerina also provides mechanisms that take a value that looks like a type and
 use it to create a value that belongs to a type.
 </p>
+</section>
+<section>
+<h4 id="section_5.1.2">5.1.2 Type descriptors</h4>
 <pre class="grammar"><span class="ntdfn" id="type-descriptor">type-descriptor</span> :=
    <a href="#simple-type-descriptor"><span class="ntref">simple-type-descriptor</span></a>
    | <a href="#sequence-type-descriptor"><span class="ntref">sequence-type-descriptor</span></a>
@@ -926,7 +946,7 @@ type</td>
    <td>a sequence of values that can be generated lazily</td>
   </tr>
   <tr>
-   <td rowspan="8">other</td>
+   <td rowspan="9">other</td>
    <td>singleton</td>
    <td>a single value described by a literal</td>
   </tr>
@@ -959,6 +979,10 @@ type</td>
    <td>the union of (), int, float, decimal, string, and maps and arrays whose
 values are, recursively, json</td>
   </tr>
+  <tr>
+   <td>readonly</td>
+   <td>the union of all inherently immutable basic types</td>
+  </tr>
 </table>
 <p>
 In addition to describing a type, a type descriptor may also include information
@@ -967,6 +991,9 @@ described by a type descriptor is known at compile time, this additional
 information may need to be resolved at runtime. The typedesc basic type
 represents a type descriptor that has been resolved.
 </p>
+</section>
+<section>
+<h4 id="section_5.1.3">5.1.3 Iterability</h4>
 <p>
 Values of some basic types are <em>iterable</em>. An iterable value supports an
 iteration operation, which treats the iterable value as consisting of a sequence
@@ -1028,9 +1055,11 @@ The following tables summarizes the iterable basic types.
 <td><code>C</code></td>
 </tr>
 </table>
+</section>
+</section>
 
 <section>
-<h3 id="section_5.1">5.1 Simple values</h3>
+<h3 id="section_5.2">5.2 Simple values</h3>
 <p>
 A simple value belongs to exactly one of the following basic types:
 </p>
@@ -1053,7 +1082,7 @@ basic type.
    | <a href="#floating-point-type-descriptor"><span class="ntref">floating-point-type-descriptor</span></a>
 </pre>
 <section>
-<h4 id="section_5.1.1">5.1.1 Nil</h4>
+<h4 id="section_5.2.1">5.2.1 Nil</h4>
 
 <pre class="grammar"><span class="ntdfn" id="nil-type-descriptor">nil-type-descriptor</span> :=  <code>(</code> <code>)</code>
 <span class="ntdfn" id="nil-literal">nil-literal</span> :=  <code>(</code> <code>)</code> | <code>null</code>
@@ -1071,7 +1100,7 @@ keyword, but is instead written <code>()</code> like the value.
 </p>
 </section>
 <section>
-<h4 id="section_5.1.2">5.1.2 Boolean</h4>
+<h4 id="section_5.2.2">5.2.2 Boolean</h4>
 
 <pre class="grammar"><span class="ntdfn" id="boolean-type-descriptor">boolean-type-descriptor</span> := <code>boolean</code>
 <span class="ntdfn" id="boolean-literal">boolean-literal</span> := <code>true</code> | <code>false</code>
@@ -1081,7 +1110,7 @@ The boolean type consists of the values true and false.
 </p>
 </section>
 <section>
-<h4 id="section_5.1.3">5.1.3 Int</h4>
+<h4 id="section_5.2.3">5.2.3 Int</h4>
 
 <pre class="grammar"><span class="ntdfn" id="int-type-descriptor">int-type-descriptor</span> := <code>int</code>
 <span class="ntdfn" id="int-literal">int-literal</span> := <a href="#DecimalNumber"><span class="ntref">DecimalNumber</span></a> | <a href="#HexIntLiteral"><span class="ntref">HexIntLiteral</span></a>
@@ -1106,7 +1135,7 @@ unsigned integers representable in 8, 16 and 32 bits.
 
 </section>
 <section>
-<h4 id="section_5.1.4">5.1.4 Floating point types</h4>
+<h4 id="section_5.2.4">5.2.4 Floating point types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="floating-point-type-descriptor">floating-point-type-descriptor</span> := <code>float</code> | <code>decimal</code>
 <span class="ntdfn" id="floating-point-literal">floating-point-literal</span> :=
@@ -1136,7 +1165,7 @@ unsigned integers representable in 8, 16 and 32 bits.
 </pre>
 
 <section>
-<h5 id="section_5.1.4.1">5.1.4.1 Float</h5>
+<h5 id="section_5.2.4.1">5.2.4.1 Float</h5>
 
 <p>
 The float type corresponds to IEEE 754-2008 64-bit binary (radix 2) floating
@@ -1162,7 +1191,7 @@ Java.)
 </p>
 </section>
 <section>
-<h5 id="section_5.1.4.2">5.1.4.2 Decimal</h5>
+<h5 id="section_5.2.4.2">5.2.4.2 Decimal</h5>
 
 <p>
 The decimal type corresponds to a subset of IEEE 754-2008 128-bit decimal (radix
@@ -1212,7 +1241,7 @@ do so using different exponents.
 </section>
 </section>
 <section>
-<h3 id="section_5.2">5.2 Sequence values</h3>
+<h3 id="section_5.3">5.3 Sequence values</h3>
 
 <pre class="grammar"><span class="ntdfn" id="sequence-type-descriptor">sequence-type-descriptor</span> :=
    <a href="#string-type-descriptor"><span class="ntref">string-type-descriptor</span></a>
@@ -1276,7 +1305,7 @@ always nil.
 </p>
 
 <section>
-<h4 id="section_5.2.1">5.2.1 Strings</h4>
+<h4 id="section_5.3.1">5.3.1 Strings</h4>
 
 <pre class="grammar"><span class="ntdfn" id="string-type-descriptor">string-type-descriptor</span> := <code>string</code>
 <span class="ntdfn" id="string-literal">string-literal</span> := <a href="#DoubleQuotedStringLiteral"><span class="ntref">DoubleQuotedStringLiteral</span></a>
@@ -1310,7 +1339,7 @@ There is a <a href="#built-in_subtypes">built-in subtype</a>
 </p>
 </section>
 <section>
-<h4 id="XML">5.2.2 XML</h4>
+<h4 id="XML">5.3.2 XML</h4>
 
 <p>
 An xml value is a sequence representing parsed XML, such as occurs in the
@@ -1371,7 +1400,7 @@ when the value is constructed. The storage identity of the attributes map of an
 element are also fixed when the element is constructed.
 </p>
 <section>
-<h5 id="section_5.2.2.1">5.2.2.1 XML namespaces</h5>
+<h5 id="section_5.3.2.1">5.3.2.1 XML namespaces</h5>
 <p>
 The name of an element or attribute, which in the XML Information Set is
 represented by a combination of the [namespace name] and [local name] properties
@@ -1471,7 +1500,7 @@ namespaces.</li>
 
 </section>
 <section>
-<h3 id="section_5.3">5.3 Structured values</h3>
+<h3 id="section_5.4">5.4 Structured values</h3>
 <p>
 There are four basic types of structured value. First, there are two container
 basic types: list and mapping. Second, there are the table and error basic
@@ -1560,7 +1589,7 @@ A shape is pure if it is the shape of a pure value. A type is pure if it
 contains only pure shapes.
 </p>
 <section>
-<h4 id="section_5.3.1">5.3.1 Lists</h4>
+<h4 id="section_5.4.1">5.4.1 Lists</h4>
 <p>
 A list value is a container that keeps its members in an ordered list. The
 number of members of the list is called the <em>length </em>of the list. The key
@@ -1593,7 +1622,7 @@ T<sub><em>i</em></sub>.
 Both kinds of type descriptor are covariant in the types of their members.
 </p>
 <section>
-<h5 id="section_5.3.1.1">5.3.1.1 Array types</h5>
+<h5 id="section_5.4.1.1">5.4.1.1 Array types</h5>
 <p>
 An array type-descriptor describes a type of list value by specifying the type
 that the value for all members must belong to, and optionally, a length.
@@ -1631,7 +1660,7 @@ The type of the values in the iteration sequence of a value belonging
 </p>
 </section>
 <section>
-<h5 id="section_5.3.1.2">5.3.1.2 Tuple types</h5>
+<h5 id="section_5.4.1.2">5.4.1.2 Tuple types</h5>
 <p>
 A tuple type descriptor describes a type of list value by specifying a separate
 type for each member of the list.
@@ -1665,7 +1694,7 @@ array-type-descriptor with a length.
 </section>
 </section>
 <section>
-<h4 id="section_5.3.2">5.3.2 Mappings</h4>
+<h4 id="section_5.4.2">5.4.2 Mappings</h4>
 <p>
 A mapping value is a container where each member has a key, which is a string,
 that uniquely identifies within the mapping. We use the term <em>field</em> to
@@ -1704,7 +1733,7 @@ constraint is not merely that the value looks like T<sub><em>f</em></sub>.
 Both kinds of type descriptor are covariant in the types of their members.
 </p>
 <section>
-<h5 id="section_5.3.2.1">5.3.2.1 Map types</h5>
+<h5 id="section_5.4.2.1">5.4.2.1 Map types</h5>
 <p>
 A map type-descriptor describes a type of mapping value by specifying the type
 that the value for all fields must belong to.
@@ -1726,7 +1755,7 @@ then the type <code>map&lt;T&gt;</code> also has lax static typing.
 </p>
 </section>
 <section>
-<h5 id="section_5.3.2.2">5.3.2.2 Record types</h5>
+<h5 id="section_5.4.2.2">5.4.2.2 Record types</h5>
 <p>
 A record type descriptor describes a type of mapping value by specifying a type
 separately for the value of each field.
@@ -1822,7 +1851,7 @@ explicit <code>record-rest-descriptor</code>.
 </section>
 </section>
 <section>
-<h4 id="section_5.3.3">5.3.3 [Preview] Tables</h4>
+<h4 id="section_5.4.3">5.4.3 [Preview] Tables</h4>
 <p>
 A table is intended to be similar to the table of relational database table. A
 table value contains an immutable set of column names and a mutable bag of rows.
@@ -1884,7 +1913,7 @@ a mapping value in the iteration sequence will be a closed record type.
 
 </section>
 <section>
-<h4 id="section_5.3.4">5.3.4 Error</h4>
+<h4 id="section_5.4.4">5.4.4 Error</h4>
 
 <pre class="grammar"><span class="ntdfn" id="error-type-descriptor">error-type-descriptor</span> := <code>error</code> [<a href="#error-type-params"><span class="ntref">error-type-params</span></a>]
 <span class="ntdfn" id="error-type-params">error-type-params</span> := <code>&lt;</code> (<a href="#explicit-error-type-params"><span class="ntref">explicit-error-type-params</span></a> | <a href="#inferred-error-type-param"><span class="ntref">inferred-error-type-param</span></a>) <code>&gt;</code>
@@ -1954,7 +1983,7 @@ Error is the only structured basic type that is not iterable.
 </section>
 </section>
 <section>
-<h3 id="section_5.4">5.4 Behavioral values</h3>
+<h3 id="section_5.5">5.5 Behavioral values</h3>
 
 <pre class="grammar"><span class="ntdfn" id="behavioral-type-descriptor">behavioral-type-descriptor</span> :=
    <a href="#function-type-descriptor"><span class="ntref">function-type-descriptor</span></a>
@@ -1968,7 +1997,7 @@ Error is the only structured basic type that is not iterable.
 
 
 <section>
-<h4 id="functions">5.4.1 Functions</h4>
+<h4 id="functions">5.5.1 Functions</h4>
 
 <pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
@@ -2083,7 +2112,7 @@ is a subtype of T.
 </p>
 </section>
 <section>
-<h4 id="section_5.4.2">5.4.2 Objects</h4>
+<h4 id="section_5.5.2">5.5.2 Objects</h4>
 <p>
 Objects are a combination of fields along with a set of associated functions,
 called methods, which can be used to manipulate them. An object's methods are
@@ -2123,7 +2152,7 @@ the object type is a client object type. A client object type may have remote
 methods; other objects types must not.
 </p>
 <section>
-<h5 id="section_5.4.2.1">5.4.2.1 Fields</h5>
+<h5 id="section_5.5.2.1">5.5.2.1 Fields</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<a href="#default-value"><span class="ntref">default-value</span></a>]<code>;</code>
@@ -2134,7 +2163,7 @@ names of all the fields of an object must be distinct.
 </p>
 </section>
 <section>
-<h5 id="section_5.4.2.2">5.4.2.2 Methods</h5>
+<h5 id="section_5.5.2.2">5.5.2.2 Methods</h5>
 <p>
 Methods are functions that are associated to the object and are called via a
 value of that type using a <code>method-call-expr</code>.
@@ -2177,7 +2206,7 @@ invoked using a different syntax from a non-remote method.
 
 </section>
 <section>
-<h5 id="section_5.4.2.3">5.4.2.3 Visibility</h5>
+<h5 id="section_5.5.2.3">5.5.2.3 Visibility</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := [<a href="#explicit-visibility-qual"><span class="ntref">explicit-visibility-qual</span></a>]
 <span class="ntdfn" id="explicit-visibility-qual">explicit-visibility-qual</span> := <code>public</code> | <code>private</code>
@@ -2202,7 +2231,7 @@ The visibility of a method or field of an abstract object type cannot be
 </p>
 </section>
 <section>
-<h5 id="section_5.4.2.4">5.4.2.4 Typing</h5>
+<h5 id="section_5.5.2.4">5.5.2.4 Typing</h5>
 
 <p>
 The shape of an object consists of an unordered collection of object field
@@ -2246,7 +2275,7 @@ a subtype of T only within the same module as T.</li>
  
 </section>
 <section>
-<h5 id="section_5.4.2.5">5.4.2.5 Initialization</h5>
+<h5 id="section_5.5.2.5">5.5.2.5 Initialization</h5>
 <p>
 A non-abstract object type provides a way to initialize an object of the type.
 An object is initialized by:
@@ -2297,7 +2326,7 @@ preceding the <code>.</code> is <code>self</code>.
 </p>
 </section>
 <section>
-<h5 id="section_5.4.2.6">5.4.2.6 Object type references</h5>
+<h5 id="section_5.5.2.6">5.5.2.6 Object type references</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-reference">object-type-reference</span> :=
    <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> <code>;</code>
@@ -2318,7 +2347,7 @@ the T<sub>o</sub> must be in the same module.
 </section>
 </section>
 <section>
-<h4 id="section_5.4.3">5.4.3 Futures</h4>
+<h4 id="section_5.5.3">5.5.3 Futures</h4>
 
 <pre class="grammar"><span class="ntdfn" id="future-type-descriptor">future-type-descriptor</span> := <code>future</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
 </pre>
@@ -2333,7 +2362,7 @@ if it has basic type future.
 </p>
 </section>
 <section>
-<h4 id="section_5.4.4">5.4.4 [Preview] Services</h4>
+<h4 id="section_5.5.4">5.5.4 [Preview] Services</h4>
 
 <pre class="grammar"><span class="ntdfn" id="service-type-descriptor">service-type-descriptor</span> := <code>service</code>
 </pre>
@@ -2360,7 +2389,7 @@ annotations on type definitions to support this.
 </p>
 </section>
 <section>
-<h4 id="section_5.4.5">5.4.5 Type descriptors</h4>
+<h4 id="section_5.5.5">5.5.5 Type descriptors</h4>
 <pre class="grammar"><span class="ntdfn" id="typedesc-type-descriptor">typedesc-type-descriptor</span> := <code>typedesc</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
 </pre>
 <p>
@@ -2377,14 +2406,15 @@ will result in a type descriptor value.
 
 </section>
 <section>
-<h4 id="section_5.4.6">5.4.6 Handles</h4>
+<h4 id="section_5.5.6">5.5.6 Handles</h4>
 <pre class="grammar"><span class="ntdfn" id="handle-type-descriptor">handle-type-descriptor</span> := <code>handle</code>
 </pre>
 <p>
 A handle value is a reference to storage managed externally to a Ballerina
 program. Handle values are useful only in conjunction with functions that have
 external function bodies; in particular, a new handle value can be created only
-by a function with an external function body.
+by a function with an external function body. Handle values are inherently
+immutable.
 </p>
 <p>
 A value belongs to a type <code>handle</code> if it has a basic type of handle.
@@ -2393,7 +2423,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </section>
 
 <section>
-<h4 id="section_5.4.7">5.4.7 [Preview] Streams</h4>
+<h4 id="section_5.5.7">5.5.7 [Preview] Streams</h4>
 
 <pre class="grammar"><span class="ntdfn" id="stream-type-descriptor">stream-type-descriptor</span> := <code>stream</code> [<a href="#stream-type-parameters"><span class="ntref">stream-type-parameters</span></a>]
 <span class="ntdfn" id="stream-type-parameters">stream-type-parameters</span> := <code>&lt;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<code>,</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>]<code>&gt;</code>
@@ -2447,7 +2477,7 @@ because Ballerina does not yet support parameterized object types.
 
 </section>
 <section>
-<h3 id="section_5.5">5.5 Other type descriptors</h3>
+<h3 id="section_5.6">5.6 Other type descriptors</h3>
 
 <pre class="grammar"><span class="ntdfn" id="other-type-descriptor">other-type-descriptor</span> :=
    <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
@@ -2458,6 +2488,7 @@ because Ballerina does not yet support parameterized object types.
    | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
    | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
    | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
+   | <a href="#readonly-type-descriptor"><span class="ntref">readonly-type-descriptor</span></a>
    | <a href="#type-reference"><span class="ntref">type-reference</span></a>
    | <code>(</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>)</code>
 </pre>
@@ -2467,7 +2498,7 @@ section do not add to the universe of values. They are just adding new ways to
 describe subsets of this universe.
 </p>
 <section>
-<h4 id="section_5.5.1">5.5.1 Singleton types</h4>
+<h4 id="section_5.6.1">5.6.1 Singleton types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="singleton-type-descriptor">singleton-type-descriptor</span> := <a href="#simple-const-expr"><span class="ntref">simple-const-expr</span></a>
 
@@ -2480,7 +2511,7 @@ variable-reference within the simple-const-expr to reference a structured value.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.2">5.5.2 Union types</h4>
+<h4 id="section_5.6.2">5.6.2 Union types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="union-type-descriptor">union-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>|</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
 </pre>
@@ -2490,7 +2521,7 @@ The value space of a union type <code>T1|T2</code> is the union of
 </p>
 </section>
 <section>
-<h4 id="section_5.5.3">5.5.3 Optional types</h4>
+<h4 id="section_5.6.3">5.6.3 Optional types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="optional-type-descriptor">optional-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>?</code>
 </pre>
@@ -2500,7 +2531,7 @@ A type <code>T?</code> means T optionally, and is exactly equivalent to
 </p>
 </section>
 <section>
-<h4 id="section_5.5.4">5.5.4 Any type</h4>
+<h4 id="section_5.6.4">5.6.4 Any type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
 </pre>
@@ -2513,7 +2544,7 @@ type.
 </p>
 </section>
 <section>
-<h4 id="anydata">5.5.5 Anydata type</h4>
+<h4 id="anydata">5.6.5 Anydata type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
 </pre>
@@ -2534,7 +2565,7 @@ the type <code>anydata|error</code> is the supertype of all pure types. The type
 </pre>
 </section>
 <section>
-<h4 id="section_5.5.6">5.5.6 Never type</h4>
+<h4 id="section_5.6.6">5.6.6 Never type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
 </pre>
@@ -2554,7 +2585,7 @@ as <code>T</code>.
 </p>
 </section>
 <section>
-<h4 id="byte_type">5.5.7 Byte type</h4>
+<h4 id="byte_type">5.6.7 Byte type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
 </pre>
@@ -2565,7 +2596,7 @@ subtype</a> <code>int:Unsigned8</code>.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.8">5.5.8 JSON types</h4>
+<h4 id="section_5.6.8">5.6.8 JSON types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
 </pre>
@@ -2581,7 +2612,35 @@ In addition, the <code>json</code> type is defined to have <a href="#lax_static_
 
 </section>
 <section>
-<h4 id="section_5.5.9">5.5.9 Type reference</h4>
+<h4 id="section_5.6.9">5.6.9 Readonly type</h4>
+<pre class="grammar"><span class="ntdfn" id="readonly-type-descriptor">readonly-type-descriptor</span> := <code>readonly</code>
+</pre>
+<p>
+The <code>readonly</code> type is a predefined name for the union of all basic types
+that are inherently immutable. These are:
+</p>
+<ul>
+<li>all simple types
+<ul>
+<li>nil</li>
+<li>boolean</li>
+<li>int</li>
+<li>float</li>
+<li>decimal</li>
+</ul>
+</li>
+<li>string</li>
+<li>error</li>
+<li>function</li>
+<li>service</li>
+<li>typedesc</li>
+<li>handle</li>
+</ul>
+
+</section>
+
+<section>
+<h4 id="section_5.6.10">5.6.10 Type reference</h4>
 <pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
 </pre>
 
@@ -2593,7 +2652,7 @@ same module or another module.
 </section>
 </section>
 <section>
-<h3 id="built-in_abstract_object_types">5.6 Built-in abstract object types</h3>
+<h3 id="built-in_abstract_object_types">5.7 Built-in abstract object types</h3>
 <p>
 There are several abstract object types that are built-in in the sense that the
 language treats objects with these types specially. Note that it is only the
@@ -2601,7 +2660,7 @@ types that are built-in; the names of these types are not built-in.
 </p>
 
 <section>
-<h4 id="section_5.6.1">5.6.1 Iterator</h4>
+<h4 id="section_5.7.1">5.7.1 Iterator</h4>
 <p>
 A value of iterable type with iteration value type T and iteration completion
 type C provides a way of creating an iterator object that belongs to the object
@@ -2658,7 +2717,7 @@ value that represents the result of the iteration.
 </p>
 </section>
 <section>
-<h4 id="section_5.6.2">5.6.2 Iterable</h4>
+<h4 id="section_5.7.2">5.7.2 Iterable</h4>
 <p>
 An object belongs to the abstract object type Iterable&lt;T,C&gt; if it has a
 method named <code>__iterator</code> with no arguments and a return type that is
@@ -2668,7 +2727,7 @@ the iteration sequence and iteration completion value.
 </p>
 </section>
 <section>
-<h4 id="StreamImplementor">5.6.3 StreamImplementor</h4>
+<h4 id="StreamImplementor">5.7.3 StreamImplementor</h4>
 <p>
 An object belongs to the abstract object type StreamImplementor&lt;T,C&gt; if it
 belongs to Iterator&lt;T,C&gt; and also optionally has a method
@@ -2709,7 +2768,7 @@ MutableCollection&lt;T&gt;.
 </section>
 -->
 <section>
-<h4 id="section_5.6.4">5.6.4 Listener</h4>
+<h4 id="section_5.7.4">5.7.4 Listener</h4>
 <p>
 The Listener type is defined as follows.
 </p>
@@ -2731,7 +2790,7 @@ precise service type that is used to the first argument to
 </section>
 </section>
 <section>
-<h3 id="section_5.7">5.7 Abstract operations</h3>
+<h3 id="section_5.8">5.8 Abstract operations</h3>
 <p>
 These section specifies a number of operations that can be performed on values.
 These operations are for internal use by the specification. These operations are
@@ -2739,7 +2798,7 @@ named in CamelCase with an initial upper-case letter to distinguish them from
 functions in the lang library.
 </p>
 <section>
-<h4 id="FillMember">5.7.1 FillMember</h4>
+<h4 id="FillMember">5.8.1 FillMember</h4>
 <p>
 The FillMember(c, k) operation is defined for a container value c and a key
 value k. It can be performed when c does not have a member with key k; if it
@@ -2861,7 +2920,7 @@ and the filler value for B also belongs to the union</td>
 
 </section>
 <section>
-<h4 id="Clone">5.7.2 Clone</h4>
+<h4 id="Clone">5.8.2 Clone</h4>
 <p>
 Clone(v) is defined for any pure value v. It performs a deep copy, recursively
 copying all structural values and their members and recursively copy all
@@ -2885,7 +2944,7 @@ lang.value module of the lang library.
 </p>
 </section>
 <section>
-<h4 id="ImmutableClone">5.7.3 ImmutableClone</h4>
+<h4 id="ImmutableClone">5.8.3 ImmutableClone</h4>
 <p>
 ImmutableClone(v) is defined for any pure value v. It performs a deep copy of v
 similar to Clone(v), except that newly constructed values are constructed as
@@ -2901,7 +2960,7 @@ function in the lang.value module of the lang library.
 </p>
 </section>
 <section>
-<h4 id="section_5.7.4">5.7.4 SameShape</h4>
+<h4 id="section_5.8.4">5.8.4 SameShape</h4>
 <p>
 SameShape(v1, v2) is defined for any pure values v1, v2. It returns true or
 false depending of whether v1 and v2 have the same shape. SameShape(v1, v2) must
@@ -2924,7 +2983,7 @@ SameShape(Clone(x), x) is guaranteed to be true for any pure value.
 </p>
 </section>
 <section>
-<h4 id="section_5.7.5">5.7.5 NumericConvert</h4>
+<h4 id="section_5.8.5">5.8.5 NumericConvert</h4>
 <p>
 NumericConvert(t, v) is defined if t is the typedesc for float, decimal or int,
 and v is a numeric value. It converts v to a value in t, or returns an error,
@@ -2958,7 +3017,7 @@ according to the following table.
 </section>
 </section>
 <section>
-<h3 id="functionally_constructible_types">5.8 Functionally constructible types</h3>
+<h3 id="functionally_constructible_types">5.9 Functionally constructible types</h3>
 <p>
 A type that is <em>functionally constructible</em> allows values of the type to
 be destructured and constructed using a functional syntax. A functionally
@@ -3058,9 +3117,9 @@ In the above table, argument position 1 refers to the first positional argument.
 </section>
 
 <section>
-<h3 id="section_5.9">5.9 Binding patterns and variables</h3>
+<h3 id="section_5.10">5.10 Binding patterns and variables</h3>
 <section>
-<h4 id="section_5.9.1">5.9.1 Binding patterns</h4>
+<h4 id="section_5.10.1">5.10.1 Binding patterns</h4>
 <p>
 Binding patterns are used to support destructuring, which allows different parts
 of a single structured value each to be assigned to separate variables at the
@@ -3164,7 +3223,7 @@ descriptor.</li>
 
 </section>
 <section>
-<h4 id="section_5.9.2">5.9.2 Typed binding patterns</h4>
+<h4 id="section_5.10.2">5.10.2 Typed binding patterns</h4>
 
 <pre class="grammar"><span class="ntdfn" id="typed-binding-pattern">typed-binding-pattern</span> := <a href="#inferable-type-descriptor"><span class="ntref">inferable-type-descriptor</span></a> <a href="#binding-pattern"><span class="ntref">binding-pattern</span></a>
 <span class="ntdfn" id="inferable-type-descriptor">inferable-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> | <code>var</code>
@@ -3194,7 +3253,7 @@ will never fail at runtime.
 </p>
 </section>
 <section>
-<h4 id="section_5.9.3">5.9.3 Variable and identifier scoping</h4>
+<h4 id="section_5.10.3">5.10.3 Variable and identifier scoping</h4>
 <p>
 For every variable, there is place in the program that declares it. Variables
 are lexically scoped: every variable declaration has a scope which determines
@@ -7826,6 +7885,7 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 <section>
 <h3 id="section_B.1">B.1 Summary of changes from 2020R1 to 2020R2</h3>
 <ol>
+<li>The <code>readonly</code> type has been added.</li>
 <li>The XML item-specific subtypes can be used as constructors, both in
 expressions and in binding patterns.</li>
 </ol>
