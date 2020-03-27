@@ -847,6 +847,20 @@ contained in a structured value is part of the read-only aspect of those values
 and of the read-only aspectof the structured value. Everything about a shape
 except the read-only bits constitutes the primary aspect of the shape.
 </p>
+<p>
+A value is <em>plain data</em> if it is a simple value, a sequence value or a
+structured value that does not contain a behavioral value at any depth.
+More precisely, a value is defined to be <em>plain data</em> if it is
+</p>
+<ul>
+<li>a simple value,</li>
+<li>a sequence value, or</li>
+<li>a structured value, all of whose members are also plain data.</li>
+</ul>
+<p>
+Plain data values can be compared for equality.
+</p>
+
 </section>
 <section>
 <h4 id="section_5.1.2">5.1.2 Type descriptors</h4>
@@ -985,7 +999,8 @@ type</td>
   </tr>
   <tr>
    <td>anydata</td>
-   <td>not an error and does not contain behavioral members at any depth</td>
+   <td>plain data (a simple value, sequence value or structured value that
+   does not contain behavioral members at any depth)</td>
   </tr>
   <tr>
    <td>never</td>
@@ -1596,17 +1611,7 @@ The following table summarizes the type descriptors for structured types.
    <td>record</td>
   </tr>
 </table>
-<p>
-A value is defined to be <em>pure</em> if it either
-</p>
-<ul>
-<li>is a simple value, or</li>
-<li>is a structured value, all of whose members are also pure values.</li>
-</ul>
-<p>
-A shape is pure if it is the shape of a pure value. A type is pure if it
-contains only pure shapes.
-</p>
+
 <section>
 <h4 id="section_5.4.1">5.4.1 Lists</h4>
 <p>
@@ -1832,10 +1837,9 @@ every extra field shape is a member of <code>T</code>.</li>
 <p>
 An inclusive-record-type-descriptor, which uses the <code>{</code> and
 <code>}</code> delimiters, allows any mapping value that includes the fields
-described, provided that the other fields are pure. More precisely, a type
-descriptor <code>record { F };</code> is equivalent to <code>record {| F; T...;
-|}</code>, where T is the type that contains all pure shapes, which can be
-written as <a href="#anydata"><code>anydata</code></a>.
+described, provided that the values of all other fields are plain data. A type
+descriptor <code>record { F };</code> is thus equivalent to <code>record {| F;
+anydata...; |}</code>, where <code>anydata</code> is defined <a href="#anydata">below</a> as the type descriptor for plain data.
 </p>
 <p>
 A record type descriptor that either is an inclusive-record-type-descriptor or
@@ -1905,7 +1909,7 @@ marked as a primary key, that value of that column in both rows is the same.
 A direct-table-type-descriptor has a descriptor for each column, which specifies the
 name of the column, whether that column is part of a primary key and the type
 that values in that column must belong to. The type descriptor for the column
-must be a pure type. If a column is part of a primary key, then the type
+must be a plain data type. If a column is part of a primary key, then the type
 descriptor for the column must also allow only non-nil simple values.
 </p>
 <p>
@@ -1991,7 +1995,7 @@ The detail mapping must belong to the following type, which is provided as type
 <pre>record {|
    string message?;
    error cause?;
-   (anydata|error)...;
+   (anydata|readonly)...;
 |};
 </pre>
 <p>
@@ -2009,9 +2013,6 @@ A type of <code>error&lt;*&gt;</code> means that the type is a subtype of error,
 where the precise subtype is to be inferred from the context. This is allowed
 only within type descriptors occurring in a context that is specified to be
 inferable.
-</p>
-<p>
-Error is the only structured basic type that is not iterable.
 </p>
 </section>
 
@@ -2568,8 +2569,9 @@ type.
 <pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
 </pre>
 <p>
-The type descriptor <code>anydata</code> describes the type of all pure values.
-The type <code>anydata</code> contains a shape if and only if the shape is pure.
+The type descriptor <code>anydata</code> describes the type of plain data. The
+type <code>anydata</code> contains a shape if and only if it is the shape of a
+value that is plain data. The <code>anydata</code> type can thus be defined as:
 </p>
 
 <pre>  () | boolean | int | float | decimal
@@ -2948,14 +2950,15 @@ and the filler value for B also belongs to the union</td>
 <section>
 <h4 id="Clone">5.8.2 Clone</h4>
 <p>
-Clone(v) is defined for any pure value v. It performs a deep copy, recursively
-copying all structural values and their members and recursively copy all
-sequence values and their constituents. Clone(v) for an immutable value v returns
-v. If v is a container, Clone(v) has the same inherent type as v. The graph of
-references of Clone(v) must have the same structure as that of v. This implies
-that the number of distinct references reachable from Clone(v) must be the same
-as the number of distinct references reachable from v. Clone(v) must terminate
-for any pure value v, even if v has cycles.
+Clone(v) is defined for any value v that belongs to the type
+<code>anydata|readonly</code>. It performs a deep copy, recursively copying all
+structural values and their members and recursively copying all sequence values
+and their constituents. Clone(v) for an immutable value v returns v. If v is of
+a basic type that has an inherent type, Clone(v) has the same inherent type as
+v. The graph of references of Clone(v) must have the same structure as that of
+v. This implies that the number of distinct references reachable from Clone(v)
+must be the same as the number of distinct references reachable from v. Clone(v)
+must terminate even if v has cycles.
 </p>
 <p>
 Clone(v) cannot be implemented simply by recursively calling Clone on all
@@ -2972,9 +2975,10 @@ lang.value module of the lang library.
 <section>
 <h4 id="ImmutableClone">5.8.3 ImmutableClone</h4>
 <p>
-ImmutableClone(v) is defined for any pure value v. It performs a deep copy of v
-similar to Clone(v), except that newly constructed values are constructed as
-immutable. Any immutable value is not copied. 
+ImmutableClone(v) is defined for any value v that belongs to the type
+<code>anydata|readonly</code>. It performs a deep copy of v similar to Clone(v),
+except that newly constructed values are constructed as immutable. Any immutable
+value is not copied.
 </p>
 <p>
 Like Clone, ImmutableClone must preserve graph structure, including cycles.
@@ -2988,12 +2992,13 @@ function in the lang.value module of the lang library.
 <section>
 <h4 id="section_5.8.4">5.8.4 SameShape</h4>
 <p>
-SameShape(v1, v2) is defined for any pure values v1, v2. It returns true or
-false depending of whether v1 and v2 have the same shape. SameShape(v1, v2) must
-terminate for any pure values v1 and v2, even if v1 or v2 have cycles.
-SameShape(v1, v2) returns true if v1 and v2 have the same shape, even if the
-graphs of references of v1 and v2 have different structures.  If two values v1
-and v2 have different basic types, then SameShape(v1, v2) will be false.
+SameShape(v1, v2) is defined for any values v1, v2 that belong to type anydata.
+It returns true or false depending of whether v1 and v2 have the same shape.
+SameShape(v1, v2) must terminate for any values v1 and v2 of type anydata, even
+if v1 or v2 have cycles. SameShape(v1, v2) returns true if v1 and v2 have the
+same shape, even if the graphs of references of v1 and v2 have different
+structures. If two values v1 and v2 have different basic types, then
+SameShape(v1, v2) will be false.
 </p>
 <p>
 The possibility of cycles means that SameShape cannot be implemented simply by
@@ -3005,7 +3010,7 @@ whether it has already recorded that pair (in either order), and, if it has,
 proceed on the assumption that they compare equal.
 </p>
 <p>
-SameShape(Clone(x), x) is guaranteed to be true for any pure value.
+SameShape(Clone(x), x) is guaranteed to be true for any value of type anydata.
 </p>
 </section>
 <section>
@@ -5021,8 +5026,8 @@ v<sub>1</sub> is the same as the storage identity of v<sub>2</sub>.</li>
 <p>
 The == operator tests for deep equality. The != operator results in the negation
 of the result of the == operator. For both == and !=, both operands must have a
-static type that is pure. Two values v1, v2 are deeply equal if SameShape(v1,
-v2) is true.
+static type that is a subtype of anydata. Two values v1, v2 are deeply equal if
+SameShape(v1, v2) is true.
 </p>
 <p>
 Note that === and == are the same for simple values except for floating point types.
@@ -5918,8 +5923,10 @@ the corresponding receive action. If F is empty, then this static type will be
 equivalent to ().
 </p>
 <p>
-The contextually expected type used to interpret <code>expression</code> is the
-contextually expected type from the corresponding receive-action.
+The static type of the <code>expression</code> must be a subtype of
+<code>anydata|readonly</code>. The contextually expected type used to interpret
+<code>expression</code> is the contextually expected type from the corresponding
+receive-action.
 </p>
 <p>
 If the receive-action corresponding to an async-send-action has a non-empty
