@@ -118,37 +118,37 @@ mailing list.
 </li>
 <li>5.4.3 <a href="#section_5.4.3">[Preview] Tables</a>
 </li>
-<li>5.4.4 <a href="#section_5.4.4">Error</a>
-</li>
 </ul>
 </li>
 <li>5.5 <a href="#section_5.5">Behavioral values</a><ul>
-<li>5.5.1 <a href="#functions">Functions</a>
+<li>5.5.1 <a href="#section_5.5.1">Error</a>
 </li>
-<li>5.5.2 <a href="#section_5.5.2">Objects</a><ul>
-<li>5.5.2.1 <a href="#section_5.5.2.1">Fields</a>
+<li>5.5.2 <a href="#functions">Functions</a>
 </li>
-<li>5.5.2.2 <a href="#section_5.5.2.2">Methods</a>
+<li>5.5.3 <a href="#section_5.5.3">Objects</a><ul>
+<li>5.5.3.1 <a href="#section_5.5.3.1">Fields</a>
 </li>
-<li>5.5.2.3 <a href="#section_5.5.2.3">Visibility</a>
+<li>5.5.3.2 <a href="#section_5.5.3.2">Methods</a>
 </li>
-<li>5.5.2.4 <a href="#section_5.5.2.4">Typing</a>
+<li>5.5.3.3 <a href="#section_5.5.3.3">Visibility</a>
 </li>
-<li>5.5.2.5 <a href="#section_5.5.2.5">Initialization</a>
+<li>5.5.3.4 <a href="#section_5.5.3.4">Typing</a>
 </li>
-<li>5.5.2.6 <a href="#section_5.5.2.6">Object type references</a>
+<li>5.5.3.5 <a href="#section_5.5.3.5">Initialization</a>
+</li>
+<li>5.5.3.6 <a href="#section_5.5.3.6">Object type references</a>
 </li>
 </ul>
 </li>
-<li>5.5.3 <a href="#section_5.5.3">Futures</a>
+<li>5.5.4 <a href="#section_5.5.4">Futures</a>
 </li>
-<li>5.5.4 <a href="#section_5.5.4">[Preview] Services</a>
+<li>5.5.5 <a href="#section_5.5.5">[Preview] Services</a>
 </li>
-<li>5.5.5 <a href="#section_5.5.5">Type descriptors</a>
+<li>5.5.6 <a href="#section_5.5.6">Type descriptors</a>
 </li>
-<li>5.5.6 <a href="#section_5.5.6">Handles</a>
+<li>5.5.7 <a href="#section_5.5.7">Handles</a>
 </li>
-<li>5.5.7 <a href="#section_5.5.7">[Preview] Streams</a>
+<li>5.5.8 <a href="#section_5.5.8">[Preview] Streams</a>
 </li>
 </ul>
 </li>
@@ -907,7 +907,7 @@ The following table summarizes the type descriptors provided by Ballerina.
 text items</td>
   </tr>
   <tr>
-   <td rowspan="6">basic, structured</td>
+   <td rowspan="5">basic, structured</td>
    <td>array</td>
    <td>an ordered list of values, optionally with a specific length, where a
 single type is specified for all members of the list</td>
@@ -932,12 +932,12 @@ terms of names of fields (required keys) and value for each field</td>
    <td>a two-dimensional collection of immutable values</td>
   </tr>
   <tr>
+   <td rowspan="8">basic, behavioral</td>
    <td>error</td>
    <td>an indication that there has been an error, with a string identifying the
 reason for the error, and a mapping giving additional details about the error</td>
   </tr>
   <tr>
-   <td rowspan="7">basic, behavioral</td>
    <td>function</td>
    <td>a function with 0 or more specified parameter types and a single return
 type</td>
@@ -1524,9 +1524,7 @@ namespaces.</li>
 <section>
 <h3 id="section_5.4">5.4 Structured values</h3>
 <p>
-There are four basic types of structured value. First, there are two container
-basic types: list and mapping. Second, there are the table and error basic
-types, which are each special in different ways.
+There are three basic types of structured value: list, mapping and table.
 </p>
 <p>
 A structured value is either mutable or immutable; whether it is mutable or
@@ -1572,7 +1570,6 @@ optional key type is a required key type.
    <a href="#list-type-descriptor"><span class="ntref">list-type-descriptor</span></a>
    | <a href="#mapping-type-descriptor"><span class="ntref">mapping-type-descriptor</span></a>
    | <a href="#table-type-descriptor"><span class="ntref">table-type-descriptor</span></a>
-   | <a href="#error-type-descriptor"><span class="ntref">error-type-descriptor</span></a>
 </pre>
 <p>
 The following table summarizes the type descriptors for structured types.
@@ -1934,8 +1931,23 @@ a mapping value in the iteration sequence will be a closed record type.
 </p>
 
 </section>
+</section>
 <section>
-<h4 id="section_5.4.4">5.4.4 Error</h4>
+<h3 id="section_5.5">5.5 Behavioral values</h3>
+
+<pre class="grammar"><span class="ntdfn" id="behavioral-type-descriptor">behavioral-type-descriptor</span> :=
+   <a href="#error-type-descriptor"><span class="ntref">error-type-descriptor</span></a>
+   | <a href="#function-type-descriptor"><span class="ntref">function-type-descriptor</span></a>
+   | <a href="#object-type-descriptor"><span class="ntref">object-type-descriptor</span></a>
+   | <a href="#future-type-descriptor"><span class="ntref">future-type-descriptor</span></a>
+   | <a href="#service-type-descriptor"><span class="ntref">service-type-descriptor</span></a>
+   | <a href="#typedesc-type-descriptor"><span class="ntref">typedesc-type-descriptor</span></a>
+   | <a href="#handle-type-descriptor"><span class="ntref">handle-type-descriptor</span></a>
+   | <a href="#stream-type-descriptor"><span class="ntref">stream-type-descriptor</span></a>
+</pre>
+
+<section>
+<h4 id="section_5.5.1">5.5.1 Error</h4>
 
 <pre class="grammar"><span class="ntdfn" id="error-type-descriptor">error-type-descriptor</span> := <code>error</code> [<a href="#error-type-params"><span class="ntref">error-type-params</span></a>]
 <span class="ntdfn" id="error-type-params">error-type-params</span> := <code>&lt;</code> (<a href="#explicit-error-type-params"><span class="ntref">explicit-error-type-params</span></a> | <a href="#inferred-error-type-param"><span class="ntref">inferred-error-type-param</span></a>) <code>&gt;</code>
@@ -1945,10 +1957,9 @@ a mapping value in the iteration sequence will be a closed record type.
 <span class="ntdfn" id="inferred-error-type-param">inferred-error-type-param</span> := <code>*</code>
 </pre>
 <p>
-An error value belongs to the error basic type, which is a basic type which is
-distinct from other structured types and is used only for representing errors.
-The error type is inherently immutable. An error value contains the following
-information:
+An error value belongs to the error basic type, which is used only for
+representing errors. The error type is inherently immutable. An error value
+contains the following information:
 </p>
 <ul>
 <li>a reason, which is a string identifier for the category of error</li>
@@ -2003,23 +2014,9 @@ inferable.
 Error is the only structured basic type that is not iterable.
 </p>
 </section>
-</section>
-<section>
-<h3 id="section_5.5">5.5 Behavioral values</h3>
-
-<pre class="grammar"><span class="ntdfn" id="behavioral-type-descriptor">behavioral-type-descriptor</span> :=
-   <a href="#function-type-descriptor"><span class="ntref">function-type-descriptor</span></a>
-   | <a href="#object-type-descriptor"><span class="ntref">object-type-descriptor</span></a>
-   | <a href="#future-type-descriptor"><span class="ntref">future-type-descriptor</span></a>
-   | <a href="#service-type-descriptor"><span class="ntref">service-type-descriptor</span></a>
-   | <a href="#typedesc-type-descriptor"><span class="ntref">typedesc-type-descriptor</span></a>
-   | <a href="#handle-type-descriptor"><span class="ntref">handle-type-descriptor</span></a>
-   | <a href="#stream-type-descriptor"><span class="ntref">stream-type-descriptor</span></a>
-</pre>
-
 
 <section>
-<h4 id="functions">5.5.1 Functions</h4>
+<h4 id="functions">5.5.2 Functions</h4>
 
 <pre class="grammar"><span class="ntdfn" id="function-type-descriptor">function-type-descriptor</span> := <code>function</code> <a href="#function-signature"><span class="ntref">function-signature</span></a>
 <span class="ntdfn" id="function-signature">function-signature</span> := <code>(</code> <a href="#param-list"><span class="ntref">param-list</span></a> <code>)</code> <a href="#return-type-descriptor"><span class="ntref">return-type-descriptor</span></a>
@@ -2134,7 +2131,7 @@ is a subtype of T.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.2">5.5.2 Objects</h4>
+<h4 id="section_5.5.3">5.5.3 Objects</h4>
 <p>
 Objects are a combination of fields along with a set of associated functions,
 called methods, which can be used to manipulate them. An object's methods are
@@ -2174,7 +2171,7 @@ the object type is a client object type. A client object type may have remote
 methods; other objects types must not.
 </p>
 <section>
-<h5 id="section_5.5.2.1">5.5.2.1 Fields</h5>
+<h5 id="section_5.5.3.1">5.5.3.1 Fields</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-field-descriptor">object-field-descriptor</span> :=
    <a href="#metadata"><span class="ntref">metadata</span></a> <a href="#object-visibility-qual"><span class="ntref">object-visibility-qual</span></a> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <a href="#field-name"><span class="ntref">field-name</span></a> [<a href="#default-value"><span class="ntref">default-value</span></a>]<code>;</code>
@@ -2185,7 +2182,7 @@ names of all the fields of an object must be distinct.
 </p>
 </section>
 <section>
-<h5 id="section_5.5.2.2">5.5.2.2 Methods</h5>
+<h5 id="section_5.5.3.2">5.5.3.2 Methods</h5>
 <p>
 Methods are functions that are associated to the object and are called via a
 value of that type using a <code>method-call-expr</code>.
@@ -2228,7 +2225,7 @@ invoked using a different syntax from a non-remote method.
 
 </section>
 <section>
-<h5 id="section_5.5.2.3">5.5.2.3 Visibility</h5>
+<h5 id="section_5.5.3.3">5.5.3.3 Visibility</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-visibility-qual">object-visibility-qual</span> := [<a href="#explicit-visibility-qual"><span class="ntref">explicit-visibility-qual</span></a>]
 <span class="ntdfn" id="explicit-visibility-qual">explicit-visibility-qual</span> := <code>public</code> | <code>private</code>
@@ -2253,7 +2250,7 @@ The visibility of a method or field of an abstract object type cannot be
 </p>
 </section>
 <section>
-<h5 id="section_5.5.2.4">5.5.2.4 Typing</h5>
+<h5 id="section_5.5.3.4">5.5.3.4 Typing</h5>
 
 <p>
 The shape of an object consists of an unordered collection of object field
@@ -2297,7 +2294,7 @@ a subtype of T only within the same module as T.</li>
  
 </section>
 <section>
-<h5 id="section_5.5.2.5">5.5.2.5 Initialization</h5>
+<h5 id="section_5.5.3.5">5.5.3.5 Initialization</h5>
 <p>
 A non-abstract object type provides a way to initialize an object of the type.
 An object is initialized by:
@@ -2348,7 +2345,7 @@ preceding the <code>.</code> is <code>self</code>.
 </p>
 </section>
 <section>
-<h5 id="section_5.5.2.6">5.5.2.6 Object type references</h5>
+<h5 id="section_5.5.3.6">5.5.3.6 Object type references</h5>
 
 <pre class="grammar"><span class="ntdfn" id="object-type-reference">object-type-reference</span> :=
    <code>*</code> <a href="#type-reference"><span class="ntref">type-reference</span></a> <code>;</code>
@@ -2369,7 +2366,7 @@ the T<sub>o</sub> must be in the same module.
 </section>
 </section>
 <section>
-<h4 id="section_5.5.3">5.5.3 Futures</h4>
+<h4 id="section_5.5.4">5.5.4 Futures</h4>
 
 <pre class="grammar"><span class="ntdfn" id="future-type-descriptor">future-type-descriptor</span> := <code>future</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
 </pre>
@@ -2384,7 +2381,7 @@ if it has basic type future.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.4">5.5.4 [Preview] Services</h4>
+<h4 id="section_5.5.5">5.5.5 [Preview] Services</h4>
 
 <pre class="grammar"><span class="ntdfn" id="service-type-descriptor">service-type-descriptor</span> := <code>service</code>
 </pre>
@@ -2411,7 +2408,7 @@ annotations on type definitions to support this.
 </p>
 </section>
 <section>
-<h4 id="section_5.5.5">5.5.5 Type descriptors</h4>
+<h4 id="section_5.5.6">5.5.6 Type descriptors</h4>
 <pre class="grammar"><span class="ntdfn" id="typedesc-type-descriptor">typedesc-type-descriptor</span> := <code>typedesc</code> [<a href="#type-parameter"><span class="ntref">type-parameter</span></a>]
 </pre>
 <p>
@@ -2428,7 +2425,7 @@ will result in a type descriptor value.
 
 </section>
 <section>
-<h4 id="section_5.5.6">5.5.6 Handles</h4>
+<h4 id="section_5.5.7">5.5.7 Handles</h4>
 <pre class="grammar"><span class="ntdfn" id="handle-type-descriptor">handle-type-descriptor</span> := <code>handle</code>
 </pre>
 <p>
@@ -2445,7 +2442,7 @@ A value belongs to a type <code>handle</code> if it has a basic type of handle.
 </section>
 
 <section>
-<h4 id="section_5.5.7">5.5.7 [Preview] Streams</h4>
+<h4 id="section_5.5.8">5.5.8 [Preview] Streams</h4>
 
 <pre class="grammar"><span class="ntdfn" id="stream-type-descriptor">stream-type-descriptor</span> := <code>stream</code> [<a href="#stream-type-parameters"><span class="ntref">stream-type-parameters</span></a>]
 <span class="ntdfn" id="stream-type-parameters">stream-type-parameters</span> := <code>&lt;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> [<code>,</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>]<code>&gt;</code>
