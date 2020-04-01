@@ -2582,7 +2582,9 @@ describe subsets of this universe.
 A singleton type is a type containing a single shape. A singleton type is
 described using an compile-time constant expression for a single value: the type
 contains the shape of that value. Note that it is possible for the
-variable-reference within the simple-const-expr to reference a structured value.
+variable-reference within the simple-const-expr to reference a structured value;
+in this case, the value will have its read-only bit set; a value without its
+read-only bit set will thus not belong to any singleton type.
 </p>
 </section>
 <section>
