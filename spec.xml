@@ -4966,7 +4966,8 @@ syntax. In this version of Ballerina, the functionality is similar to a list
 comprehensions; future versions will provided richer functionality.
 </p>
 
-<pre class="grammar"><dfn>query-expr</dfn> := <abbr>query-pipeline</abbr> <abbr>select-clause</abbr>
+<pre class="grammar"><dfn>query-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr>
+<dfn>query-construct-type</dfn> := <code>table</code> <abbr>key-specifier</abbr>
 <dfn>query-pipeline</dfn> := <abbr>from-clause</abbr> <abbr>intermediate-clause</abbr>*
 <dfn>intermediate-clause</dfn> :=
    <abbr>from-clause</abbr>

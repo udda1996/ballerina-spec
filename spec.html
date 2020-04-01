@@ -5307,7 +5307,8 @@ syntax. In this version of Ballerina, the functionality is similar to a list
 comprehensions; future versions will provided richer functionality.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="query-expr">query-expr</span> := <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#select-clause"><span class="ntref">select-clause</span></a>
+<pre class="grammar"><span class="ntdfn" id="query-expr">query-expr</span> := [<a href="#query-construct-type"><span class="ntref">query-construct-type</span></a>] <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#select-clause"><span class="ntref">select-clause</span></a>
+<span class="ntdfn" id="query-construct-type">query-construct-type</span> := <code>table</code> <a href="#key-specifier"><span class="ntref">key-specifier</span></a>
 <span class="ntdfn" id="query-pipeline">query-pipeline</span> := <a href="#from-clause"><span class="ntref">from-clause</span></a> <a href="#intermediate-clause"><span class="ntref">intermediate-clause</span></a>*
 <span class="ntdfn" id="intermediate-clause">intermediate-clause</span> :=
    <a href="#from-clause"><span class="ntref">from-clause</span></a>
