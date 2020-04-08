@@ -5614,10 +5614,12 @@ where <code>v</code> is a variable name not used in <code><var>X</var></code>.
    | <a href="#flush-action"><span class="ntref">flush-action</span></a>
    | <a href="#remote-method-call-action"><span class="ntref">remote-method-call-action</span></a>
    | <a href="#query-action"><span class="ntref">query-action</span></a>
+   | <a href="#type-cast"><span class="ntref">type-cast</span></a> <a href="#action"><span class="ntref">action</span></a>
    | <a href="#checking-action"><span class="ntref">checking-action</span></a>
    | <a href="#trap-action"><span class="ntref">trap-action</span></a>
    | <code>(</code> <a href="#action"><span class="ntref">action</span></a> <code>)</code>
 <span class="ntdfn" id="action-or-expr">action-or-expr</span> := <a href="#action"><span class="ntref">action</span></a> | <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="type-cast-action">type-cast-action</span> := <code>&lt;</code> <a href="#type-cast-param"><span class="ntref">type-cast-param</span></a> <code>&gt;</code> <a href="#action"><span class="ntref">action</span></a>
 <span class="ntdfn" id="checking-action">checking-action</span> := <a href="#checking-keyword"><span class="ntref">checking-keyword</span></a> <a href="#action"><span class="ntref">action</span></a>
 <span class="ntdfn" id="trap-action">trap-action</span> := <code>trap</code> <a href="#action"><span class="ntref">action</span></a>
 </pre>
@@ -5633,8 +5635,10 @@ An action is evaluated in the same way as an expression. Static typing for
 actions is the same as for expressions.
 </p>
 <p>
-A <code>checking-action</code> and <code>trap-action</code> is evaluated in the
-same way as a <code>checking-expr</code> and <code>trap-expr</code> respectively.
+A <code>type-cast-action</code>, <code>checking-action</code> or
+<code>trap-action</code> is evaluated in the same way as a
+<code>type-cast-expr</code>, <code>checking-expr</code> or
+<code>trap-expr</code> respectively.
 </p>
 
 </section>

@@ -5275,10 +5275,12 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>flush-action</abbr>
    | <abbr>remote-method-call-action</abbr>
    | <abbr>query-action</abbr>
+   | <abbr>type-cast</abbr> <abbr>action</abbr>
    | <abbr>checking-action</abbr>
    | <abbr>trap-action</abbr>
    | <code>(</code> <abbr>action</abbr> <code>)</code>
 <dfn>action-or-expr</dfn> := <abbr>action</abbr> | <abbr>expression</abbr>
+<dfn>type-cast-action</dfn> := <code>&lt;</code> <abbr>type-cast-param</abbr> <code>&gt;</code> <abbr>action</abbr>
 <dfn>checking-action</dfn> := <abbr>checking-keyword</abbr> <abbr>action</abbr>
 <dfn>trap-action</dfn> := <code>trap</code> <abbr>action</abbr>
 </pre>
@@ -5294,8 +5296,10 @@ An action is evaluated in the same way as an expression. Static typing for
 actions is the same as for expressions.
 </p>
 <p>
-A <code>checking-action</code> and <code>trap-action</code> is evaluated in the
-same way as a <code>checking-expr</code> and <code>trap-expr</code> respectively.
+A <code>type-cast-action</code>, <code>checking-action</code> or
+<code>trap-action</code> is evaluated in the same way as a
+<code>type-cast-expr</code>, <code>checking-expr</code> or
+<code>trap-expr</code> respectively.
 </p>
 
 </section>
