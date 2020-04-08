@@ -5275,7 +5275,7 @@ class="grammar"><dfn>action</dfn> :=
    | <abbr>flush-action</abbr>
    | <abbr>remote-method-call-action</abbr>
    | <abbr>query-action</abbr>
-   | <abbr>type-cast</abbr> <abbr>action</abbr>
+   | <abbr>type-cast-action</abbr>
    | <abbr>checking-action</abbr>
    | <abbr>trap-action</abbr>
    | <code>(</code> <abbr>action</abbr> <code>)</code>
