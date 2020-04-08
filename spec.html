@@ -4446,9 +4446,10 @@ of the annotation tag.
 <section>
 <h3 id="section_6.15">6.15 Member access expression</h3>
 
-<pre class="grammar"><span class="ntdfn" id="member-access-expr">member-access-expr</span> := <a href="#container-expression"><span class="ntref">container-expression</span></a> <code>[</code> <a href="#key-expression"><span class="ntref">key-expression</span></a> <code>]</code>
+<pre class="grammar"><span class="ntdfn" id="member-access-expr">member-access-expr</span> := <a href="#container-expression"><span class="ntref">container-expression</span></a> <code>[</code> (<a href="#key-expression"><span class="ntref">key-expression</span></a> | <a href="#multi-key-expression"><span class="ntref">multi-key-expression</span></a>) <code>]</code>
 <span class="ntdfn" id="container-expression">container-expression</span> := <a href="#expression"><span class="ntref">expression</span></a>
 <span class="ntdfn" id="key-expression">key-expression</span> := <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="multi-key-expression">multi-key-expression</span> := <a href="#expression"><span class="ntref">expression</span></a> (<code>,</code> <a href="#expression"><span class="ntref">expression</span></a>)+
 </pre>
 <p>
 A member-access-expr accesses a member of a structured value using its key,
@@ -4459,18 +4460,27 @@ The requirements on the static type of container-expression and key-expression a
 follows:
 </p>
 <ul>
-<li>if container-expression is a subtype of string or of xml or of basic
-type list, then the contextually expected type for key-expression is int and
-the static type of key-expression must be a subtype of int;</li>
-<li>if container-expression is a subtype of table, then the contextually
-expected type for key-expression is <code><var>K</var></code> and the static
-type of key-expression must be a subtype of <code><var>K</var></code>, where the
-static type of container-expression is <code>table&lt;<var>R</var>&gt;
-key&lt;<var>K</var>&gt;</code>;</li>
-<li>otherwise container-expression must be a subtype of the union of nil and basic
-type map; in this case the contextually expected type for key-expression is
-string and the static type of key-expression must be a subtype of string.</li>
+<li>if the static type of container-expression is a subtype of string or of xml
+or of basic type list, then the contextually expected type for key-expression is
+int and the static type of key-expression must be a subtype of int;</li>
+<li>if the static type of container-expression is a subtype of table, then the
+contextually expected type for key-expression is <code><var>K</var></code> and
+the static type of key-expression must be a subtype of
+<code><var>K</var></code>, where the static type of container-expression is
+<code>table&lt;<var>R</var>&gt; key&lt;<var>K</var>&gt;</code>;</li>
+<li>otherwise the static type of container-expression must be a subtype of the
+union of nil and basic type map; in this case the contextually expected type for
+key-expression is string and the static type of key-expression must be a subtype
+of string.</li>
 </ul>
+<p>
+A multi-key-expression is allowed only when the static type of a
+container-expression is a subtype of table. A multi-key-expression
+<code>E<sub>1</sub>, E<sub>2</sub>,..., E<sub>n</sub></code> is equivalent to a
+list-constructor-expr <code>[E<sub>1</sub>, E<sub>2</sub>,...,
+E<sub>n</sub>]</code>.
+</p>
+
 <p>
 A member-access-expr is evaluated as follows:
 </p>
