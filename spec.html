@@ -153,27 +153,27 @@ mailing list.
 </ul>
 </li>
 <li>5.6 <a href="#section_5.6">Other type descriptors</a><ul>
-<li>5.6.1 <a href="#section_5.6.1">Singleton types</a>
+<li>5.6.1 <a href="#section_5.6.1">Type reference</a>
 </li>
-<li>5.6.2 <a href="#section_5.6.2">Union types</a>
+<li>5.6.2 <a href="#section_5.6.2">Singleton types</a>
 </li>
-<li>5.6.3 <a href="#section_5.6.3">Optional types</a>
+<li>5.6.3 <a href="#section_5.6.3">Readonly type</a>
 </li>
-<li>5.6.4 <a href="#section_5.6.4">Intersection types</a>
+<li>5.6.4 <a href="#section_5.6.4">Any type</a>
 </li>
-<li>5.6.5 <a href="#section_5.6.5">Any type</a>
+<li>5.6.5 <a href="#section_5.6.5">Never type</a>
 </li>
-<li>5.6.6 <a href="#anydata">Anydata type</a>
+<li>5.6.6 <a href="#section_5.6.6">Optional types</a>
 </li>
-<li>5.6.7 <a href="#section_5.6.7">Never type</a>
+<li>5.6.7 <a href="#section_5.6.7">Union types</a>
 </li>
-<li>5.6.8 <a href="#byte_type">Byte type</a>
+<li>5.6.8 <a href="#section_5.6.8">Intersection types</a>
 </li>
-<li>5.6.9 <a href="#section_5.6.9">JSON types</a>
+<li>5.6.9 <a href="#anydata">Anydata type</a>
 </li>
-<li>5.6.10 <a href="#section_5.6.10">Readonly type</a>
+<li>5.6.10 <a href="#section_5.6.10">JSON types</a>
 </li>
-<li>5.6.11 <a href="#section_5.6.11">Type reference</a>
+<li>5.6.11 <a href="#byte_type">Byte type</a>
 </li>
 </ul>
 </li>
@@ -1001,16 +1001,24 @@ type</td>
    <td>a single value described by a literal</td>
   </tr>
   <tr>
-   <td>union</td>
-   <td>the union of the component types</td>
+   <td>readonly</td>
+   <td>any value whose read-only bit is on</td>
+  </tr>
+  <tr>
+   <td>any</td>
+   <td>any value other than an error</td>
+  </tr>
+  <tr>
+   <td>never</td>
+   <td>no value</td>
   </tr>
   <tr>
    <td>optional</td>
    <td>the underlying type and ()</td>
   </tr>
   <tr>
-   <td>any</td>
-   <td>any value other than an error</td>
+   <td>union</td>
+   <td>the union of the component types</td>
   </tr>
   <tr>
    <td>anydata</td>
@@ -1018,21 +1026,13 @@ type</td>
    does not contain behavioral members at any depth)</td>
   </tr>
   <tr>
-   <td>never</td>
-   <td>no value</td>
-  </tr>
-  <tr>
-   <td>byte</td>
-   <td>int in the range 0 to 255 inclusive</td>
-  </tr>
-  <tr>
    <td>json</td>
    <td>the union of (), int, float, decimal, string, and maps and arrays whose
 values are, recursively, json</td>
   </tr>
   <tr>
-   <td>readonly</td>
-   <td>any value whose read-only bit is on</td>
+   <td>byte</td>
+   <td>int in the range 0 to 255 inclusive</td>
   </tr>
 </table>
 <p>
@@ -2571,17 +2571,17 @@ because Ballerina does not yet support parameterized object types.
 <h3 id="section_5.6">5.6 Other type descriptors</h3>
 
 <pre class="grammar"><span class="ntdfn" id="other-type-descriptor">other-type-descriptor</span> :=
-   <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
-   | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
-   | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
-   | <a href="#intersection-type-descriptor"><span class="ntref">intersection-type-descriptor</span></a>
-   | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
-   | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
-   | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
-   | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
-   | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
-   | <a href="#readonly-type-descriptor"><span class="ntref">readonly-type-descriptor</span></a>
    | <a href="#type-reference"><span class="ntref">type-reference</span></a>
+   | <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
+   | <a href="#readonly-type-descriptor"><span class="ntref">readonly-type-descriptor</span></a>
+   | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
+   | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
+   | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
+   | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
+   | <a href="#intersection-type-descriptor"><span class="ntref">intersection-type-descriptor</span></a>
+   | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
+   | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
+   | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
    | <code>(</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>)</code>
 </pre>
 <p>
@@ -2590,7 +2590,18 @@ section do not add to the universe of values. They are just adding new ways to
 describe subsets of this universe.
 </p>
 <section>
-<h4 id="section_5.6.1">5.6.1 Singleton types</h4>
+<h4 id="section_5.6.1">5.6.1 Type reference</h4>
+<pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
+</pre>
+
+<p>
+A type descriptor can use a type-reference to refer to a type definition in the
+same module or another module.
+</p>
+
+</section>
+<section>
+<h4 id="section_5.6.2">5.6.2 Singleton types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="singleton-type-descriptor">singleton-type-descriptor</span> := <a href="#simple-const-expr"><span class="ntref">simple-const-expr</span></a>
 
@@ -2605,119 +2616,7 @@ read-only bit set will thus not belong to any singleton type.
 </p>
 </section>
 <section>
-<h4 id="section_5.6.2">5.6.2 Union types</h4>
-
-<pre class="grammar"><span class="ntdfn" id="union-type-descriptor">union-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>|</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
-</pre>
-<p>
-The set of shapes denoted by an union type <code>T1|T2</code> is the union of
-the set of shapes denoted by <code>T1</code> and the set of shapes denoted by
-<code>T2</code>. Thus, the type <code>T1|T2</code> contains a shape if and only
-if either the type denoted by <code>T1</code> contains the shape or the type
-denoted by <code>T2</code> contains the shape. Thus,
-</p>
-</section>
-<section>
-<h4 id="section_5.6.3">5.6.3 Optional types</h4>
-
-<pre class="grammar"><span class="ntdfn" id="optional-type-descriptor">optional-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>?</code>
-</pre>
-<p>
-A type <code>T?</code> means T optionally, and is exactly equivalent to
-<code>T|()</code>.
-</p>
-</section>
-<section>
-<h4 id="section_5.6.4">5.6.4 Intersection types</h4>
-
-<pre class="grammar"><span class="ntdfn" id="intersection-type-descriptor">intersection-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>&amp;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
-</pre>
-<p>
-The set of shapes denoted by an intersection type <code>T1&amp;T2</code> is the
-intersection of the set of shapes denoted by <code>T1</code> and the set of
-shapes denoted by <code>T2</code>. Thus, the type <code>T1&amp;T2</code>
-contains a shape if and only if the types denoted by <code>T1</code> and
-<code>T2</code> both contain the shape. Thus,
-</p>
-</section>
-<section>
-<h4 id="section_5.6.5">5.6.5 Any type</h4>
-
-<pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
-</pre>
-<p>
-The type descriptor <code>any</code> describes the type consisting of all values
-other than errors. A value belongs to the any type if and only if its basic type
-is not error. Thus all values belong to the type <code>any|error</code>. Note
-that a structure with members that are errors belongs to the <code>any</code>
-type.
-</p>
-</section>
-<section>
-<h4 id="anydata">5.6.6 Anydata type</h4>
-
-<pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
-</pre>
-<p>
-The type descriptor <code>anydata</code> describes the type of plain data. The
-type <code>anydata</code> contains a shape if and only if it is the shape of a
-value that is plain data. The <code>anydata</code> type can thus be defined as:
-</p>
-
-<pre>  () | boolean | int | float | decimal
-    | string | xml
-    | anydata[] | map&lt;anydata&gt; | table&lt;map&lt;anydata&gt;&gt;
-</pre>
-</section>
-<section>
-<h4 id="section_5.6.7">5.6.7 Never type</h4>
-
-<pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
-</pre>
-<p>
-The type descriptor <code>never</code> describes the type that does not contain
-any shapes. No value ever belongs to the <code>never</code>.
-</p>
-<p>
-This can be useful to describe for the return type of a function, if the
-function never returns. It can also be useful as a type parameter. For example,
-<code>xml&lt;never&gt;</code> describes the an xml type that has no
-constituents, i.e. the empty xml value.
-</p>
-<p>
-Note that for anytype <code>T</code>, the type <code>T|never</code> is the same
-as <code>T</code>.
-</p>
-</section>
-<section>
-<h4 id="byte_type">5.6.8 Byte type</h4>
-
-<pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
-</pre>
-<p>
-The byte type is a predefined name for a union of the int values in the range 0
-to 255 inclusive. It is equivalent to the <a href="#built-in_subtypes">built-in
-subtype</a> <code>int:Unsigned8</code>.
-</p>
-</section>
-<section>
-<h4 id="section_5.6.9">5.6.9 JSON types</h4>
-
-<pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
-</pre>
-<p>
-The <code>json</code> type is designed for processing data expression in JSON
-format. It is a built-in name for a union defined as follows:
-</p>
-<pre>type json = () | boolean | int | float | decimal | string | json[] | map&lt;json&gt;;
-</pre>
-<p>
-In addition, the <code>json</code> type is defined to have <a href="#lax_static_typing">lax static typing</a>.
-</p>
-
-</section>
-<section>
-<h4 id="section_5.6.10">5.6.10 Readonly type</h4>
+<h4 id="section_5.6.3">5.6.3 Readonly type</h4>
 <pre class="grammar"><span class="ntdfn" id="readonly-type-descriptor">readonly-type-descriptor</span> := <code>readonly</code>
 </pre>
 <p>
@@ -2756,18 +2655,123 @@ bit on. These basic types are:
 </ul>
 
 </section>
-
 <section>
-<h4 id="section_5.6.11">5.6.11 Type reference</h4>
-<pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
-</pre>
+<h4 id="section_5.6.4">5.6.4 Any type</h4>
 
+<pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
+</pre>
 <p>
-A type descriptor can use a type-reference to refer to a type definition in the
-same module or another module.
+The type descriptor <code>any</code> describes the type consisting of all values
+other than errors. A value belongs to the any type if and only if its basic type
+is not error. Thus all values belong to the type <code>any|error</code>. Note
+that a structure with members that are errors belongs to the <code>any</code>
+type.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.5">5.6.5 Never type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
+</pre>
+<p>
+The type descriptor <code>never</code> describes the type that does not contain
+any shapes. No value ever belongs to the <code>never</code>.
+</p>
+<p>
+This can be useful to describe for the return type of a function, if the
+function never returns. It can also be useful as a type parameter. For example,
+<code>xml&lt;never&gt;</code> describes the an xml type that has no
+constituents, i.e. the empty xml value.
+</p>
+<p>
+Note that for anytype <code>T</code>, the type <code>T|never</code> is the same
+as <code>T</code>.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.6">5.6.6 Optional types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="optional-type-descriptor">optional-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>?</code>
+</pre>
+<p>
+A type <code>T?</code> means T or nil. A type <code>T?</code> contains a shape
+if and only if <code>T</code> contains the shape or the shape is nil.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.7">5.6.7 Union types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="union-type-descriptor">union-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>|</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+</pre>
+<p>
+The set of shapes denoted by an union type <code>T1|T2</code> is the union of
+the set of shapes denoted by <code>T1</code> and the set of shapes denoted by
+<code>T2</code>. Thus, the type <code>T1|T2</code> contains a shape if and only
+if either the type denoted by <code>T1</code> contains the shape or the type
+denoted by <code>T2</code> contains the shape. Thus,
+</p>
+<p>
+The type <code>T?</code> is exactly equivalent to <code>T|()</code>.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.8">5.6.8 Intersection types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="intersection-type-descriptor">intersection-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>&amp;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+</pre>
+<p>
+The set of shapes denoted by an intersection type <code>T1&amp;T2</code> is the
+intersection of the set of shapes denoted by <code>T1</code> and the set of
+shapes denoted by <code>T2</code>. Thus, the type <code>T1&amp;T2</code>
+contains a shape if and only if the types denoted by <code>T1</code> and
+<code>T2</code> both contain the shape. Thus,
+</p>
+</section>
+<section>
+<h4 id="anydata">5.6.9 Anydata type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
+</pre>
+<p>
+The type descriptor <code>anydata</code> describes the type of plain data. The
+type <code>anydata</code> contains a shape if and only if it is the shape of a
+value that is plain data. The <code>anydata</code> type can thus be defined as:
+</p>
+
+<pre>  () | boolean | int | float | decimal
+    | string | xml
+    | anydata[] | map&lt;anydata&gt; | table&lt;map&lt;anydata&gt;&gt;
+</pre>
+</section>
+<section>
+<h4 id="section_5.6.10">5.6.10 JSON types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
+</pre>
+<p>
+The <code>json</code> type is designed for processing data expression in JSON
+format. It is a built-in name for a union defined as follows:
+</p>
+<pre>type json = () | boolean | int | float | decimal | string | json[] | map&lt;json&gt;;
+</pre>
+<p>
+In addition, the <code>json</code> type is defined to have <a href="#lax_static_typing">lax static typing</a>.
 </p>
 
 </section>
+
+<section>
+<h4 id="byte_type">5.6.11 Byte type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
+</pre>
+<p>
+The byte type is a predefined name for a union of the int values in the range 0
+to 255 inclusive. It is equivalent to the <a href="#built-in_subtypes">built-in
+subtype</a> <code>int:Unsigned8</code>.
+</p>
+</section>
+
 </section>
 <section>
 <h3 id="built-in_abstract_object_types">5.7 Built-in abstract object types</h3>
