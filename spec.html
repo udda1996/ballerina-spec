@@ -159,19 +159,21 @@ mailing list.
 </li>
 <li>5.6.3 <a href="#section_5.6.3">Optional types</a>
 </li>
-<li>5.6.4 <a href="#section_5.6.4">Any type</a>
+<li>5.6.4 <a href="#section_5.6.4">Intersection types</a>
 </li>
-<li>5.6.5 <a href="#anydata">Anydata type</a>
+<li>5.6.5 <a href="#section_5.6.5">Any type</a>
 </li>
-<li>5.6.6 <a href="#section_5.6.6">Never type</a>
+<li>5.6.6 <a href="#anydata">Anydata type</a>
 </li>
-<li>5.6.7 <a href="#byte_type">Byte type</a>
+<li>5.6.7 <a href="#section_5.6.7">Never type</a>
 </li>
-<li>5.6.8 <a href="#section_5.6.8">JSON types</a>
+<li>5.6.8 <a href="#byte_type">Byte type</a>
 </li>
-<li>5.6.9 <a href="#section_5.6.9">Readonly type</a>
+<li>5.6.9 <a href="#section_5.6.9">JSON types</a>
 </li>
-<li>5.6.10 <a href="#section_5.6.10">Type reference</a>
+<li>5.6.10 <a href="#section_5.6.10">Readonly type</a>
+</li>
+<li>5.6.11 <a href="#section_5.6.11">Type reference</a>
 </li>
 </ul>
 </li>
@@ -2572,6 +2574,7 @@ because Ballerina does not yet support parameterized object types.
    <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
    | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
    | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
+   | <a href="#intersection-type-descriptor"><span class="ntref">intersection-type-descriptor</span></a>
    | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
    | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
    | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
@@ -2622,7 +2625,20 @@ A type <code>T?</code> means T optionally, and is exactly equivalent to
 </p>
 </section>
 <section>
-<h4 id="section_5.6.4">5.6.4 Any type</h4>
+<h4 id="section_5.6.4">5.6.4 Intersection types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="intersection-type-descriptor">intersection-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>&amp;</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+</pre>
+<p>
+The type <code>T1&amp;T2</code> contains a shape if and only if the types
+denoted by <code>T1</code> and <code>T2</code> both contain the shape. Thus, the
+set of shapes denoted by an intersection type <code>T1&amp;T2</code> is the
+intersection of the set of shapes denoted by <code>T1</code> and the set of
+shapes denoted by <code>T2</code>.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.5">5.6.5 Any type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
 </pre>
@@ -2635,7 +2651,7 @@ type.
 </p>
 </section>
 <section>
-<h4 id="anydata">5.6.5 Anydata type</h4>
+<h4 id="anydata">5.6.6 Anydata type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
 </pre>
@@ -2651,7 +2667,7 @@ value that is plain data. The <code>anydata</code> type can thus be defined as:
 </pre>
 </section>
 <section>
-<h4 id="section_5.6.6">5.6.6 Never type</h4>
+<h4 id="section_5.6.7">5.6.7 Never type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
 </pre>
@@ -2671,7 +2687,7 @@ as <code>T</code>.
 </p>
 </section>
 <section>
-<h4 id="byte_type">5.6.7 Byte type</h4>
+<h4 id="byte_type">5.6.8 Byte type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
 </pre>
@@ -2682,7 +2698,7 @@ subtype</a> <code>int:Unsigned8</code>.
 </p>
 </section>
 <section>
-<h4 id="section_5.6.8">5.6.8 JSON types</h4>
+<h4 id="section_5.6.9">5.6.9 JSON types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
 </pre>
@@ -2698,7 +2714,7 @@ In addition, the <code>json</code> type is defined to have <a href="#lax_static_
 
 </section>
 <section>
-<h4 id="section_5.6.9">5.6.9 Readonly type</h4>
+<h4 id="section_5.6.10">5.6.10 Readonly type</h4>
 <pre class="grammar"><span class="ntdfn" id="readonly-type-descriptor">readonly-type-descriptor</span> := <code>readonly</code>
 </pre>
 <p>
@@ -2739,7 +2755,7 @@ bit on. These basic types are:
 </section>
 
 <section>
-<h4 id="section_5.6.10">5.6.10 Type reference</h4>
+<h4 id="section_5.6.11">5.6.11 Type reference</h4>
 <pre class="grammar"><span class="ntdfn" id="type-reference">type-reference</span> := <a href="#identifier"><span class="ntref">identifier</span></a> | <a href="#qualified-identifier"><span class="ntref">qualified-identifier</span></a>
 </pre>
 

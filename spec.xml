@@ -2194,6 +2194,7 @@ class="grammar"><dfn>other-type-descriptor</dfn> :=
    <abbr>singleton-type-descriptor</abbr>
    | <abbr>union-type-descriptor</abbr>
    | <abbr>optional-type-descriptor</abbr>
+   | <abbr>intersection-type-descriptor</abbr>
    | <abbr>any-type-descriptor</abbr>
    | <abbr>anydata-type-descriptor</abbr>
    | <abbr>never-type-descriptor</abbr>
@@ -2244,6 +2245,20 @@ class="grammar"><dfn>optional-type-descriptor</dfn> := <abbr>type-descriptor</ab
 <p>
 A type <code>T?</code> means T optionally, and is exactly equivalent to
 <code>T|()</code>.
+</p>
+</section>
+<section>
+<h4>Intersection types</h4>
+
+<pre
+class="grammar"><dfn>intersection-type-descriptor</dfn> := <abbr>type-descriptor</abbr> <code>&amp;</code> <abbr>type-descriptor</abbr>
+</pre>
+<p>
+The type <code>T1&amp;T2</code> contains a shape if and only if the types
+denoted by <code>T1</code> and <code>T2</code> both contain the shape. Thus, the
+set of shapes denoted by an intersection type <code>T1&amp;T2</code> is the
+intersection of the set of shapes denoted by <code>T1</code> and the set of
+shapes denoted by <code>T2</code>.
 </p>
 </section>
 <section>
