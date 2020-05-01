@@ -169,11 +169,13 @@ mailing list.
 </li>
 <li>5.6.8 <a href="#section_5.6.8">Intersection types</a>
 </li>
-<li>5.6.9 <a href="#anydata">Anydata type</a>
+<li>5.6.9 <a href="#section_5.6.9">Distinct types</a>
 </li>
-<li>5.6.10 <a href="#section_5.6.10">JSON types</a>
+<li>5.6.10 <a href="#anydata">Anydata type</a>
 </li>
-<li>5.6.11 <a href="#byte_type">Byte type</a>
+<li>5.6.11 <a href="#section_5.6.11">JSON types</a>
+</li>
+<li>5.6.12 <a href="#byte_type">Byte type</a>
 </li>
 </ul>
 </li>
@@ -996,7 +998,7 @@ type</td>
    <td>a sequence of values that can be generated lazily</td>
   </tr>
   <tr>
-   <td rowspan="9">other</td>
+   <td rowspan="11">other</td>
    <td>singleton</td>
    <td>a single value described by a literal</td>
   </tr>
@@ -1023,6 +1025,10 @@ type</td>
   <tr>
    <td>intersection</td>
    <td>a value that belongs to all of a number of types</td>
+  </tr>
+  <tr>
+   <td>distinct</td>
+   <td></td>
   </tr>
   <tr>
    <td>anydata</td>
@@ -2583,6 +2589,7 @@ because Ballerina does not yet support parameterized object types.
    | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
    | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
    | <a href="#intersection-type-descriptor"><span class="ntref">intersection-type-descriptor</span></a>
+   | <a href="#distinct-type-descriptor"><span class="ntref">distinct-type-descriptor</span></a>
    | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
    | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
    | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
@@ -2737,8 +2744,16 @@ Intersection types are particularly useful in conjunction with
 of the shape.
 </p>
 </section>
+
 <section>
-<h4 id="anydata">5.6.9 Anydata type</h4>
+<h4 id="section_5.6.9">5.6.9 Distinct types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="distinct-type-descriptor">distinct-type-descriptor</span> := <code>distinct</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+</pre>
+
+</section>
+<section>
+<h4 id="anydata">5.6.10 Anydata type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="anydata-type-descriptor">anydata-type-descriptor</span> := <code>anydata</code>
 </pre>
@@ -2754,7 +2769,7 @@ value that is plain data. The <code>anydata</code> type can thus be defined as:
 </pre>
 </section>
 <section>
-<h4 id="section_5.6.10">5.6.10 JSON types</h4>
+<h4 id="section_5.6.11">5.6.11 JSON types</h4>
 
 <pre class="grammar"><span class="ntdfn" id="json-type-descriptor">json-type-descriptor</span> := <code>json</code>
 </pre>
@@ -2771,7 +2786,7 @@ In addition, the <code>json</code> type is defined to have <a href="#lax_static_
 </section>
 
 <section>
-<h4 id="byte_type">5.6.11 Byte type</h4>
+<h4 id="byte_type">5.6.12 Byte type</h4>
 
 <pre class="grammar"><span class="ntdfn" id="byte-type-descriptor">byte-type-descriptor</span> := <code>byte</code>
 </pre>
@@ -8224,6 +8239,8 @@ The <code>int:Unsigned8</code> type is equivalent to the predefined
 <ol>
 <li>The <code>readonly</code> type has been added.</li>
 <li>Intersection types have been added.</li>
+<li>Distinct types have been added; these provide the functionality
+of nominal types with the framework of a structural type system.</li>
 <li>The table type has been redesigned to be more consistent with other
 structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>
