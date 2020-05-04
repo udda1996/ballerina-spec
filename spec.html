@@ -159,19 +159,19 @@ mailing list.
 </li>
 <li>5.6.2 <a href="#section_5.6.2">Singleton types</a>
 </li>
-<li>5.6.3 <a href="#section_5.6.3">Readonly type</a>
+<li>5.6.3 <a href="#section_5.6.3">Any type</a>
 </li>
-<li>5.6.4 <a href="#section_5.6.4">Any type</a>
+<li>5.6.4 <a href="#section_5.6.4">Never type</a>
 </li>
-<li>5.6.5 <a href="#section_5.6.5">Never type</a>
+<li>5.6.5 <a href="#section_5.6.5">Readonly type</a>
 </li>
-<li>5.6.6 <a href="#section_5.6.6">Optional types</a>
+<li>5.6.6 <a href="#distinct_types">Distinct types</a>
 </li>
 <li>5.6.7 <a href="#section_5.6.7">Union types</a>
 </li>
 <li>5.6.8 <a href="#section_5.6.8">Intersection types</a>
 </li>
-<li>5.6.9 <a href="#distinct_types">Distinct types</a>
+<li>5.6.9 <a href="#section_5.6.9">Optional types</a>
 </li>
 <li>5.6.10 <a href="#anydata">Anydata type</a>
 </li>
@@ -2630,13 +2630,13 @@ because Ballerina does not yet support parameterized object types.
 <pre class="grammar"><span class="ntdfn" id="other-type-descriptor">other-type-descriptor</span> :=
    | <a href="#type-reference"><span class="ntref">type-reference</span></a>
    | <a href="#singleton-type-descriptor"><span class="ntref">singleton-type-descriptor</span></a>
-   | <a href="#readonly-type-descriptor"><span class="ntref">readonly-type-descriptor</span></a>
    | <a href="#any-type-descriptor"><span class="ntref">any-type-descriptor</span></a>
    | <a href="#never-type-descriptor"><span class="ntref">never-type-descriptor</span></a>
-   | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
+   | <a href="#readonly-type-descriptor"><span class="ntref">readonly-type-descriptor</span></a>
+   | <a href="#distinct-type-descriptor"><span class="ntref">distinct-type-descriptor</span></a>
    | <a href="#union-type-descriptor"><span class="ntref">union-type-descriptor</span></a>
    | <a href="#intersection-type-descriptor"><span class="ntref">intersection-type-descriptor</span></a>
-   | <a href="#distinct-type-descriptor"><span class="ntref">distinct-type-descriptor</span></a>
+   | <a href="#optional-type-descriptor"><span class="ntref">optional-type-descriptor</span></a>
    | <a href="#anydata-type-descriptor"><span class="ntref">anydata-type-descriptor</span></a>
    | <a href="#json-type-descriptor"><span class="ntref">json-type-descriptor</span></a>
    | <a href="#byte-type-descriptor"><span class="ntref">byte-type-descriptor</span></a>
@@ -2681,7 +2681,43 @@ read-only bit set will thus not belong to any singleton type.
 </p>
 </section>
 <section>
-<h4 id="section_5.6.3">5.6.3 Readonly type</h4>
+<h4 id="section_5.6.3">5.6.3 Any type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
+</pre>
+<p>
+The type descriptor <code>any</code> describes the type consisting of all values
+other than errors. A value belongs to the any type if and only if its basic type
+is not error. Thus all values belong to the type <code>any|error</code>. Note
+that a structure with members that are errors belongs to the <code>any</code>
+type.
+</p>
+<p>
+The any-type-descriptor is not definite.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.4">5.6.4 Never type</h4>
+
+<pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
+</pre>
+<p>
+The type descriptor <code>never</code> describes the type that does not contain
+any shapes. No value ever belongs to the <code>never</code>.
+</p>
+<p>
+This can be useful to describe for the return type of a function, if the
+function never returns. It can also be useful as a type parameter. For example,
+<code>xml&lt;never&gt;</code> describes the an xml type that has no
+constituents, i.e. the empty xml value.
+</p>
+<p>
+Note that for anytype <code>T</code>, the type <code>T|never</code> is the same
+as <code>T</code>.
+</p>
+</section>
+<section>
+<h4 id="section_5.6.5">5.6.5 Readonly type</h4>
 <pre class="grammar"><span class="ntdfn" id="readonly-type-descriptor">readonly-type-descriptor</span> := <code>readonly</code>
 </pre>
 <p>
@@ -2721,50 +2757,29 @@ bit on. These basic types are:
 
 </section>
 <section>
-<h4 id="section_5.6.4">5.6.4 Any type</h4>
-
-<pre class="grammar"><span class="ntdfn" id="any-type-descriptor">any-type-descriptor</span> := <code>any</code>
+<h4 id="distinct_types">5.6.6 Distinct types</h4>
+<pre class="grammar"><span class="ntdfn" id="distinct-type-descriptor">distinct-type-descriptor</span> := <code>distinct</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
 </pre>
 <p>
-The type descriptor <code>any</code> describes the type consisting of all values
-other than errors. A value belongs to the any type if and only if its basic type
-is not error. Thus all values belong to the type <code>any|error</code>. Note
-that a structure with members that are errors belongs to the <code>any</code>
-type.
+Each occurrence of a distinct-type-descriptor describes a type that is distinct
+from any other occurrence of a distinct-type-descriptor. Only object and error
+values can belong to a type described by a distinct-type-descriptor.
 </p>
 <p>
-The any-type-descriptor is not definite.
+The type denoted by a distinct-type-descriptor <code><var>D</var></code>, where
+<code><var>D</var></code> is <code>distinct <var>T</var></code>, and
+<var>d</var> is the type-id of this occurrence of <code><var>D</var></code>,
+contains a shape <var>s</var> of an object or error value if and only if both
+<code><var>T</var></code> contains <var>s</var> and the set of type-ids of
+<var>s</var> contains <var>d</var>. The set of type-ids induced by
+<code><var>D</var></code> consists of <var>d</var> as the primary type-id and
+the type-ids induced by <code><var>T</var></code> as the secondary type-ids. The
+type <code><var>T</var></code> must be definite and must be a subtype of object
+or a subtype of error. The type <code><var>D</var></code> is always definite.
+Note that <code><var>D</var></code> is always a proper subtype of
+<code><var>T</var></code>.
 </p>
-</section>
-<section>
-<h4 id="section_5.6.5">5.6.5 Never type</h4>
 
-<pre class="grammar"><span class="ntdfn" id="never-type-descriptor">never-type-descriptor</span> := <code>never</code>
-</pre>
-<p>
-The type descriptor <code>never</code> describes the type that does not contain
-any shapes. No value ever belongs to the <code>never</code>.
-</p>
-<p>
-This can be useful to describe for the return type of a function, if the
-function never returns. It can also be useful as a type parameter. For example,
-<code>xml&lt;never&gt;</code> describes the an xml type that has no
-constituents, i.e. the empty xml value.
-</p>
-<p>
-Note that for anytype <code>T</code>, the type <code>T|never</code> is the same
-as <code>T</code>.
-</p>
-</section>
-<section>
-<h4 id="section_5.6.6">5.6.6 Optional types</h4>
-
-<pre class="grammar"><span class="ntdfn" id="optional-type-descriptor">optional-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>?</code>
-</pre>
-<p>
-A type <code>T?</code> means T or nil. A type <code>T?</code> contains a shape
-if and only if <code>T</code> contains the shape or the shape is nil.
-</p>
 </section>
 <section>
 <h4 id="section_5.6.7">5.6.7 Union types</h4>
@@ -2785,9 +2800,6 @@ and <code>T2</code> are definite and the set of type-ids induced by
 induces the same set of type-ids as <code>T1</code> and <code>T2</code>, and a
 type-id is primary if it is primary in either <code>T1</code> or
 <code>T2</code>.
-</p>
-<p>
-The type <code>T?</code> is exactly equivalent to <code>T|()</code>.
 </p>
 </section>
 <section>
@@ -2818,30 +2830,17 @@ of the shape.
 </section>
 
 <section>
-<h4 id="distinct_types">5.6.9 Distinct types</h4>
-<pre class="grammar"><span class="ntdfn" id="distinct-type-descriptor">distinct-type-descriptor</span> := <code>distinct</code> <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a>
+<h4 id="section_5.6.9">5.6.9 Optional types</h4>
+
+<pre class="grammar"><span class="ntdfn" id="optional-type-descriptor">optional-type-descriptor</span> := <a href="#type-descriptor"><span class="ntref">type-descriptor</span></a> <code>?</code>
 </pre>
 <p>
-Each occurrence of a distinct-type-descriptor describes a type that is distinct
-from any other occurrence of a distinct-type-descriptor. Only object and error
-values can belong to a type described by a distinct-type-descriptor.
+A type <code><var>T</var>?</code> means the union of <code><var>T</var></code>
+and <code>()</code>. It is completely equivalent to
+<code><var>T</var>|()</code>.
 </p>
-<p>
-The type denoted by a distinct-type-descriptor <code><var>D</var></code>, where
-<code><var>D</var></code> is <code>distinct <var>T</var></code>, and
-<var>d</var> is the type-id of this occurrence of <code><var>D</var></code>,
-contains a shape <var>s</var> of an object or error value if and only if both
-<code><var>T</var></code> contains <var>s</var> and the set of type-ids of
-<var>s</var> contains <var>d</var>. The set of type-ids induced by
-<code><var>D</var></code> consists of <var>d</var> as the primary type-id and
-the type-ids induced by <code><var>T</var></code> as the secondary type-ids. The
-type <code><var>T</var></code> must be definite and must be a subtype of object
-or a subtype of error. The type <code><var>D</var></code> is always definite.
-Note that <code><var>D</var></code> is always a proper subtype of
-<code><var>T</var></code>.
-</p>
-
 </section>
+
 <section>
 <h4 id="anydata">5.6.10 Anydata type</h4>
 
