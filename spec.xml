@@ -7105,6 +7105,10 @@ class="grammar"><dfn>import-decl</dfn> :=
 <dfn>qualified-identifier</dfn> := <abbr>module-prefix</abbr> <code>:</code> <abbr>identifier</abbr>
 </pre>
 <p>
+If org-name is omitted, it is defaulted from the organization of the importing
+module.
+</p>
+<p>
 A <code>module-prefix</code> is a name that is used locally within the source of
 a module to refer to another module. A <code>module-prefix</code> in a
 qualified-identifier must refer to a <code>module-prefix</code> specified in an
