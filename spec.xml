@@ -1745,7 +1745,6 @@ a non-empty set of type-ids.
 <pre
 class="grammar"><dfn>function-type-descriptor</dfn> := <code>function</code> <abbr>function-signature</abbr>
 <dfn>function-signature</dfn> := <code>(</code> <abbr>param-list</abbr> <code>)</code> <abbr>return-type-descriptor</abbr>
-<dfn>return-type-descriptor</dfn> := [ <code>returns</code> [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> ]
 </pre>
 <p>
 A function is a part of a program that can be explicitly executed. In Ballerina,
@@ -1753,14 +1752,7 @@ a function is also a value, implying that it can be stored in variables, and
 passed to or returned from functions. When a function is executed, it is passed
 an argument list as input and returns a value as output.
 </p>
-<p>
-When the execution of a function returns to its caller, it returns exactly one
-value. A function that would in other programming languages not return a value
-is represented in Ballerina by a function returning <code>()</code>. Note that
-the function definition does not have to explicitly return <code>()</code>; a
-return statement or falling off the end of the function body will implicitly
-return <code>()</code>.
-</p>
+
 <pre
 class="grammar"><dfn>param-list</dfn> :=
    <abbr>required-params</abbr> [<code>,</code> <abbr>defaultable-params</abbr>] [<code>,</code> <abbr>rest-param</abbr>]
@@ -1846,6 +1838,34 @@ typing.
 The process by which the function caller creates an argument list, which may
 make use of arguments specified both by position and by name, is described in
 more detail in the <a href="#function_call">section on function calls</a>.
+</p>
+<pre
+class="grammar"><dfn>return-type-descriptor</dfn> := [ <code>returns</code> [<abbr>annots</abbr>] <abbr>type-descriptor</abbr> ]
+</pre>
+<p>
+When the execution of a function returns to its caller, it returns exactly one
+value. A function that would in other programming languages not return a value
+is represented in Ballerina by a function returning <code>()</code>. Note that
+the function definition does not have to explicitly return <code>()</code>; a
+return statement or falling off the end of the function body will implicitly
+return <code>()</code>.
+</p>
+<p>
+The value returned by a function will belong to the type specified in the
+return-type-descriptor. An empty return-type-descriptor is equivalent to
+<code>returns ()</code>.
+</p>
+<p>
+A return-type-descriptor may be depend on the param-list in the following way. A
+type-reference occurring in a return-type-descriptor can refer to a parameter
+name if the type of the parameter is a subtype of <code>typedesc</code>. If p is
+such a parameter, then a reference to p in the return-type-descriptor denotes
+the type that is the value of p. The return-type-descriptor thus denotes a
+distinct set of shapes for each invocation of the function. A function-signature
+with a return-type-descriptor that uses a type-reference to refer to a parameter
+name in this way is said to be <em>dependently-typed</em>. Functions with
+dependently-types signatures can be declared and used within Ballerina, but
+Ballerina does not yet provide a mechanism to define such functions.
 </p>
 <p>
 Function types are covariant in their return types and contravariant in the type
@@ -7348,7 +7368,9 @@ class="grammar"><dfn>function-defn</dfn> :=
 </pre>
 <p>
 An <code>external-function-body</code> means that the implementation of the
-function is not provided in the Ballerina source module.
+function is not provided in the Ballerina source module. A function-defn-body
+with a function-signature that is dependently-typed must be an
+external-function-body.
 </p>
 <p>
 If a module has a function-defn with an identifier of <code>init</code>, it is
@@ -8042,6 +8064,8 @@ of modules have been renamed to <code>init</code>.</li>
 <li>The table type has been redesigned to be more consistent with other
 structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>
+<li>The return type of a function with an external body can depend on the value
+of a parameter of typedesc type.</li>
 <li>The XML item-specific subtypes can be used as constructors, both in
 expressions and in binding patterns.</li>
 </ol>
