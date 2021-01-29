@@ -35,9 +35,9 @@ type Info readonly & record {|
 # An instant in time.
 public type Timestamp readonly & object {
     # Returns milliseconds since 1970-01-01T00:00:00Z, not including leap seconds
-    public function toMillisecondsInt() returns int;
+    public toMillisecondsInt() returns int;
     # Returns a string representation of the timestamp in ISO 8601 format
-    public function toString() returns string;
+    public toString() returns string;
 };
 
 # Returns information about the current transaction
